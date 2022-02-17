@@ -18,7 +18,7 @@ import javax.swing.*;
  */
 public class ROFCapp extends JFrame {
     static Order itemArr = new Order();
-    static ROFCapp myFrame;
+    static ROFCapp myFrame;// neccesary
     
     public static void main(String[] args) {
         
@@ -69,18 +69,6 @@ public class ROFCapp extends JFrame {
         bxBottom.add(Box.createHorizontalGlue());
         bxBottom.add(jbSummary);
         
-        
-        
-        
-        // Add subpanels to master panels
-        
-        //jpMain.add(jsp, BorderLayout.CENTER);
-        
-        //jpMain.add(bxBottom, BorderLayout.SOUTH);
-        
-        
-        //this.setLayout(new BorderLayout());
-        //this.add(jpMain);
         //this.setSize(750, 500);
         this.pack();
         this.setVisible(true);
