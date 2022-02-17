@@ -24,6 +24,7 @@ public abstract class Item {
         this.quantity = quantity;
         
         setImage();
+        calculatePrice();
     }
     
     
@@ -41,7 +42,15 @@ public abstract class Item {
     
     public abstract void newItem();
     
-    public abstract String getSummary();
+    public String getSummary() {
+        String result = String.format("ID: %s\n", this.ID);
+        
+        result += String.format("\tType of Item: %s\n", this.getClass().getSimpleName());
+        result += String.format("\tItem Price: £%.2f\n", (double)this.itemPrice / 100);
+        result += "\n";
+        
+        return result;
+    }
 
     public String getID() {
         return ID;
