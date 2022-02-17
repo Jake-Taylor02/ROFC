@@ -18,7 +18,7 @@ import javax.swing.*;
  */
 public class ROFCapp extends JFrame {
     static Order itemArr = new Order();
-    static ROFCapp myFrame;// neccesary
+    public static ROFCapp myFrame;// neccesary?
     
     public static void main(String[] args) {
         
@@ -47,11 +47,10 @@ public class ROFCapp extends JFrame {
         this.add(jpLeft, BorderLayout.WEST);
         
         
-        // center panel 
-        
+        // Define center grid and add it to frame
         JPanel jpCenter = new CenterPanel(itemArr);
         JScrollPane jsp = new JScrollPane(jpCenter);
-        jsp.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        jsp.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
         this.add(jsp, BorderLayout.CENTER);
         
         
@@ -69,7 +68,8 @@ public class ROFCapp extends JFrame {
         bxBottom.add(Box.createHorizontalGlue());
         bxBottom.add(jbSummary);
         
-        //this.setSize(750, 500);
+        this.add(bxBottom, BorderLayout.SOUTH);
+        
         this.pack();
         this.setVisible(true);
     }
