@@ -13,7 +13,7 @@ import javax.swing.ImageIcon;
  * @author b1086175
  */
 public class Table extends Item{
-    private TableBase base;
+    private TableBase base = TableBase.WOODEN;// broken without default value ???!!
     private int diameter;
 
     public Table(String ID, WoodType wood, int quantity, TableBase base, int diameter) {
@@ -39,10 +39,10 @@ public class Table extends Item{
         new NewItemFrame();
     }
 
-    @Override
+    /*@Override
     public String getSummary() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }*/
 
     public TableBase getBase() {
         return base;
