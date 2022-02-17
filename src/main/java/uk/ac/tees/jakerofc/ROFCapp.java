@@ -17,7 +17,7 @@ import javax.swing.*;
  * @author b1086175
  */
 public class ROFCapp extends JFrame {
-    static Order itemArr = new Order();
+    public static Order itemArr = new Order();
     public static ROFCapp myFrame;// neccesary?
     
     public static void main(String[] args) {
@@ -27,7 +27,7 @@ public class ROFCapp extends JFrame {
         itemArr.addItem(new Desk("002", WoodType.WALNUT, 1, 100, 75, 3));
         itemArr.addItem(new Desk("003", WoodType.WALNUT, 1, 100, 75, 3));
         itemArr.addItem(new Chair("004", WoodType.OAK, 2, true));
-        itemArr.addItem(new Table("005", WoodType.OAK, 1, TableBase.WOODEN, 60));
+        //itemArr.addItem(new Table("005", WoodType.OAK, 1, TableBase.WOODEN, 60));
         
         myFrame = new ROFCapp();
         //itemArr.get(2).newItem();
@@ -55,20 +55,9 @@ public class ROFCapp extends JFrame {
         
         
         
-        // Define bottom components
-        JLabel jlTotal = new JLabel("Total:");
-        JButton jbSummary = new JButton("Show Summary");
-        
-        // define bottom box
-        Box bxBottom = Box.createHorizontalBox();
-        bxBottom.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
-        
-        // add components to bottom panel
-        bxBottom.add(jlTotal);
-        bxBottom.add(Box.createHorizontalGlue());
-        bxBottom.add(jbSummary);
-        
-        this.add(bxBottom, BorderLayout.SOUTH);
+        // Define bottom Panel
+        BottomPanel jpBottom = new BottomPanel();
+        this.add(jpBottom, BorderLayout.SOUTH);
         
         this.pack();
         this.setVisible(true);
