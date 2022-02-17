@@ -55,9 +55,26 @@ public class Order {
         return items;
     }
     
-    
-    
     public int size() {
         return items.size();
+    }
+    
+    public int calcTotal() {
+        int result = 0;
+        for (Item e : items) {
+            result += e.getItemPrice();
+        }
+        return result;
+    }
+    
+    public String orderSummary() {
+        String result = "Summary:\n";
+        
+        for (Item e : items) {
+            result += e.getSummary();
+        }
+        result += String.format("Order Total: £%.2f", (double)calcTotal() / 100);
+        
+        return result;
     }
 }
