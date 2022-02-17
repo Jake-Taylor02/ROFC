@@ -39,10 +39,10 @@ public class Chair extends Item {
         new NewItemFrame();
     }
 
-    @Override
+    /*@Override
     public String getSummary() {
-        return "";
-    }
+    
+    }*/
 
     public boolean isArmrests() {
         return armrests;
