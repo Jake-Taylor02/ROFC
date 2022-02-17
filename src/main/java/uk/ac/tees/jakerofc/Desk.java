@@ -39,10 +39,10 @@ public class Desk extends Item{
         new NewItemFrame();
     }
 
-    @Override
+    /*@Override
     public String getSummary() {
-        return "";
-    }
+    return "";
+    }*/
 
     public int getDraws() {
         return draws;
