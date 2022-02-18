@@ -24,7 +24,7 @@ public abstract class Item {
         this.quantity = quantity;
         
         setImage();
-        calculatePrice();
+        
     }
     
     
