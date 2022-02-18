@@ -27,7 +27,7 @@ public class ROFCapp extends JFrame {
         itemArr.addItem(new Desk("002", WoodType.WALNUT, 1, 100, 75, 3));
         itemArr.addItem(new Desk("003", WoodType.WALNUT, 1, 100, 75, 3));
         itemArr.addItem(new Chair("004", WoodType.OAK, 2, true));
-        //itemArr.addItem(new Table("005", WoodType.OAK, 1, TableBase.WOODEN, 60));
+        itemArr.addItem(new Table("005", WoodType.OAK, 1, TableBase.WOODEN, 60));
         
         myFrame = new ROFCapp();
         //itemArr.get(2).newItem();
