@@ -44,7 +44,9 @@ public class BottomPanel extends Box implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == jlTotal) {
-            JOptionPane.showMessageDialog(this, "Total: " + ROFCapp.itemArr.calcTotal());
+            JOptionPane.showMessageDialog(this, String.format("Total: £%.2f",
+                    (double) ROFCapp.itemArr.calcTotal() / 100));
+            
         } else if (e.getSource() == jbSummary) {
             JOptionPane.showMessageDialog(this, ROFCapp.itemArr.orderSummary());
             System.out.println(ROFCapp.itemArr.orderSummary());
