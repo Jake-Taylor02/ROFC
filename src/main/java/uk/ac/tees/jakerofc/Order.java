@@ -75,15 +75,20 @@ public class Order {
         //create a copy of items
         List<Item> sArr = List.copyOf(items);
         
-        Collections.sort(sArr, (Item left, Item right) -> {
-            if (left.getItemPrice() > right.getItemPrice()) {
+        /*Collections.sort(sArr, new Comparator<Item>() {
+            @Override
+            public int compare(Item o1, Item o2) {
+                if (o1.getItemPrice() > o2.getItemPrice()) {
                 return -1;// left is greater
             }
-            if (left.getItemPrice() < right.getItemPrice()) {
+            if (o1.getItemPrice() < o2.getItemPrice()) {
                 return 1;// right is greater
             }
             return 0;// they are equal
-        });
+            }
+            
+        });*/
+        
         return sArr;
     }
     
