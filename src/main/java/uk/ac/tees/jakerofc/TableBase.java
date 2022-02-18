@@ -14,7 +14,7 @@ public enum TableBase {
     
     private final int price;
 
-    private TableBase(int price) {
+    private TableBase(final int price) {
         this.price = price;
     }
 
