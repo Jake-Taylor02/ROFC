@@ -18,6 +18,8 @@ public class Chair extends Item {
     public Chair(String ID, WoodType wood, int quantity, boolean armrests) {
         super(ID, wood, quantity);
         this.armrests = armrests;
+        
+        calculatePrice();
     }
     
     @Override
