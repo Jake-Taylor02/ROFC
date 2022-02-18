@@ -19,13 +19,9 @@ public class Table extends Item{
     public Table(String ID, WoodType wood, int quantity, TableBase base, int diameter) {
         super(ID, wood, quantity);
         this.base = base;
-        
-        if (this.base == null) {
-            this.base = TableBase.WOODEN;
-            System.out.println("this.base was null");
-        }
-        
         this.diameter = diameter;
+        
+        calculatePrice();
     }
     
     @Override
