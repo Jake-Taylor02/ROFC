@@ -4,9 +4,13 @@
  */
 package uk.ac.tees.jakerofc;
 
-import java.awt.List;
+
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 
 /**
  *
@@ -67,10 +71,27 @@ public class Order {
         return result;
     }
     
+    private List<Item> sorted() {// broken
+        //create a copy of items
+        List<Item> sArr = List.copyOf(items);
+        
+        Collections.sort(sArr, (Item left, Item right) -> {
+            if (left.getItemPrice() > right.getItemPrice()) {
+                return -1;// left is greater
+            }
+            if (left.getItemPrice() < right.getItemPrice()) {
+                return 1;// right is greater
+            }
+            return 0;// they are equal
+        });
+        return sArr;
+    }
+    
     public String orderSummary() {
         String result = "Summary:\n";
+        List<Item> myArr = this.sorted();
         
-        for (Item e : items) {
+        for (Item e : myArr) {
             result += e.getSummary();
         }
         result += String.format("Order Total: £%.2f", (double)calcTotal() / 100);
