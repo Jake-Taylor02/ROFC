@@ -36,11 +36,6 @@ public class Chair extends Item {
         image = new ImageIcon("chair3.png");
     }
 
-    @Override
-    public void newItem() {
-        new NewItemFrame();
-    }
-
     /*@Override
     public String getSummary() {
     
