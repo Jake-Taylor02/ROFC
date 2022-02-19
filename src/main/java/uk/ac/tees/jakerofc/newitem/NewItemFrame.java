@@ -23,14 +23,15 @@ import javax.swing.SpinnerNumberModel;
 import javax.swing.SpringLayout;
 import javax.swing.SwingConstants;
 import uk.ac.tees.jakerofc.WoodType;
+import uk.ac.tees.jakerofc.newitem.NewItemFrame.initCenter.CenterPanel;
 
 /**
- *
+ * change center panel to
  * @author Jake
  */
 public class NewItemFrame extends JFrame {
     protected SpringLayout spLayout;
-    protected JPanel jpForm;
+    protected CenterPanel jpForm;
     protected JPanel jpFooter;
     
     public NewItemFrame() throws HeadlessException {
