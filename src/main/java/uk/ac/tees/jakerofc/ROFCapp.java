@@ -30,7 +30,8 @@ public class ROFCapp extends JFrame {
         itemArr.addItem(new Table("005", WoodType.OAK, 1, TableBase.WOODEN, 60));
         
         myFrame = new ROFCapp();
-        //itemArr.get(2).newItem();
+        
+        new NewItemFrame();
     }
 
     public ROFCapp() throws HeadlessException {
