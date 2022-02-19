@@ -36,11 +36,6 @@ public class Table extends Item{
         image = new ImageIcon("table2.jpg");
     }
 
-    @Override
-    public void newItem() {
-        new NewItemFrame();
-    }
-
     /*@Override
     public String getSummary() {
     throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
