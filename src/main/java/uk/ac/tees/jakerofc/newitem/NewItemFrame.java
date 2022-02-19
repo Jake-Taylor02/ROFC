@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package uk.ac.tees.jakerofc;
+package uk.ac.tees.jakerofc.newitem;
 
 import java.awt.BorderLayout;
 import java.awt.Component;
@@ -22,29 +22,27 @@ import javax.swing.JTextField;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.SpringLayout;
 import javax.swing.SwingConstants;
+import uk.ac.tees.jakerofc.WoodType;
 
 /**
  *
  * @author Jake
  */
 public class NewItemFrame extends JFrame {
-    
-    protected JPanel jpFooter;
-    
     protected SpringLayout spLayout;
     protected JPanel jpForm;
+    protected JPanel jpFooter;
     
     public NewItemFrame() throws HeadlessException {
-        this.setTitle("Add New <item>");// show furniture type?
+        this.setTitle("Add New Item");// to be overwritten by subclass
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        
         this.setLayout(new BorderLayout());
     
+        // Center Panel with components
         initCenter();
         
-        // Add Footer buttons - need to add listeners
+        // Add Footer buttons
         initFooter();
-        
         
         this.setSize(400, 400);
         this.setVisible(true);// should be in subclass

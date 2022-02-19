@@ -18,6 +18,8 @@ public class Chair extends Item {
     public Chair(String ID, WoodType wood, int quantity, boolean armrests) {
         super(ID, wood, quantity);
         this.armrests = armrests;
+        
+        calculatePrice();
     }
     
     @Override
@@ -34,15 +36,10 @@ public class Chair extends Item {
         image = new ImageIcon("chair3.png");
     }
 
-    @Override
-    public void newItem() {
-        new NewItemFrame();
-    }
-
-    @Override
+    /*@Override
     public String getSummary() {
-        return "";
-    }
+    
+    }*/
 
     public boolean isArmrests() {
         return armrests;

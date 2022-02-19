@@ -21,4 +21,5 @@ public enum WoodType {
     public int getPrice() {
         return price;
     }
+    
 }

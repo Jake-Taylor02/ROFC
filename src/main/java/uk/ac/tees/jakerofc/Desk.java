@@ -21,12 +21,30 @@ public class Desk extends Item{
         this.draws = draws;
         this.width = width;
         this.depth = depth;
+        
+        calculatePrice();
     }
     
     @Override
     protected void calculatePrice() {
-        this.itemPrice = ((80 * width * depth) *12) + (width * depth) * wood.getPrice()
+        this.itemPrice = (((80 * width * depth) *12) + (width * depth)) * wood.getPrice()
                 + (draws * 850);
+        
+        int hwd = (80 * width * depth) *12;
+        System.out.println("hwd: " + hwd);
+        
+        int wd = width * depth;
+        System.out.println("wd: " + wd);
+        
+        int timeswood = (hwd + wd) * wood.getPrice();
+        System.out.println("wood: " + wood.getPrice());
+        System.out.println("* wood: " + timeswood);
+        
+        int drw = draws * 850;
+        System.out.println("draw cost: " + drw);
+        
+        int total = timeswood + drw;
+        System.out.println("total: " + total);
     }
     
     @Override
@@ -34,15 +52,10 @@ public class Desk extends Item{
         image = new ImageIcon("desk2.jpg");
     }
 
-    @Override
-    public void newItem() {
-        new NewItemFrame();
-    }
-
-    @Override
+    /*@Override
     public String getSummary() {
-        return "";
-    }
+    return "";
+    }*/
 
     public int getDraws() {
         return draws;

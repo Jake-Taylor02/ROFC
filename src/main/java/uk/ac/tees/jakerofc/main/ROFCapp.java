@@ -2,23 +2,32 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package uk.ac.tees.jakerofc;
+package uk.ac.tees.jakerofc.main;
 
-import uk.ac.tees.jakerofc.Panels.CenterPanel;
-import uk.ac.tees.jakerofc.Panels.*;
+import uk.ac.tees.jakerofc.main.TopPanel;
+import uk.ac.tees.jakerofc.main.BottomPanel;
+import uk.ac.tees.jakerofc.main.LeftPanel;
+import uk.ac.tees.jakerofc.main.CenterPanel;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.HeadlessException;
 import javax.swing.*;
+import uk.ac.tees.jakerofc.Chair;
+import uk.ac.tees.jakerofc.Desk;
+import uk.ac.tees.jakerofc.newitem.NewItemFrame;
+import uk.ac.tees.jakerofc.Order;
+import uk.ac.tees.jakerofc.Table;
+import uk.ac.tees.jakerofc.TableBase;
+import uk.ac.tees.jakerofc.WoodType;
 
 /**
  *  * set image, use static in subclasses for image?
  * @author b1086175
  */
 public class ROFCapp extends JFrame {
-    static Order itemArr = new Order();
-    static ROFCapp myFrame;
+    public static Order itemArr = new Order();
+    public static ROFCapp myFrame;// neccesary?
     
     public static void main(String[] args) {
         
@@ -30,7 +39,8 @@ public class ROFCapp extends JFrame {
         itemArr.addItem(new Table("005", WoodType.OAK, 1, TableBase.WOODEN, 60));
         
         myFrame = new ROFCapp();
-        //itemArr.get(2).newItem();
+        
+        new NewItemFrame();
     }
 
     public ROFCapp() throws HeadlessException {
@@ -47,41 +57,18 @@ public class ROFCapp extends JFrame {
         this.add(jpLeft, BorderLayout.WEST);
         
         
-        // center panel 
-        
+        // Define center grid and add it to frame
         JPanel jpCenter = new CenterPanel(itemArr);
         JScrollPane jsp = new JScrollPane(jpCenter);
-        jsp.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        jsp.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
         this.add(jsp, BorderLayout.CENTER);
         
         
         
-        // Define bottom components
-        JLabel jlTotal = new JLabel("Total:");
-        JButton jbSummary = new JButton("Show Summary");
+        // Define bottom Panel
+        BottomPanel jpBottom = new BottomPanel();
+        this.add(jpBottom, BorderLayout.SOUTH);
         
-        // define bottom box
-        Box bxBottom = Box.createHorizontalBox();
-        bxBottom.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
-        
-        // add components to bottom panel
-        bxBottom.add(jlTotal);
-        bxBottom.add(Box.createHorizontalGlue());
-        bxBottom.add(jbSummary);
-        
-        
-        
-        
-        // Add subpanels to master panels
-        
-        //jpMain.add(jsp, BorderLayout.CENTER);
-        
-        //jpMain.add(bxBottom, BorderLayout.SOUTH);
-        
-        
-        //this.setLayout(new BorderLayout());
-        //this.add(jpMain);
-        //this.setSize(750, 500);
         this.pack();
         this.setVisible(true);
     }
