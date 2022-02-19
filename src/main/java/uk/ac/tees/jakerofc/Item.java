@@ -40,8 +40,6 @@ public abstract class Item {
         return image;
     }
     
-    public abstract void newItem();
-    
     public String getSummary() {
         String result = String.format("ID: %s\n", this.ID);
         
