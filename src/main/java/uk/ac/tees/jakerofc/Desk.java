@@ -52,11 +52,6 @@ public class Desk extends Item{
         image = new ImageIcon("desk2.jpg");
     }
 
-    @Override
-    public void newItem() {
-        new NewItemFrame();
-    }
-
     /*@Override
     public String getSummary() {
     return "";
