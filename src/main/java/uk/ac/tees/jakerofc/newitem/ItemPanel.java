@@ -30,27 +30,34 @@ public class ItemPanel extends JPanel implements ActionListener, ChangeListener 
     protected JSpinner spQuantity;
     protected JLabel jlQuantity;
     
+    protected final Dimension lblSize;
+    protected final Dimension txtSize;
+    
     protected boolean validEntries;
 
     public ItemPanel() {
+        // Set standard Dimensions of components
+        lblSize = new Dimension(100, 20);
+        txtSize = new Dimension(120, 20);
+        
         // ID Number
         JLabel jlIdNum = new JLabel("ID Number:", SwingConstants.RIGHT);
-        jlIdNum.setPreferredSize(new Dimension(100, 20));
+        jlIdNum.setPreferredSize(lblSize);
 
         txtidNum = new JTextField();
-        txtidNum.setPreferredSize(new Dimension(120, 20));
+        txtidNum.setPreferredSize(txtSize);
 
         // Wood type
         JLabel jlWoodType = new JLabel("Type of Wood:", SwingConstants.RIGHT);
-        jlWoodType.setPreferredSize(new Dimension(100, 20));
+        jlWoodType.setPreferredSize(lblSize);
 
         jcbWoodType = new JComboBox(WoodType.values());
-        jcbWoodType.setPreferredSize(new Dimension(120, 20));
+        jcbWoodType.setPreferredSize(txtSize);
 
         // Quantity
         
         jlQuantity = new JLabel("Quantity:", SwingConstants.RIGHT);
-        jlQuantity.setPreferredSize(new Dimension(100, 20));
+        jlQuantity.setPreferredSize(lblSize);
 
         SpinnerNumberModel qModel = new SpinnerNumberModel(
                 1,
@@ -59,7 +66,7 @@ public class ItemPanel extends JPanel implements ActionListener, ChangeListener 
                 1
         );
         spQuantity = new JSpinner(qModel);
-        spQuantity.setPreferredSize(new Dimension(120, 20));
+        spQuantity.setPreferredSize(txtSize);
         
         // Apply action listener
         this.txtidNum.addActionListener(this);
