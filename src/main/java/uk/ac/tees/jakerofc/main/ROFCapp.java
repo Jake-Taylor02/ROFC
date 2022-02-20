@@ -15,7 +15,7 @@ import java.awt.HeadlessException;
 import javax.swing.*;
 import uk.ac.tees.jakerofc.Chair;
 import uk.ac.tees.jakerofc.Desk;
-import uk.ac.tees.jakerofc.newitem.NewItemFrame;
+import uk.ac.tees.jakerofc.newitem.*;
 import uk.ac.tees.jakerofc.Order;
 import uk.ac.tees.jakerofc.Table;
 import uk.ac.tees.jakerofc.TableBase;
@@ -40,7 +40,7 @@ public class ROFCapp extends JFrame {
         
         myFrame = new ROFCapp();
         
-        new NewItemFrame();
+        new NewChairFrame();
     }
 
     public ROFCapp() throws HeadlessException {
