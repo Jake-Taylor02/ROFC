@@ -9,7 +9,6 @@ import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JCheckBox;
-import javax.swing.JLabel;
 import javax.swing.SpringLayout;
 import uk.ac.tees.jakerofc.*;
 
@@ -66,15 +65,6 @@ public class NewChairFrame extends NewItemFrame {
         }
         mainPanel = new ChairPanel();
         this.add(mainPanel, BorderLayout.CENTER);
-        System.out.println("mainPanel");
-        
-        
-        //spLayout.putConstraint(SpringLayout.NORTH, jcbArmrest, 5, SpringLayout.SOUTH, jpForm.);
-        
-        /*
-        spLayout.putConstraint(SpringLayout.WEST, spQuantity, 5, SpringLayout.EAST, jlQuantity);
-                spLayout.putConstraint(SpringLayout.NORTH, spQuantity, 5, SpringLayout.SOUTH, jcbWoodType);
-        */
     }
 
 }
