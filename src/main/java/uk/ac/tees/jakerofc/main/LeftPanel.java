@@ -5,10 +5,10 @@
 package uk.ac.tees.jakerofc.main;
 
 import java.awt.Component;
-import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
+import uk.ac.tees.jakerofc.newitem.*;
 
 /**
  *
@@ -23,7 +23,7 @@ public class LeftPanel extends JPanel {
         class ChairButton extends JButton implements ActionListener {
 
             public ChairButton() {
-                this.setText("Add Chair2");
+                this.setText("Add Chair");
                 this.setAlignmentX(Component.CENTER_ALIGNMENT);
                 
                 this.addActionListener(this);
@@ -32,6 +32,7 @@ public class LeftPanel extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.out.println("Add Chair has been pressed!");
+                new NewChairFrame();
             }
             
         }
