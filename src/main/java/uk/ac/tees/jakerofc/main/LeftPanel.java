@@ -70,6 +70,7 @@ public class LeftPanel extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.out.println("Add Desk has been pressed!");
+                new NewDeskFrame();
             }
             
         }
