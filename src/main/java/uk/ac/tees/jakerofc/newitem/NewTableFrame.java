@@ -70,6 +70,7 @@ public class NewTableFrame extends NewItemFrame{
                 1// increment
                 );
                 jspDiameter = new JSpinner(dModel);
+                jspDiameter.setPreferredSize(this.txtSize);
                 jspDiameter.addChangeListener(this);
                 this.add(jspDiameter);
                 spLayout.putConstraint(SpringLayout.WEST, jspDiameter, 5, SpringLayout.EAST, jlDiameter);
