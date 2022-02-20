@@ -66,5 +66,4 @@ public class NewChairFrame extends NewItemFrame {
         mainPanel = new ChairPanel();
         this.add(mainPanel, BorderLayout.CENTER);
     }
-
 }
