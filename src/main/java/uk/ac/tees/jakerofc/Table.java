@@ -13,7 +13,7 @@ import javax.swing.ImageIcon;
  * @author b1086175
  */
 public class Table extends Item{
-    private TableBase base = TableBase.WOODEN;// broken without default value ???!!
+    private TableBase base;
     private int diameter;
 
     public Table(String ID, WoodType wood, int quantity, TableBase base, int diameter) {
