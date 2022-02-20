@@ -4,13 +4,7 @@
  */
 package uk.ac.tees.jakerofc.main;
 
-import uk.ac.tees.jakerofc.main.TopPanel;
-import uk.ac.tees.jakerofc.main.BottomPanel;
-import uk.ac.tees.jakerofc.main.LeftPanel;
-import uk.ac.tees.jakerofc.main.CenterPanel;
 import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.GridLayout;
 import java.awt.HeadlessException;
 import javax.swing.*;
 import uk.ac.tees.jakerofc.Chair;
@@ -27,7 +21,6 @@ import uk.ac.tees.jakerofc.WoodType;
  */
 public class ROFCapp extends JFrame {
     public static Order itemArr = new Order();
-    public static ROFCapp myFrame;// neccesary?
     
     public static void main(String[] args) {
         
@@ -38,9 +31,9 @@ public class ROFCapp extends JFrame {
         itemArr.addItem(new Chair("004", WoodType.OAK, 2, true));
         itemArr.addItem(new Table("005", WoodType.OAK, 1, TableBase.WOODEN, 60));
         
-        myFrame = new ROFCapp();
+        new ROFCapp();
         
-        new NewChairFrame();
+        
     }
 
     public ROFCapp() throws HeadlessException {
