@@ -58,13 +58,19 @@ public class FooterPanel extends JPanel implements ActionListener {
                     parent.dispose();// Shut the frame
                 } else if (e.getSource() == jbSave) {
                     System.out.println("Save has been pressed");
-                    parent.dispose();// Shut the frame
+                    
                     
                     for (ChangeItemListener l : changeListeners) {
                         l.newItem(parent.newItem);
                     }
+                    parent.dispose();// Shut the frame
                 } else {
                     System.out.println("Error - Action performed but no source.");
                 }
             }
+            
+            public void addChangeItemListener(ChangeItemListener e) {
+                changeListeners.add(e);
+            }
+            
         }

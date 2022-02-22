@@ -7,6 +7,7 @@ package uk.ac.tees.jakerofc.main;
 
 import java.awt.Color;
 import java.awt.GridLayout;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
@@ -20,21 +21,26 @@ import uk.ac.tees.jakerofc.Order;
  *
  * @author jake
  */
-public class CenterPanel extends JPanel implements ChangeItemListener{
-    private Order itemArr;
+public class CenterPanel extends JPanel {
+    private List<Item> itemArr;
     
     
     JLabel[] labels;
 
-    public CenterPanel(Order g) {
-        this.itemArr = g;
+    public CenterPanel() {
+        this.itemArr = new ArrayList<>();
         
-        //RefreshGrid();
+        init();
+    }
+    
+    public CenterPanel(Order g) {
+        this.itemArr = g.getItems();
+        
         init();
     }
     
     private void init(){
-        
+        this.removeAll();
         this.setLayout(new GridLayout(3, 3, 5, 5));
         
         labels = new JLabel[9];
@@ -53,18 +59,11 @@ public class CenterPanel extends JPanel implements ChangeItemListener{
             this.add(labels[i]);
             
         }
-        
-        
+        this.updateUI();
     }
     
-    @Override
-    public void newItem(Item nItem) {
-        itemArr.addItem(nItem);
-        updateGrid();
-    }
-
-    @Override
-    public void updateGrid() {
+    public void updateItems() {
+        System.out.println("update grid triggered");
         init();
     }
     

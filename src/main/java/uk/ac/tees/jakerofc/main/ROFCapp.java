@@ -9,20 +9,17 @@ import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
-import uk.ac.tees.jakerofc.Chair;
-import uk.ac.tees.jakerofc.Desk;
 import uk.ac.tees.jakerofc.newitem.*;
-import uk.ac.tees.jakerofc.Order;
-import uk.ac.tees.jakerofc.Table;
-import uk.ac.tees.jakerofc.TableBase;
-import uk.ac.tees.jakerofc.WoodType;
+import uk.ac.tees.jakerofc.*;
 
 /**
  *  * set image, use static in subclasses for image?
  * @author b1086175
  */
-public class ROFCapp extends JFrame {
+public class ROFCapp extends JFrame implements ChangeItemListener{
     private Order itemArr = new Order();
+    
+    CenterPanel jpCenter;
     
     public static void main(String[] args) {
         new ROFCapp();
@@ -45,12 +42,12 @@ public class ROFCapp extends JFrame {
         this.add(jpTop, BorderLayout.NORTH);
 
         // define left panel and add it to frame
-        JPanel jpLeft = new LeftPanel();
+        JPanel jpLeft = new LeftPanel(this);
         this.add(jpLeft, BorderLayout.WEST);
         
         
         // Define center grid and add it to frame
-        JPanel jpCenter = new CenterPanel(itemArr);
+        jpCenter = new CenterPanel(itemArr);
         JScrollPane jsp = new JScrollPane(jpCenter);
         jsp.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
         this.add(jsp, BorderLayout.CENTER);
@@ -98,6 +95,19 @@ public class ROFCapp extends JFrame {
         }
         BottomPanel jpBottom = new BottomPanel();
         this.add(jpBottom, BorderLayout.SOUTH);
+    }
+
+    @Override
+    public void newItem(Item nItem) {
+        System.out.println("ROFCapp.newItem()");
+        itemArr.addItem(nItem);
+        updateGrid();
+    }
+
+    @Override
+    public void updateGrid() {
+        System.out.println("ROFCapp.updateGrid()");
+        jpCenter.updateItems();
     }
     
     

@@ -22,7 +22,7 @@ import uk.ac.tees.jakerofc.Item;
 public abstract class NewItemFrame extends JFrame {
     
     //protected ItemPanel jpForm;
-    protected FooterPanel jpFooter;
+    public FooterPanel jpFooter;
     protected Item newItem;
     
     public NewItemFrame() throws HeadlessException {
@@ -38,11 +38,11 @@ public abstract class NewItemFrame extends JFrame {
         
         this.setSize(400, 400);
         this.setVisible(true);// should be in subclass
+        
+        
     }
     
     protected abstract void initCenter();
-        //jpForm = new ItemPanel();
-        //this.add(jpForm, BorderLayout.CENTER);
     
     
     private void initFooter() {
