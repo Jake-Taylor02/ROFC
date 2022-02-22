@@ -20,20 +20,21 @@ import uk.ac.tees.jakerofc.Order;
  *
  * @author jake
  */
-public class CenterPanel extends JPanel {
-    private List<Item> itemArr;
+public class CenterPanel extends JPanel implements ChangeItemListener{
+    private Order itemArr;
     
     
     JLabel[] labels;
 
     public CenterPanel(Order g) {
-        this.itemArr = g.getItems();
+        this.itemArr = g;
         
         //RefreshGrid();
         init();
     }
     
     private void init(){
+        
         this.setLayout(new GridLayout(3, 3, 5, 5));
         
         labels = new JLabel[9];
@@ -56,30 +57,15 @@ public class CenterPanel extends JPanel {
         
     }
     
-    /*private void RefreshGrid() {
-    //this.removeAll();
-    
-    newGrid = new JPanel();
-    newGrid.setLayout(new GridLayout(3, 3, 5, 5));
-    
-    for (int i = 0; i < 9; i++) {
-    
-    // create the new label
-    JLabel jlNew = new JLabel();
-    jlNew.setBorder(BorderFactory.createLineBorder(Color.BLUE));
-    
-    // if the grid actually contains an item, set the image
-    if (i < itemArr.size()) {
-    jlNew.setIcon(itemArr.get(i).getImage());
-    } else {
-    jlNew.setIcon(Item.defaultImage());
+    @Override
+    public void newItem(Item nItem) {
+        itemArr.addItem(nItem);
+        updateGrid();
     }
-    newGrid.add(jlNew);
-    
+
+    @Override
+    public void updateGrid() {
+        init();
     }
-    
-    this.add(newGrid);
-    this.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-    }*/
     
 }
