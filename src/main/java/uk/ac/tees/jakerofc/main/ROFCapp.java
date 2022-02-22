@@ -6,37 +6,33 @@ package uk.ac.tees.jakerofc.main;
 
 import java.awt.BorderLayout;
 import java.awt.HeadlessException;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.*;
-import uk.ac.tees.jakerofc.Chair;
-import uk.ac.tees.jakerofc.Desk;
 import uk.ac.tees.jakerofc.newitem.*;
-import uk.ac.tees.jakerofc.Order;
-import uk.ac.tees.jakerofc.Table;
-import uk.ac.tees.jakerofc.TableBase;
-import uk.ac.tees.jakerofc.WoodType;
+import uk.ac.tees.jakerofc.*;
 
 /**
  *  * set image, use static in subclasses for image?
  * @author b1086175
  */
-public class ROFCapp extends JFrame {
-    public static Order itemArr = new Order();
+public class ROFCapp extends JFrame implements ChangeItemListener{
+    private Order itemArr = new Order();
+    
+    CenterPanel jpCenter;
     
     public static void main(String[] args) {
-        
-        // test items
+        new ROFCapp();
+    }
+
+    public ROFCapp() throws HeadlessException {
+        // Test items
         itemArr.addItem(new Chair("001", WoodType.OAK, 1, true));
         itemArr.addItem(new Desk("002", WoodType.WALNUT, 1, 100, 75, 3));
         itemArr.addItem(new Desk("003", WoodType.WALNUT, 1, 100, 75, 3));
         itemArr.addItem(new Chair("004", WoodType.OAK, 2, true));
         itemArr.addItem(new Table("005", WoodType.OAK, 1, TableBase.WOODEN, 60));
-        
-        new ROFCapp();
-        
-        
-    }
-
-    public ROFCapp() throws HeadlessException {
+        //
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setTitle("ROFC");
         this.setLayout(new BorderLayout(5, 5));
@@ -46,12 +42,12 @@ public class ROFCapp extends JFrame {
         this.add(jpTop, BorderLayout.NORTH);
 
         // define left panel and add it to frame
-        JPanel jpLeft = new LeftPanel();
+        JPanel jpLeft = new LeftPanel(this);
         this.add(jpLeft, BorderLayout.WEST);
         
         
         // Define center grid and add it to frame
-        JPanel jpCenter = new CenterPanel(itemArr);
+        jpCenter = new CenterPanel(itemArr);
         JScrollPane jsp = new JScrollPane(jpCenter);
         jsp.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
         this.add(jsp, BorderLayout.CENTER);
@@ -59,14 +55,60 @@ public class ROFCapp extends JFrame {
         
         
         // Define bottom Panel
-        BottomPanel jpBottom = new BottomPanel();
-        this.add(jpBottom, BorderLayout.SOUTH);
+        initBottom();
         
         this.pack();
         this.setVisible(true);
     }
     
-   
+    private void initBottom() {
+        class BottomPanel extends Box implements ActionListener {
+            JButton jlTotal;
+            JButton jbSummary;
+            
+            public BottomPanel() {
+                super(BoxLayout.X_AXIS);
+                
+                jlTotal = new JButton("Total");
+                jlTotal.addActionListener(this);
+        
+                jbSummary = new JButton("Show Summary");
+                jbSummary.addActionListener(this);
+        
+                this.add(jlTotal);
+                this.add(Box.createHorizontalGlue());
+                this.add(jbSummary);
+            }
+            
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (e.getSource() == jlTotal) {
+                    JOptionPane.showMessageDialog(this, String.format("Total: £%.2f",
+                    (double) itemArr.calcTotal() / 100));
+            
+                } else if (e.getSource() == jbSummary) {
+                    JOptionPane.showMessageDialog(this, itemArr.orderSummary());
+                    System.out.println(itemArr.orderSummary());
+                }
+            }
+            
+        }
+        BottomPanel jpBottom = new BottomPanel();
+        this.add(jpBottom, BorderLayout.SOUTH);
+    }
+
+    @Override
+    public void newItem(Item nItem) {
+        System.out.println("ROFCapp.newItem()");
+        itemArr.addItem(nItem);
+        updateGrid();
+    }
+
+    @Override
+    public void updateGrid() {
+        System.out.println("ROFCapp.updateGrid()");
+        jpCenter.updateItems();
+    }
     
     
 }

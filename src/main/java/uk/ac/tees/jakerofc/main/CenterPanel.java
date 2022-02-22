@@ -7,6 +7,7 @@ package uk.ac.tees.jakerofc.main;
 
 import java.awt.Color;
 import java.awt.GridLayout;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
@@ -26,14 +27,20 @@ public class CenterPanel extends JPanel {
     
     JLabel[] labels;
 
+    public CenterPanel() {
+        this.itemArr = new ArrayList<>();
+        
+        init();
+    }
+    
     public CenterPanel(Order g) {
         this.itemArr = g.getItems();
         
-        //RefreshGrid();
         init();
     }
     
     private void init(){
+        this.removeAll();
         this.setLayout(new GridLayout(3, 3, 5, 5));
         
         labels = new JLabel[9];
@@ -52,34 +59,12 @@ public class CenterPanel extends JPanel {
             this.add(labels[i]);
             
         }
-        
-        
+        this.updateUI();
     }
     
-    /*private void RefreshGrid() {
-    //this.removeAll();
-    
-    newGrid = new JPanel();
-    newGrid.setLayout(new GridLayout(3, 3, 5, 5));
-    
-    for (int i = 0; i < 9; i++) {
-    
-    // create the new label
-    JLabel jlNew = new JLabel();
-    jlNew.setBorder(BorderFactory.createLineBorder(Color.BLUE));
-    
-    // if the grid actually contains an item, set the image
-    if (i < itemArr.size()) {
-    jlNew.setIcon(itemArr.get(i).getImage());
-    } else {
-    jlNew.setIcon(Item.defaultImage());
+    public void updateItems() {
+        System.out.println("update grid triggered");
+        init();
     }
-    newGrid.add(jlNew);
-    
-    }
-    
-    this.add(newGrid);
-    this.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-    }*/
     
 }
