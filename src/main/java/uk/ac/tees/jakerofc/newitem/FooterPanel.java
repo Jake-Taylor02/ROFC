@@ -7,9 +7,12 @@ package uk.ac.tees.jakerofc.newitem;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import uk.ac.tees.jakerofc.main.ChangeItemListener;
 import uk.ac.tees.jakerofc.main.ROFCapp;
 
 /**
@@ -22,6 +25,8 @@ public class FooterPanel extends JPanel implements ActionListener {
             private JButton jbSave;
             
             private NewItemFrame parent;
+            
+            private List<ChangeItemListener> changeListeners = new ArrayList<>();
 
             public FooterPanel(NewItemFrame parent) {
                 this.parent = parent;
@@ -47,13 +52,17 @@ public class FooterPanel extends JPanel implements ActionListener {
             
             @Override
             public void actionPerformed(ActionEvent e) {
+                // ! Maybe should move this to parent, Internal Class ?
                 if (e.getSource() == jbCancel) {
                     System.out.println("Cancel has been pressed");
-                    parent.dispose();
+                    parent.dispose();// Shut the frame
                 } else if (e.getSource() == jbSave) {
                     System.out.println("Save has been pressed");
-                    ROFCapp.itemArr.addItem(parent.newItem);
-                    parent.dispose();
+                    parent.dispose();// Shut the frame
+                    
+                    for (ChangeItemListener l : changeListeners) {
+                        l.newItem(parent.newItem);
+                    }
                 } else {
                     System.out.println("Error - Action performed but no source.");
                 }
