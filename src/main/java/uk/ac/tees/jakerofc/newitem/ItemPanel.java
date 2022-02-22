@@ -17,13 +17,14 @@ import javax.swing.SpringLayout;
 import javax.swing.SwingConstants;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+import uk.ac.tees.jakerofc.Item;
 import uk.ac.tees.jakerofc.WoodType;
 
 /**
  *
  * @author jake
  */
-public class ItemPanel extends JPanel implements ActionListener, ChangeListener {
+public abstract class ItemPanel extends JPanel implements ActionListener, ChangeListener {
     protected SpringLayout spLayout;
     protected JTextField txtidNum;
     protected JComboBox jcbWoodType;
@@ -34,6 +35,8 @@ public class ItemPanel extends JPanel implements ActionListener, ChangeListener 
     protected final Dimension txtSize;
     
     protected boolean validEntries;
+    
+    protected Item newItem;
 
     public ItemPanel() {
         // Set standard Dimensions of components
@@ -104,6 +107,8 @@ public class ItemPanel extends JPanel implements ActionListener, ChangeListener 
         spLayout.putConstraint(SpringLayout.WEST, spQuantity, 5, SpringLayout.EAST, jlQuantity);
         spLayout.putConstraint(SpringLayout.NORTH, spQuantity, 5, SpringLayout.SOUTH, jcbWoodType);
     }
+    
+    public abstract String getTitle();
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -121,13 +126,14 @@ public class ItemPanel extends JPanel implements ActionListener, ChangeListener 
             validEntries = false;
             return;
         }
-        
-        
     }
 
     @Override
     public void stateChanged(ChangeEvent e) {
         actionPerformed(null);
     }
-
+    
+    public Item getNewItem() {
+        return newItem;
+    }
 }

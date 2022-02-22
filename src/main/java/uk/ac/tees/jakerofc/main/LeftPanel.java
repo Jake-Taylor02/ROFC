@@ -10,7 +10,7 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 import uk.ac.tees.jakerofc.newitem.*;
 
-/**
+/** Move to main internal?
  *
  * @author b1086175
  */
@@ -32,8 +32,8 @@ public class LeftPanel extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.out.println("Add Chair has been pressed!");
-                newIF = new NewChairFrame();
-                newIF.jpFooter.addChangeItemListener(main);
+                newIF = new NewItemFrame(new ChairPanel());
+                newIF.addChangeItemListener(main);
             }
             
         }
@@ -52,7 +52,8 @@ public class LeftPanel extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.out.println("Add Table has been pressed!");
-                new NewTableFrame();
+                newIF = new NewItemFrame(new TablePanel());
+                newIF.addChangeItemListener(main);
             }
             
         }
@@ -71,7 +72,8 @@ public class LeftPanel extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.out.println("Add Desk has been pressed!");
-                new NewDeskFrame();
+                newIF = new NewItemFrame(new DeskPanel());
+                newIF.addChangeItemListener(main);
             }
             
         }
