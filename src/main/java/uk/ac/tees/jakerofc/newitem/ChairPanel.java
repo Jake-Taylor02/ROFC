@@ -46,7 +46,7 @@ public class ChairPanel extends ItemPanel implements ActionListener {
                 (Integer) this.spQuantity.getValue(),// Quantity
                 jcbArmrest.isSelected() // Armrest
         );
-        //jpFooter.setTotal(newItem.getItemPrice() * newItem.getQuantity());
+        this.upttotal();
     }
 
     @Override

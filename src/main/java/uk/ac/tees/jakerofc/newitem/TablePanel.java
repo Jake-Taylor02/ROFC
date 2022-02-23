@@ -80,7 +80,7 @@ public class TablePanel extends ItemPanel implements ActionListener {
                 (TableBase) jcbBase.getSelectedItem(),// TableBase
                 (Integer) jspDiameter.getValue()// Diameter
         );
-        //jpFooter.setTotal(newItem.getItemPrice() * newItem.getQuantity());
+        this.upttotal();
     }
 
     @Override
