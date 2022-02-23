@@ -99,7 +99,7 @@ public class DeskPanel extends ItemPanel implements ActionListener {
                 (Integer) jsDepth.getValue(),// Depth
                 (Integer) jsDraws.getValue()// Draws
         );
-        //jpFooter.setTotal(newItem.getItemPrice() * newItem.getQuantity());
+        this.upttotal();
     }
 
     @Override

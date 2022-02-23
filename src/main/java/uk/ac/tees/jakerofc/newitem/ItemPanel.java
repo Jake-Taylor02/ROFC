@@ -7,6 +7,8 @@ package uk.ac.tees.jakerofc.newitem;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -37,6 +39,8 @@ public abstract class ItemPanel extends JPanel implements ActionListener, Change
     protected boolean validEntries;
     
     protected Item newItem;
+    
+    protected List<TotalUpdate> uListeners = new ArrayList<>();
 
     public ItemPanel() {
         // Set standard Dimensions of components
@@ -135,5 +139,16 @@ public abstract class ItemPanel extends JPanel implements ActionListener, Change
     
     public Item getNewItem() {
         return newItem;
+    }
+    
+    public void addTotalUpdate(TotalUpdate e) {
+        uListeners.add(e);
+    }
+    
+    protected void upttotal() {
+        int data = newItem.getItemPrice() * newItem.getQuantity();
+        for (TotalUpdate r : uListeners) {
+            r.newTotal(data);
+        }
     }
 }

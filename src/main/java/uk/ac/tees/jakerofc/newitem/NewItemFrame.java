@@ -49,7 +49,7 @@ public class NewItemFrame extends JFrame {
     }
     
     private void initFooter() {
-        class FooterPanel extends JPanel implements ActionListener {
+        class FooterPanel extends JPanel implements ActionListener, TotalUpdate {
             private JLabel jlTotal;
             private JButton jbCancel;
             private JButton jbSave;
@@ -69,6 +69,8 @@ public class NewItemFrame extends JFrame {
                 this.add(jlTotal);
                 this.add(jbCancel);
                 this.add(jbSave);
+                
+                jpCenter.addTotalUpdate(this);
             }
             
             public void setTotal(int value) {
@@ -89,8 +91,7 @@ public class NewItemFrame extends JFrame {
                     dispose();// Shut the frame
                 } else if (e.getSource() == jbSave) {
                     System.out.println("Save has been pressed");
-                    
-                    
+
                     for (ChangeItemListener l : changeListeners) {
                         l.newItem(newItem);
                     }
@@ -103,6 +104,11 @@ public class NewItemFrame extends JFrame {
             /*public void addChangeItemListener(ChangeItemListener e) {
             changeListeners.add(e);
             }*/
+
+            @Override
+            public void newTotal(int total) {
+                jlTotal.setText(String.format("Total: £%.2f", (double) total /100));
+            }
             
         }
         jpFooter = new FooterPanel();
