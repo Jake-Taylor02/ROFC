@@ -17,7 +17,7 @@ import uk.ac.tees.jakerofc.newitem.*;
 public class LeftPanel extends JPanel {
     NewItemFrame newIF;
 
-    public LeftPanel(ROFCapp main) {
+    public LeftPanel(CenterPanel grid) {
         
         // define Add Chair button
         class ChairButton extends JButton implements ActionListener {
@@ -33,7 +33,7 @@ public class LeftPanel extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 System.out.println("Add Chair has been pressed!");
                 newIF = new NewItemFrame(new ChairPanel());
-                newIF.addChangeItemListener(main);
+                newIF.addChangeItemListener(grid);
             }
             
         }
@@ -53,7 +53,7 @@ public class LeftPanel extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 System.out.println("Add Table has been pressed!");
                 newIF = new NewItemFrame(new TablePanel());
-                newIF.addChangeItemListener(main);
+                newIF.addChangeItemListener(grid);
             }
             
         }
@@ -73,7 +73,7 @@ public class LeftPanel extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 System.out.println("Add Desk has been pressed!");
                 newIF = new NewItemFrame(new DeskPanel());
-                newIF.addChangeItemListener(main);
+                newIF.addChangeItemListener(grid);
             }
             
         }

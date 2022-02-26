@@ -13,4 +13,5 @@ import uk.ac.tees.jakerofc.Item;
 public interface ChangeItemListener {
     public void newItem(Item nItem);
     public void updateGrid();
+    public void deleteItem(Item dItem);
 }

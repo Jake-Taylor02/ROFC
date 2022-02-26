@@ -23,75 +23,57 @@ import uk.ac.tees.jakerofc.Order;
  *
  * @author jake
  */
-public class CenterPanel extends JPanel {
-    private List<Item> itemArr;
+public class CenterPanel extends JPanel implements ChangeItemListener {
+    private Order itemArr;
     
     
-    JLabel[] labels;
+    ItemDisplay[] iPanels;
 
-    public CenterPanel() {
-        this.itemArr = new ArrayList<>();
-        
-        init();
-    }
-    
-    public CenterPanel(Order g) {
-        this.itemArr = g.getItems();
+    public CenterPanel(Order myOrder) {
+        this.itemArr = myOrder;
         
         init();
     }
     
     private void init(){
         this.removeAll();
-        /*this.setLayout(new GridLayout(3, 3, 5, 5));
+        this.setLayout(new GridLayout(3, 3, 5, 5));
         
-        labels = new JLabel[9];
+        iPanels = new ItemDisplay[9];
         for (int i = 0; i < 9; i++) {
-        
-        // create the new label
-        labels[i] = new JLabel();
-        labels[i].setBorder(BorderFactory.createLineBorder(Color.BLUE));
-        
-        // if the grid actually contains an item, set the image
-        if (i < itemArr.size()) {
-        labels[i].setIcon(itemArr.get(i).getImage());
-        } else {
-        labels[i].setIcon(Item.defaultImage());
-        }
-        this.add(labels[i]);
-        
-        }
-        this.updateUI();*/
-        
-        this.setLayout(new GridBagLayout());
-        int x = 0, y = 0;
-        for (Item it : itemArr) {
-            GridBagConstraints gbPos = new GridBagConstraints();
-            gbPos.gridx = x;
-            gbPos.gridy = y;
             
-            JLabel jlnew = new JLabel();
-            jlnew.setBorder(BorderFactory.createLineBorder(Color.BLUE));
-            jlnew.setIcon(it.getImage());
-            this.add(jlnew, gbPos);
-            
-            
-            x++;
-            if (x >= 3) {
-                x = 0;
-                y++;
+            if (i >= itemArr.size()) {
+                iPanels[i] = new ItemDisplay();
+            } else {
+                iPanels[i] = new ItemDisplay(itemArr.get(i));
             }
-            
+            iPanels[i].addChangeItemListener(this);
+
+
+            this.add(iPanels[i]);
         }
-    }
-    
-    private void init2() {
+        this.updateUI();
+        
         
     }
-    
-    public void updateItems() {
-        System.out.println("update grid triggered");
+
+    @Override
+    public void newItem(Item nItem) {
+        System.out.println("CenterPanel.newItem()");
+        itemArr.addItem(nItem);
+        updateGrid();
+    }
+
+    @Override
+    public void updateGrid() {
+        System.out.println("CenterPanel.updateGrid()");
         init();
+    }
+
+    @Override
+    public void deleteItem(Item dItem) {
+        itemArr.getItems().remove(dItem);
+        updateGrid();
     }
     
 }
