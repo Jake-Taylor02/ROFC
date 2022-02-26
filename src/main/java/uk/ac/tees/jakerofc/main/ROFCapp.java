@@ -16,7 +16,7 @@ import uk.ac.tees.jakerofc.*;
  *  * set image, use static in subclasses for image?
  * @author b1086175
  */
-public class ROFCapp extends JFrame implements ChangeItemListener{
+public class ROFCapp extends JFrame {
     private Order itemArr = new Order();
     
     CenterPanel jpCenter;
@@ -40,17 +40,18 @@ public class ROFCapp extends JFrame implements ChangeItemListener{
         // define top panel and add it to frame
         JPanel jpTop = new TopPanel();
         this.add(jpTop, BorderLayout.NORTH);
-
-        // define left panel and add it to frame
-        JPanel jpLeft = new LeftPanel(this);
-        this.add(jpLeft, BorderLayout.WEST);
-        
         
         // Define center grid and add it to frame
         jpCenter = new CenterPanel(itemArr);
         JScrollPane jsp = new JScrollPane(jpCenter);
         jsp.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
         this.add(jsp, BorderLayout.CENTER);
+        
+        // define left panel and add it to frame
+        JPanel jpLeft = new LeftPanel(jpCenter);
+        this.add(jpLeft, BorderLayout.WEST);
+        
+        
         
         
         
@@ -97,18 +98,7 @@ public class ROFCapp extends JFrame implements ChangeItemListener{
         this.add(jpBottom, BorderLayout.SOUTH);
     }
 
-    @Override
-    public void newItem(Item nItem) {
-        System.out.println("ROFCapp.newItem()");
-        itemArr.addItem(nItem);
-        updateGrid();
-    }
-
-    @Override
-    public void updateGrid() {
-        System.out.println("ROFCapp.updateGrid()");
-        jpCenter.updateItems();
-    }
+   
     
     
 }

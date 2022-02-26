@@ -6,6 +6,8 @@ package uk.ac.tees.jakerofc.main;
 
 
 import java.awt.Color;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,20 +23,14 @@ import uk.ac.tees.jakerofc.Order;
  *
  * @author jake
  */
-public class CenterPanel extends JPanel {
-    private List<Item> itemArr;
+public class CenterPanel extends JPanel implements ChangeItemListener {
+    private Order itemArr;
     
     
-    JLabel[] labels;
+    ItemDisplay[] iPanels;
 
-    public CenterPanel() {
-        this.itemArr = new ArrayList<>();
-        
-        init();
-    }
-    
-    public CenterPanel(Order g) {
-        this.itemArr = g.getItems();
+    public CenterPanel(Order myOrder) {
+        this.itemArr = myOrder;
         
         init();
     }
@@ -43,28 +39,41 @@ public class CenterPanel extends JPanel {
         this.removeAll();
         this.setLayout(new GridLayout(3, 3, 5, 5));
         
-        labels = new JLabel[9];
+        iPanels = new ItemDisplay[9];
         for (int i = 0; i < 9; i++) {
             
-            // create the new label
-            labels[i] = new JLabel();
-            labels[i].setBorder(BorderFactory.createLineBorder(Color.BLUE));
-            
-            // if the grid actually contains an item, set the image
-            if (i < itemArr.size()) {
-                labels[i].setIcon(itemArr.get(i).getImage());
+            if (i >= itemArr.size()) {
+                iPanels[i] = new ItemDisplay();
             } else {
-                labels[i].setIcon(Item.defaultImage());
+                iPanels[i] = new ItemDisplay(itemArr.get(i));
             }
-            this.add(labels[i]);
-            
+            iPanels[i].addChangeItemListener(this);
+
+
+            this.add(iPanels[i]);
         }
         this.updateUI();
+        
+        
     }
-    
-    public void updateItems() {
-        System.out.println("update grid triggered");
+
+    @Override
+    public void newItem(Item nItem) {
+        System.out.println("CenterPanel.newItem()");
+        itemArr.addItem(nItem);
+        updateGrid();
+    }
+
+    @Override
+    public void updateGrid() {
+        System.out.println("CenterPanel.updateGrid()");
         init();
+    }
+
+    @Override
+    public void deleteItem(Item dItem) {
+        itemArr.getItems().remove(dItem);
+        updateGrid();
     }
     
 }

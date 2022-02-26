@@ -7,9 +7,6 @@ package uk.ac.tees.jakerofc;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -18,7 +15,7 @@ import java.util.List;
  */
 public class Order {
     private File path;
-    private ArrayList<Item> items;
+    private List<Item> items;
 
     public Order() {
         path = null;
@@ -55,7 +52,7 @@ public class Order {
         return items.get(index);
     }
 
-    public ArrayList<Item> getItems() {
+    public List<Item> getItems() {
         return items;
     }
     
