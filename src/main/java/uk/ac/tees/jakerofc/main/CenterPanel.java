@@ -5,32 +5,21 @@
 package uk.ac.tees.jakerofc.main;
 
 
-import java.awt.Color;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
 import java.awt.GridLayout;
-import java.util.ArrayList;
-import java.util.List;
-import javax.swing.BorderFactory;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import uk.ac.tees.jakerofc.*;
 import uk.ac.tees.jakerofc.Item;
 import uk.ac.tees.jakerofc.Order;
 
-/**
+/** Panel to hold Grid for displaying Order
  *
- * @author jake
+ * @author b1086175 | Jake Taylor
  */
 public class CenterPanel extends JPanel implements ChangeItemListener {
-    private Order itemArr;
-    
-    
-    ItemDisplay[] iPanels;
+    private Order myOrder;
+    private ItemDisplay[] iPanels;
 
     public CenterPanel(Order myOrder) {
-        this.itemArr = myOrder;
+        this.myOrder = myOrder;
         
         init();
     }
@@ -42,10 +31,10 @@ public class CenterPanel extends JPanel implements ChangeItemListener {
         iPanels = new ItemDisplay[9];
         for (int i = 0; i < 9; i++) {
             
-            if (i >= itemArr.size()) {
-                iPanels[i] = new ItemDisplay();
+            if (i >= myOrder.size()) {
+                iPanels[i] = new ItemDisplay(this);
             } else {
-                iPanels[i] = new ItemDisplay(itemArr.get(i));
+                iPanels[i] = new ItemDisplay(this, myOrder.get(i));
             }
             iPanels[i].addChangeItemListener(this);
 
@@ -60,7 +49,7 @@ public class CenterPanel extends JPanel implements ChangeItemListener {
     @Override
     public void newItem(Item nItem) {
         System.out.println("CenterPanel.newItem()");
-        itemArr.addItem(nItem);
+        myOrder.addItem(nItem);
         updateGrid();
     }
 
@@ -72,7 +61,22 @@ public class CenterPanel extends JPanel implements ChangeItemListener {
 
     @Override
     public void deleteItem(Item dItem) {
-        itemArr.getItems().remove(dItem);
+        myOrder.getItems().remove(dItem);
+        updateGrid();
+    }
+    /** Find and replaces specific item in Order
+     * 
+     * @param oItem
+     * @param nItem 
+     */
+    @Override
+    public void replaceItem(Item oItem, Item nItem) {
+        
+        for (int i = 0; i < myOrder.size(); i++) {
+            if (myOrder.get(i) == oItem) {
+                myOrder.getItems().set(i, nItem);
+            }
+        }
         updateGrid();
     }
     

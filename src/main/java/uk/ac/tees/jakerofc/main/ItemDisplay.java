@@ -4,6 +4,7 @@
  */
 package uk.ac.tees.jakerofc.main;
 
+import edititem.EditItemFrame;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
@@ -12,6 +13,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import uk.ac.tees.jakerofc.Item;
+import uk.ac.tees.jakerofc.newitem.ChairPanel;
 
 /**
  *
@@ -20,11 +22,13 @@ import uk.ac.tees.jakerofc.Item;
 public class ItemDisplay extends JPanel implements MouseListener {
     JLabel jlItem;
     Item myItem;
+    CenterPanel parentCont;
     boolean empty;
 
     private List<ChangeItemListener> changeListeners = new ArrayList<>();
     
-    public ItemDisplay() {
+    public ItemDisplay(CenterPanel parentCont) {
+        this.parentCont = parentCont;
         empty = true;
         jlItem = new JLabel();
         jlItem.setIcon(Item.defaultImage());
@@ -32,7 +36,8 @@ public class ItemDisplay extends JPanel implements MouseListener {
         this.add(jlItem);
     }
     
-    public ItemDisplay(Item myItem) {
+    public ItemDisplay(CenterPanel parentCont, Item myItem) {
+        this.parentCont = parentCont;
         empty = false;
         
         this.myItem = myItem;
@@ -62,6 +67,16 @@ public class ItemDisplay extends JPanel implements MouseListener {
                     listener.deleteItem(myItem);
                 }
             }
+        } else if (e.getButton() == 3) {
+            // Edit Item
+            EditItemFrame edit;
+            System.out.println("button 3 clicked");
+            System.out.println(myItem.getClass().getSimpleName());
+            if (myItem.getClass().getSimpleName().equals("Chair")) {
+                edit = new EditItemFrame(new ChairPanel(), myItem);
+                edit.addChangeItemListener(parentCont);
+            }
+            
         }
     }
 

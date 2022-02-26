@@ -35,7 +35,7 @@ public class Chair extends Item {
     protected void setImage() {
         image = new ImageIcon("chair3.png");
     }
-
+    
     /*@Override
     public String getSummary() {
     

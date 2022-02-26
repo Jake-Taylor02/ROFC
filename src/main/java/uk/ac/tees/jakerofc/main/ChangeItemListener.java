@@ -14,4 +14,5 @@ public interface ChangeItemListener {
     public void newItem(Item nItem);
     public void updateGrid();
     public void deleteItem(Item dItem);
+    public void replaceItem(Item oItem, Item nItem);
 }

@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package uk.ac.tees.jakerofc.newitem;
+package edititem;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
@@ -17,38 +17,39 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import uk.ac.tees.jakerofc.Item;
 import uk.ac.tees.jakerofc.main.ChangeItemListener;
-import uk.ac.tees.jakerofc.newitem.NewItemFrame.*;
+import uk.ac.tees.jakerofc.newitem.ItemPanel;
+import uk.ac.tees.jakerofc.newitem.NewItemFrame;
+import uk.ac.tees.jakerofc.newitem.TotalUpdate;
 
 /**
- * change center panel to
- * @author Jake
+ *
+ * @author jake
  */
-public class NewItemFrame extends JFrame {
-    
-    //protected ItemPanel jpForm;
-    public JPanel jpFooter;
-    protected ItemPanel jpCenter;
-    protected Item newItem;
+public class EditItemFrame extends JFrame{
+    private ItemPanel jpCenter;
+    private JPanel jpFooter;
+    protected Item myItem, newItem;
     
     private List<ChangeItemListener> changeListeners = new ArrayList<>();
     
-    public NewItemFrame(ItemPanel panel) throws HeadlessException {
+    public EditItemFrame(ItemPanel panel, Item item) {
+        this.myItem = item;
+        
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setLayout(new BorderLayout());
-    
-        // Center Panel with components
+        
         jpCenter = panel;
         this.add(jpCenter, BorderLayout.CENTER);
         
-        // Add Footer buttons
-        initFooter();
+        // should add footer
+        initFoot();
         
         this.setTitle(jpCenter.getTitle());// to be overwritten by subclass
         this.setSize(400, 400);
         this.setVisible(true);// should be in subclass
     }
     
-    private void initFooter() {
+    private void initFoot() {
         class FooterPanel extends JPanel implements ActionListener, TotalUpdate {
             private JLabel jlTotal;
             private JButton jbCancel;
@@ -80,20 +81,19 @@ public class NewItemFrame extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 newItem = jpCenter.getNewItem();
-                
+
                 if (newItem == null) {
                     System.out.println("newItem is null");
                     return;
                 }
-                
+
                 if (e.getSource() == jbCancel) {
                     System.out.println("Cancel has been pressed");
                     dispose();// Shut the frame
                 } else if (e.getSource() == jbSave) {
                     System.out.println("Save has been pressed");
-
-                    for (ChangeItemListener l : changeListeners) {
-                        l.newItem(newItem);
+                    for (ChangeItemListener cil : changeListeners) {
+                        cil.replaceItem(myItem, newItem);
                     }
                     dispose();// Shut the frame
                 } else {
@@ -105,7 +105,6 @@ public class NewItemFrame extends JFrame {
             public void newTotal(int total) {
                 jlTotal.setText(String.format("Total: £%.2f", (double) total /100));
             }
-            
         }
         jpFooter = new FooterPanel();
         this.add(jpFooter, BorderLayout.SOUTH);
@@ -114,5 +113,4 @@ public class NewItemFrame extends JFrame {
     public void addChangeItemListener(ChangeItemListener e) {
         changeListeners.add(e);
     }
-    
 }
