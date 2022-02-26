@@ -14,16 +14,18 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import uk.ac.tees.jakerofc.Item;
 import uk.ac.tees.jakerofc.newitem.ChairPanel;
+import uk.ac.tees.jakerofc.newitem.DeskPanel;
+import uk.ac.tees.jakerofc.newitem.TablePanel;
 
 /**
  *
  * @author jake
  */
 public class ItemDisplay extends JPanel implements MouseListener {
-    JLabel jlItem;
-    Item myItem;
-    CenterPanel parentCont;
-    boolean empty;
+    private JLabel jlItem;
+    private Item myItem;
+    private CenterPanel parentCont;
+    private boolean empty;
 
     private List<ChangeItemListener> changeListeners = new ArrayList<>();
     
@@ -72,8 +74,17 @@ public class ItemDisplay extends JPanel implements MouseListener {
             EditItemFrame edit;
             System.out.println("button 3 clicked");
             System.out.println(myItem.getClass().getSimpleName());
+            
             if (myItem.getClass().getSimpleName().equals("Chair")) {
                 edit = new EditItemFrame(new ChairPanel(), myItem);
+                edit.addChangeItemListener(parentCont);
+            } else
+            if (myItem.getClass().getSimpleName().equals("Table")) {
+                edit = new EditItemFrame(new TablePanel(), myItem);
+                edit.addChangeItemListener(parentCont);
+            } else
+            if (myItem.getClass().getSimpleName().equals("Desk")) {
+                edit = new EditItemFrame(new DeskPanel(), myItem);
                 edit.addChangeItemListener(parentCont);
             }
             

@@ -81,15 +81,18 @@ public class NewItemFrame extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 newItem = jpCenter.getNewItem();
                 
+                if (e.getSource() == jbCancel) {
+                    System.out.println("Cancel has been pressed");
+                    dispose();// Shut the frame
+                    return;
+                }
+                
                 if (newItem == null) {
                     System.out.println("newItem is null");
                     return;
                 }
                 
-                if (e.getSource() == jbCancel) {
-                    System.out.println("Cancel has been pressed");
-                    dispose();// Shut the frame
-                } else if (e.getSource() == jbSave) {
+                if (e.getSource() == jbSave) {
                     System.out.println("Save has been pressed");
 
                     for (ChangeItemListener l : changeListeners) {

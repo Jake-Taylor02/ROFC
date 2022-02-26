@@ -138,6 +138,7 @@ public abstract class ItemPanel extends JPanel implements ActionListener, Change
     }
     
     public Item getNewItem() {
+        this.actionPerformed(null);// refresh item
         return newItem;
     }
     
