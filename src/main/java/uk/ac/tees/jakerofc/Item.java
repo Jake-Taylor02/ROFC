@@ -78,5 +78,8 @@ public abstract class Item {
         return itemPrice;
     }
     
+    public int getTotalPrice() {
+        return itemPrice * quantity;
+    }
     
 }

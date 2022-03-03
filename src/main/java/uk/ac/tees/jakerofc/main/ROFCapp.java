@@ -84,10 +84,12 @@ public class ROFCapp extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (e.getSource() == jlTotal) {
+                    
                     JOptionPane.showMessageDialog(this, String.format("Total: £%.2f",
                     (double) itemArr.calcTotal() / 100));
             
                 } else if (e.getSource() == jbSummary) {
+                    JOptionPane.showMessageDialog(this, new SummaryPanel(itemArr));
                     JOptionPane.showMessageDialog(this, itemArr.orderSummary());
                     System.out.println(itemArr.orderSummary());
                 }
