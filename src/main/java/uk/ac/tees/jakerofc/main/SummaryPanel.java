@@ -6,6 +6,7 @@ package uk.ac.tees.jakerofc.main;
 
 import java.util.List;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.AbstractTableModel;
 import uk.ac.tees.jakerofc.Item;
@@ -23,6 +24,9 @@ public class SummaryPanel extends JPanel{
         this.items = items;
         table = new JTable();
         table.setModel(new ItemTableModel());
+        
+        JScrollPane fwtrh = new JScrollPane(this);
+        
         this.add(table);
     }
     

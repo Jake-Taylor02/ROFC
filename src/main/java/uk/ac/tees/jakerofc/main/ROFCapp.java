@@ -89,8 +89,8 @@ public class ROFCapp extends JFrame {
                     (double) itemArr.calcTotal() / 100));
             
                 } else if (e.getSource() == jbSummary) {
-                    JOptionPane.showMessageDialog(this, new SummaryPanel(itemArr));
-                    JOptionPane.showMessageDialog(this, itemArr.orderSummary());
+                    JOptionPane.showMessageDialog(this, new SummaryPanel(itemArr), "Order Summary", JOptionPane.INFORMATION_MESSAGE);
+                    //JOptionPane.showMessageDialog(this, itemArr.orderSummary());
                     System.out.println(itemArr.orderSummary());
                 }
             }
