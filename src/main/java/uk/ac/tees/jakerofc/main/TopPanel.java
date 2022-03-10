@@ -6,13 +6,15 @@ package uk.ac.tees.jakerofc.main;
 
 import java.awt.Color;
 import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.*;
 
 /**
  *
  * @author b1086175
  */
-public class TopPanel extends JPanel {
+public class TopPanel extends JPanel implements ActionListener{
     JButton jbSave;
     JButton jbClear;
     JButton jbLoad;
@@ -34,5 +36,18 @@ public class TopPanel extends JPanel {
         add(jbLoad);
         add(jlFile);
     }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == jbSave) {
+            
+        } else if (e.getSource() == jbLoad) {
+            
+        } else if (e.getSource() == jbClear) {
+            
+        }
+    }
+    
+    
     
 }
