@@ -59,6 +59,8 @@ public class TopPanel extends JPanel implements ActionListener {
             
             //update grid
             cListener.updateGrid();
+            
+            jlFile.setText("File:");
         }
         
         JFileChooser jfc = new JFileChooser();
@@ -68,12 +70,16 @@ public class TopPanel extends JPanel implements ActionListener {
             if (result != JFileChooser.APPROVE_OPTION) return;
             
             myOrder.save(jfc.getSelectedFile());
+            
+            jlFile.setText("File:" + myOrder.getPath().getPath());
         } else if (e.getSource() == jbLoad) {
             int saveResult = jfc.showOpenDialog(this);
             
             if (saveResult != JFileChooser.APPROVE_OPTION) return;
             
             myOrder.load(jfc.getSelectedFile());
+            
+            jlFile.setText("File:" + myOrder.getPath().getPath());
             
             cListener.updateGrid();
         }

@@ -38,10 +38,6 @@ public class Order {
         return myOrder;
     }
     
-    private void read() {
-        
-    }
-    
     public void addItem(Item itemIn) {
         items.add(itemIn);
     }
@@ -53,6 +49,14 @@ public class Order {
         return true;
     }
     
+    public void removeItem(Item item) {
+        items.remove(item);
+    }
+    
+    public void replaceItem(int index, Item newItem) {
+        items.set(index, newItem);
+    }
+    
     public void clear() {
         items.clear();
     }
@@ -61,8 +65,8 @@ public class Order {
         return items.get(index);
     }
 
-    public List<Item> getItems() {
-        return items;
+    public File getPath() {
+        return path;
     }
     
     public int size() {
@@ -133,6 +137,7 @@ public class Order {
             return false;
         }
         
+        path = savePath;
         return true;
     }
     
@@ -153,7 +158,7 @@ public class Order {
             System.out.println("Failed to load order - ClassNotFoundException");
         }
         
-        
+        path = loadPath;
         return true;
     }
 }
