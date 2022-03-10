@@ -6,9 +6,11 @@ package uk.ac.tees.jakerofc;
 
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
@@ -135,6 +137,23 @@ public class Order {
     }
     
     public boolean load(File loadPath) {
+        try {
+            FileInputStream fIn = new FileInputStream(loadPath);
+            ObjectInputStream oIn = new ObjectInputStream(fIn);
+            
+            items = (List) oIn.readObject();
+            
+            oIn.close();
+            fIn.close();
+        } catch (FileNotFoundException ex) {
+            System.out.println("Failed to load order - FileNotFoundException");
+        } catch (IOException ex) {
+            System.out.println("Failed to load order - IOException");
+        } catch (ClassNotFoundException ex) {
+            System.out.println("Failed to load order - ClassNotFoundException");
+        }
+        
+        
         return true;
     }
 }

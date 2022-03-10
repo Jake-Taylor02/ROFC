@@ -75,7 +75,13 @@ public class DeskPanel extends ItemPanel implements ActionListener {
 
         // Depth Spinner
         // Can re-use width spinner model
-        jsDepth = new JSpinner(widthModel);
+        SpinnerNumberModel depthModel = new SpinnerNumberModel(
+                50,// initial
+                50,// minimum
+                200,// maximum
+                1// increment
+        );
+        jsDepth = new JSpinner(depthModel);
         jsDepth.setPreferredSize(this.txtSize);
         jsDepth.addChangeListener(this);
         this.add(jsDepth);

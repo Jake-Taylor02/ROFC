@@ -74,6 +74,8 @@ public class TopPanel extends JPanel implements ActionListener {
             if (saveResult != JFileChooser.APPROVE_OPTION) return;
             
             myOrder.load(jfc.getSelectedFile());
+            
+            cListener.updateGrid();
         }
     }
     
