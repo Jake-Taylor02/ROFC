@@ -13,8 +13,8 @@ import uk.ac.tees.jakerofc.newitem.*;
 import uk.ac.tees.jakerofc.*;
 
 /**
- *  * set image, use static in subclasses for image?
- * @author b1086175
+ *
+ * @author b1086175 | Jake Taylor
  */
 public class ROFCapp extends JFrame {
     private Order itemArr = new Order();

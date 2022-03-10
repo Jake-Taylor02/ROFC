@@ -104,6 +104,6 @@ public class DeskPanel extends ItemPanel implements ActionListener {
 
     @Override
     public String getTitle() {
-        return "New Desk";
+        return "Desk";
     }
 }

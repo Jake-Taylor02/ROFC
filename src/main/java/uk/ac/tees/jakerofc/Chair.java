@@ -10,7 +10,7 @@ import javax.swing.ImageIcon;
 
 /**
  *
- * @author b1086175
+ * @author b1086175 | Jake Taylor
  */
 public class Chair extends Item {
     private boolean armrests;

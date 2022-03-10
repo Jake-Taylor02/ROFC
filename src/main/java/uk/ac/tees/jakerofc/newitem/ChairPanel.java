@@ -51,6 +51,6 @@ public class ChairPanel extends ItemPanel implements ActionListener {
 
     @Override
     public String getTitle() {
-        return "New Chair";
+        return "Chair";
     }
 }

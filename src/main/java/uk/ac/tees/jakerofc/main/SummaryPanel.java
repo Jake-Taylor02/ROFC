@@ -14,7 +14,7 @@ import uk.ac.tees.jakerofc.Order;
 
 /**
  *
- * @author jake
+ * @author b1086175 | Jake Taylor
  */
 public class SummaryPanel extends JPanel{
     private final Order items;
@@ -25,9 +25,9 @@ public class SummaryPanel extends JPanel{
         table = new JTable();
         table.setModel(new ItemTableModel());
         
-        JScrollPane fwtrh = new JScrollPane(this);
+        JScrollPane spTable = new JScrollPane(table);
         
-        this.add(table);
+        this.add(spTable);
     }
     
     class ItemTableModel extends AbstractTableModel {
