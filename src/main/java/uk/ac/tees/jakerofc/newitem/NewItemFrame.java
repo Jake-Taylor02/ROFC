@@ -43,7 +43,7 @@ public class NewItemFrame extends JFrame {
         // Add Footer buttons
         initFooter();
         
-        this.setTitle(jpCenter.getTitle());// to be overwritten by subclass
+        this.setTitle("New" + jpCenter.getTitle());
         this.setSize(400, 400);
         this.setVisible(true);// should be in subclass
     }

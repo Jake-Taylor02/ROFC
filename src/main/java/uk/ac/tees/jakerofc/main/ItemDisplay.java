@@ -18,7 +18,9 @@ import uk.ac.tees.jakerofc.newitem.DeskPanel;
 import uk.ac.tees.jakerofc.newitem.TablePanel;
 
 /**
- *
+ *  JPanel that visually represents a single Item in CenterPanel.
+ *  
+ * @see CenterPanel
  * @author jake
  */
 public class ItemDisplay extends JPanel implements MouseListener {
@@ -29,8 +31,13 @@ public class ItemDisplay extends JPanel implements MouseListener {
 
     private List<ChangeItemListener> changeListeners = new ArrayList<>();
     
-    public ItemDisplay(CenterPanel parentCont) {
-        this.parentCont = parentCont;
+    /**
+     * Constructor for when a grid cell should be empty.
+     * icon is set to default image
+     * @param owner Reference to parent container
+     */
+    public ItemDisplay(CenterPanel owner) {
+        this.parentCont = owner;
         empty = true;
         jlItem = new JLabel();
         jlItem.setIcon(Item.defaultImage());
@@ -38,8 +45,13 @@ public class ItemDisplay extends JPanel implements MouseListener {
         this.add(jlItem);
     }
     
-    public ItemDisplay(CenterPanel parentCont, Item myItem) {
-        this.parentCont = parentCont;
+    /**
+     * 
+     * @param owner Reference to parent container
+     * @param myItem Reference to the Item which the JPanel represents
+     */
+    public ItemDisplay(CenterPanel owner, Item myItem) {
+        this.parentCont = owner;
         empty = false;
         
         this.myItem = myItem;
@@ -62,14 +74,6 @@ public class ItemDisplay extends JPanel implements MouseListener {
             // Show item details
             JOptionPane.showMessageDialog(this, myItem.getSummary());
         } else if (e.getButton() == 2) {
-            // Remove the item
-            int answer = JOptionPane.showConfirmDialog(this, "Are you sure you want to delete " + myItem.getID());
-            if (answer == 0) {
-                for (ChangeItemListener listener : changeListeners) {
-                    listener.deleteItem(myItem);
-                }
-            }
-        } else if (e.getButton() == 3) {
             // Edit Item
             EditItemFrame edit;
             System.out.println("button 3 clicked");
@@ -87,7 +91,15 @@ public class ItemDisplay extends JPanel implements MouseListener {
                 edit = new EditItemFrame(new DeskPanel(), myItem);
                 edit.addChangeItemListener(parentCont);
             }
+        } else if (e.getButton() == 3) {
             
+            // Remove the item
+            int answer = JOptionPane.showConfirmDialog(this, "Are you sure you want to delete " + myItem.getID());
+            if (answer == 0) {
+                for (ChangeItemListener listener : changeListeners) {
+                    listener.deleteItem(myItem);
+                }
+            }
         }
     }
 

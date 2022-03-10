@@ -9,7 +9,7 @@ import javax.swing.ImageIcon;
 
 /**
  *
- * @author b1086175
+ * @author b1086175 | Jake Taylor
  */
 public abstract class Item {
     private String ID;
@@ -78,5 +78,8 @@ public abstract class Item {
         return itemPrice;
     }
     
+    public int getTotalPrice() {
+        return itemPrice * quantity;
+    }
     
 }

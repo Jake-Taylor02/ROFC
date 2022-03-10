@@ -13,8 +13,8 @@ import uk.ac.tees.jakerofc.newitem.*;
 import uk.ac.tees.jakerofc.*;
 
 /**
- *  * set image, use static in subclasses for image?
- * @author b1086175
+ *
+ * @author b1086175 | Jake Taylor
  */
 public class ROFCapp extends JFrame {
     private Order itemArr = new Order();
@@ -84,11 +84,13 @@ public class ROFCapp extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (e.getSource() == jlTotal) {
+                    
                     JOptionPane.showMessageDialog(this, String.format("Total: £%.2f",
                     (double) itemArr.calcTotal() / 100));
             
                 } else if (e.getSource() == jbSummary) {
-                    JOptionPane.showMessageDialog(this, itemArr.orderSummary());
+                    JOptionPane.showMessageDialog(this, new SummaryPanel(itemArr), "Order Summary", JOptionPane.INFORMATION_MESSAGE);
+                    //JOptionPane.showMessageDialog(this, itemArr.orderSummary());
                     System.out.println(itemArr.orderSummary());
                 }
             }

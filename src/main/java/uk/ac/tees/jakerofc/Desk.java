@@ -10,7 +10,7 @@ import javax.swing.ImageIcon;
 
 /**
  *
- * @author b1086175
+ * @author b1086175 | Jake Taylor
  */
 public class Desk extends Item{
     private int draws;

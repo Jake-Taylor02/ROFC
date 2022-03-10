@@ -85,6 +85,6 @@ public class TablePanel extends ItemPanel implements ActionListener {
 
     @Override
     public String getTitle() {
-        return "New Table";
+        return "Table";
     }
 }

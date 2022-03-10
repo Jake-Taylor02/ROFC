@@ -6,7 +6,6 @@ package edititem;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
-import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -15,18 +14,17 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import uk.ac.tees.jakerofc.Item;
-import uk.ac.tees.jakerofc.main.ChangeItemListener;
-import uk.ac.tees.jakerofc.newitem.ItemPanel;
-import uk.ac.tees.jakerofc.newitem.NewItemFrame;
-import uk.ac.tees.jakerofc.newitem.TotalUpdate;
+import uk.ac.tees.jakerofc.*;
+import uk.ac.tees.jakerofc.main.*;
+import uk.ac.tees.jakerofc.newitem.*;
 
 /**
- *
- * @author jake
+ * Frame allowing the user to access and modify items.
+ *  Shown when user middle-clicks on an item.
+ * @author b1086175 | Jake Taylor
  */
 public class EditItemFrame extends JFrame{
-    private ItemPanel jpCenter;
+    private final ItemPanel jpCenter;
     private JPanel jpFooter;
     protected Item myItem, newItem;
     
@@ -44,7 +42,7 @@ public class EditItemFrame extends JFrame{
         // should add footer
         initFoot();
         
-        this.setTitle(jpCenter.getTitle());// to be overwritten by subclass
+        this.setTitle("Edit " + jpCenter.getTitle());
         this.setSize(400, 400);
         this.setVisible(true);// should be in subclass
     }
