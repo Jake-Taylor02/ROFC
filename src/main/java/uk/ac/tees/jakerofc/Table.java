@@ -12,7 +12,7 @@ import javax.swing.ImageIcon;
  *
  * @author b1086175
  */
-public class Table extends Item{
+public class Table extends Item implements java.io.Serializable {
     private TableBase base;
     private int diameter;
 

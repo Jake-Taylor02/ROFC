@@ -18,8 +18,8 @@ public class CenterPanel extends JPanel implements ChangeItemListener {
     private Order myOrder;
     private ItemDisplay[] iPanels;
 
-    public CenterPanel(Order myOrder) {
-        this.myOrder = myOrder;
+    public CenterPanel() {
+        this.myOrder = Order.getInstance();
         
         init();
     }

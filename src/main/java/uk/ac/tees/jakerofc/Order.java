@@ -6,27 +6,34 @@ package uk.ac.tees.jakerofc;
 
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author b1086175
  */
 public class Order {
+    private static Order myOrder;
+    
     private File path;
     private List<Item> items;
 
-    public Order() {
+    private Order() {
         path = null;
         items = new ArrayList<Item>();
     }
-
-    public Order(File path) {
-        this.path = path;
-        items = new ArrayList<Item>();
+    
+    public static Order getInstance() {
+        if (myOrder == null) myOrder = new Order();
         
-        read();
+        return myOrder;
     }
     
     private void read() {
@@ -99,5 +106,35 @@ public class Order {
         result += String.format("Order Total: £%.2f", (double)calcTotal() / 100);
         
         return result;
+    }
+    
+    public boolean save(File savePath) {
+        try {
+            
+            if (!savePath.exists()) savePath.createNewFile();
+            
+            FileOutputStream fOut = new FileOutputStream(savePath);
+            ObjectOutputStream oOut = new ObjectOutputStream(fOut);
+            
+            oOut.writeObject(items);
+            
+            oOut.close();
+            fOut.close();
+            System.out.println("Order saved to file:" + savePath.getPath());
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Order.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Order could not be saved - file not found");
+            return false;
+        } catch (IOException ex) {
+            Logger.getLogger(Order.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Order could not be saved - IOException");
+            return false;
+        }
+        
+        return true;
+    }
+    
+    public boolean load(File loadPath) {
+        return true;
     }
 }

@@ -20,8 +20,8 @@ public class SummaryPanel extends JPanel{
     private final Order items;
     private JTable table;
 
-    public SummaryPanel(Order items) {
-        this.items = items;
+    public SummaryPanel() {
+        this.items = Order.getInstance();
         table = new JTable();
         table.setModel(new ItemTableModel());
         

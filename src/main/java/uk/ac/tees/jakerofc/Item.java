@@ -11,7 +11,7 @@ import javax.swing.ImageIcon;
  *
  * @author b1086175 | Jake Taylor
  */
-public abstract class Item {
+public abstract class Item implements java.io.Serializable {
     private String ID;
     protected WoodType wood;
     protected int itemPrice;
