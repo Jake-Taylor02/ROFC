@@ -1,6 +1,9 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ * TODO
+    Summary order
+    Does summary have to show more then Item attributes
+    correct access modifiers
+    clean up callbacks
  */
 package uk.ac.tees.jakerofc.main;
 
