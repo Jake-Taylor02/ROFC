@@ -6,31 +6,36 @@ package uk.ac.tees.jakerofc;
 
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author b1086175
  */
 public class Order {
+    private static Order myOrder;
+    
     private File path;
     private List<Item> items;
 
-    public Order() {
+    private Order() {
         path = null;
         items = new ArrayList<Item>();
     }
-
-    public Order(File path) {
-        this.path = path;
-        items = new ArrayList<Item>();
-        
-        read();
-    }
     
-    private void read() {
+    public static Order getInstance() {
+        if (myOrder == null) myOrder = new Order();
         
+        return myOrder;
     }
     
     public void addItem(Item itemIn) {
@@ -44,6 +49,14 @@ public class Order {
         return true;
     }
     
+    public void removeItem(Item item) {
+        items.remove(item);
+    }
+    
+    public void replaceItem(int index, Item newItem) {
+        items.set(index, newItem);
+    }
+    
     public void clear() {
         items.clear();
     }
@@ -52,8 +65,8 @@ public class Order {
         return items.get(index);
     }
 
-    public List<Item> getItems() {
-        return items;
+    public File getPath() {
+        return path;
     }
     
     public int size() {
@@ -99,5 +112,53 @@ public class Order {
         result += String.format("Order Total: £%.2f", (double)calcTotal() / 100);
         
         return result;
+    }
+    
+    public boolean save(File savePath) {
+        try {
+            
+            if (!savePath.exists()) savePath.createNewFile();
+            
+            FileOutputStream fOut = new FileOutputStream(savePath);
+            ObjectOutputStream oOut = new ObjectOutputStream(fOut);
+            
+            oOut.writeObject(items);
+            
+            oOut.close();
+            fOut.close();
+            System.out.println("Order saved to file:" + savePath.getPath());
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Order.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Order could not be saved - file not found");
+            return false;
+        } catch (IOException ex) {
+            Logger.getLogger(Order.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Order could not be saved - IOException");
+            return false;
+        }
+        
+        path = savePath;
+        return true;
+    }
+    
+    public boolean load(File loadPath) {
+        try {
+            FileInputStream fIn = new FileInputStream(loadPath);
+            ObjectInputStream oIn = new ObjectInputStream(fIn);
+            
+            items = (List) oIn.readObject();
+            
+            oIn.close();
+            fIn.close();
+        } catch (FileNotFoundException ex) {
+            System.out.println("Failed to load order - FileNotFoundException");
+        } catch (IOException ex) {
+            System.out.println("Failed to load order - IOException");
+        } catch (ClassNotFoundException ex) {
+            System.out.println("Failed to load order - ClassNotFoundException");
+        }
+        
+        path = loadPath;
+        return true;
     }
 }

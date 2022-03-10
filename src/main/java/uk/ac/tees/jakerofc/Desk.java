@@ -12,7 +12,7 @@ import javax.swing.ImageIcon;
  *
  * @author b1086175 | Jake Taylor
  */
-public class Desk extends Item{
+public class Desk extends Item implements java.io.Serializable {
     private int draws;
     private int width, depth;
 

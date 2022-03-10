@@ -18,8 +18,8 @@ public class CenterPanel extends JPanel implements ChangeItemListener {
     private Order myOrder;
     private ItemDisplay[] iPanels;
 
-    public CenterPanel(Order myOrder) {
-        this.myOrder = myOrder;
+    public CenterPanel() {
+        this.myOrder = Order.getInstance();
         
         init();
     }
@@ -61,7 +61,7 @@ public class CenterPanel extends JPanel implements ChangeItemListener {
 
     @Override
     public void deleteItem(Item dItem) {
-        myOrder.getItems().remove(dItem);
+        myOrder.removeItem(dItem);
         updateGrid();
     }
     /** Find and replaces specific item in Order
@@ -74,7 +74,7 @@ public class CenterPanel extends JPanel implements ChangeItemListener {
         
         for (int i = 0; i < myOrder.size(); i++) {
             if (myOrder.get(i) == oItem) {
-                myOrder.getItems().set(i, nItem);
+                myOrder.replaceItem(i, nItem);
             }
         }
         updateGrid();

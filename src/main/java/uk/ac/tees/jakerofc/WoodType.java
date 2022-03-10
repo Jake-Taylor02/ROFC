@@ -8,7 +8,7 @@ package uk.ac.tees.jakerofc;
  *
  * @author b1086175
  */
-public enum WoodType {
+public enum WoodType implements java.io.Serializable {
     OAK(4),
     WALNUT(3);
     

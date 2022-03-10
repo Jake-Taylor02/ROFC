@@ -9,7 +9,6 @@ import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
-import uk.ac.tees.jakerofc.newitem.*;
 import uk.ac.tees.jakerofc.*;
 
 /**
@@ -17,7 +16,7 @@ import uk.ac.tees.jakerofc.*;
  * @author b1086175 | Jake Taylor
  */
 public class ROFCapp extends JFrame {
-    private Order itemArr = new Order();
+    private Order itemArr = Order.getInstance();
     
     CenterPanel jpCenter;
     
@@ -38,14 +37,16 @@ public class ROFCapp extends JFrame {
         this.setLayout(new BorderLayout(5, 5));
         
         // define top panel and add it to frame
-        JPanel jpTop = new TopPanel();
+        TopPanel jpTop = new TopPanel();
         this.add(jpTop, BorderLayout.NORTH);
         
         // Define center grid and add it to frame
-        jpCenter = new CenterPanel(itemArr);
+        jpCenter = new CenterPanel();
         JScrollPane jsp = new JScrollPane(jpCenter);
         jsp.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
         this.add(jsp, BorderLayout.CENTER);
+        
+        jpTop.setChangeItemListener(jpCenter);
         
         // define left panel and add it to frame
         JPanel jpLeft = new LeftPanel(jpCenter);
@@ -89,7 +90,7 @@ public class ROFCapp extends JFrame {
                     (double) itemArr.calcTotal() / 100));
             
                 } else if (e.getSource() == jbSummary) {
-                    JOptionPane.showMessageDialog(this, new SummaryPanel(itemArr), "Order Summary", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(this, new SummaryPanel(), "Order Summary", JOptionPane.INFORMATION_MESSAGE);
                     //JOptionPane.showMessageDialog(this, itemArr.orderSummary());
                     System.out.println(itemArr.orderSummary());
                 }

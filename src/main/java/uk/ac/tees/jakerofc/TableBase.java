@@ -8,7 +8,7 @@ package uk.ac.tees.jakerofc;
  *
  * @author b1086175
  */
-public enum TableBase {
+public enum TableBase implements java.io.Serializable {
     WOODEN(4500),
     CHROME(3500);
     

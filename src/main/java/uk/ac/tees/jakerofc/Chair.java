@@ -12,7 +12,7 @@ import javax.swing.ImageIcon;
  *
  * @author b1086175 | Jake Taylor
  */
-public class Chair extends Item {
+public class Chair extends Item implements java.io.Serializable {
     private boolean armrests;
 
     public Chair(String ID, WoodType wood, int quantity, boolean armrests) {
