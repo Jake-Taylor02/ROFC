@@ -11,7 +11,7 @@ import javax.swing.ImageIcon;
  *
  * @author b1086175 | Jake Taylor
  */
-public abstract class Item implements java.io.Serializable {
+public abstract class Item implements java.io.Serializable, java.util.Comparator {
     private String ID;
     protected WoodType wood;
     protected int itemPrice;
@@ -80,6 +80,17 @@ public abstract class Item implements java.io.Serializable {
     
     public int getTotalPrice() {
         return itemPrice * quantity;
+    }
+
+    @Override
+    public int compare(Object o1, Object o2) {
+        Item a = (Item) o1;
+        Item b = (Item) o2;
+        if (a.itemPrice < b.itemPrice) return -1;
+        
+        if (a.itemPrice == b.itemPrice) return 0;
+        
+        return 1;
     }
     
 }
