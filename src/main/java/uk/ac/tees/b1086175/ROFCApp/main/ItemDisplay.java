@@ -73,6 +73,7 @@ public class ItemDisplay extends JPanel implements MouseListener {
         if (e.getButton() == 1) {
             // Show item details
             JOptionPane.showMessageDialog(this, myItem.getSummary());
+            System.out.println(myItem.getSummary());
         } else if (e.getButton() == 2) {
             // Edit Item
             EditItemFrame edit;

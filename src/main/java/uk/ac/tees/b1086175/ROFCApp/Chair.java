@@ -30,6 +30,15 @@ public class Chair extends Item implements java.io.Serializable {
         
         this.itemPrice = this.wood.getPrice() * units;
     }
+    
+    @Override
+    public String getSummary() {
+        String result = super.getSummary();
+        
+        result += String.format("%16s %s\n", "Armrests:", armrests ? "Yes" : "No");
+        
+        return result;
+    }
 
     @Override
     protected void setImage() {

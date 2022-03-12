@@ -8,9 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JCheckBox;
 import javax.swing.SpringLayout;
-import uk.ac.tees.b1086175.ROFCApp.Chair;
-import uk.ac.tees.b1086175.ROFCApp.Item;
-import uk.ac.tees.b1086175.ROFCApp.WoodType;
+import uk.ac.tees.b1086175.ROFCApp.*;
 
 /**
  *
