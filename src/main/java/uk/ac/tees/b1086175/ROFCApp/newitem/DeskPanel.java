@@ -12,6 +12,7 @@ import javax.swing.SpinnerNumberModel;
 import javax.swing.SpringLayout;
 import javax.swing.SwingConstants;
 import uk.ac.tees.b1086175.ROFCApp.Desk;
+import uk.ac.tees.b1086175.ROFCApp.Item;
 import uk.ac.tees.b1086175.ROFCApp.WoodType;
 
 /**
@@ -89,6 +90,30 @@ public class DeskPanel extends ItemPanel implements ActionListener {
         spLayout.putConstraint(SpringLayout.NORTH, jsDepth, 5, SpringLayout.SOUTH, jsWidth);
     }
     
+    public DeskPanel(Item desk) {
+        this();
+        
+        setItem(desk);
+    }
+    
+    @Override
+    public void setItem(Item existingDesk) {
+        super.setItem(existingDesk);
+        
+        Desk myDesk;
+        try {
+            myDesk = (Desk) existingDesk;
+        } catch (Exception ex) {
+            System.out.println("couldn't parse item to desk");
+            return;
+        }
+        
+        jsWidth.setValue(myDesk.getWidth());
+        jsDepth.setValue(myDesk.getDepth());
+        jsDraws.setValue(myDesk.getDraws());
+        this.actionPerformed(null);
+    }
+    
     @Override
     public void actionPerformed(ActionEvent e) {
         super.actionPerformed(e);
@@ -105,7 +130,7 @@ public class DeskPanel extends ItemPanel implements ActionListener {
                 (Integer) jsDepth.getValue(),// Depth
                 (Integer) jsDraws.getValue()// Draws
         );
-        this.upttotal();
+        this.updateTotal();
     }
 
     @Override

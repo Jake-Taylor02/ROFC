@@ -22,9 +22,9 @@ import javax.swing.event.ChangeListener;
 import uk.ac.tees.b1086175.ROFCApp.Item;
 import uk.ac.tees.b1086175.ROFCApp.WoodType;
 
-/**
+/** 
  *
- * @author jake
+ * @author b1086175 | Jake Taylor
  */
 public abstract class ItemPanel extends JPanel implements ActionListener, ChangeListener {
     protected SpringLayout spLayout;
@@ -113,6 +113,18 @@ public abstract class ItemPanel extends JPanel implements ActionListener, Change
     }
     
     public abstract String getTitle();
+    
+    /** Set a new item and display new field data
+     * 
+     * @param existingItem 
+     */
+    public void setItem(Item existingItem) {
+        newItem = existingItem;
+        
+        txtidNum.setText(newItem.getID());
+        jcbWoodType.setSelectedItem(newItem.getWood());
+        spQuantity.setValue(newItem.getQuantity());
+    }
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -146,7 +158,7 @@ public abstract class ItemPanel extends JPanel implements ActionListener, Change
         uListeners.add(e);
     }
     
-    protected void upttotal() {
+    protected void updateTotal() {
         int data = newItem.getItemPrice() * newItem.getQuantity();
         for (TotalUpdate r : uListeners) {
             r.newTotal(data);

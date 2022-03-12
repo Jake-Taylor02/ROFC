@@ -80,15 +80,15 @@ public class ItemDisplay extends JPanel implements MouseListener {
             System.out.println(myItem.getClass().getSimpleName());
             
             if (myItem.getClass().getSimpleName().equals("Chair")) {
-                edit = new EditItemFrame(new ChairPanel(), myItem);
+                edit = new EditItemFrame(new ChairPanel(myItem), myItem);
                 edit.addChangeItemListener(parentCont);
             } else
             if (myItem.getClass().getSimpleName().equals("Table")) {
-                edit = new EditItemFrame(new TablePanel(), myItem);
+                edit = new EditItemFrame(new TablePanel(myItem), myItem);
                 edit.addChangeItemListener(parentCont);
             } else
             if (myItem.getClass().getSimpleName().equals("Desk")) {
-                edit = new EditItemFrame(new DeskPanel(), myItem);
+                edit = new EditItemFrame(new DeskPanel(myItem), myItem);
                 edit.addChangeItemListener(parentCont);
             }
         } else if (e.getButton() == 3) {
