@@ -2,13 +2,16 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package uk.ac.tees.jakerofc.main;
+package uk.ac.tees.b1086175.ROFCApp.main;
 
+import uk.ac.tees.b1086175.ROFCApp.newitem.DeskPanel;
+import uk.ac.tees.b1086175.ROFCApp.newitem.ChairPanel;
+import uk.ac.tees.b1086175.ROFCApp.newitem.NewItemFrame;
+import uk.ac.tees.b1086175.ROFCApp.newitem.TablePanel;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
-import uk.ac.tees.jakerofc.newitem.*;
 
 /** Move to main internal?
  *

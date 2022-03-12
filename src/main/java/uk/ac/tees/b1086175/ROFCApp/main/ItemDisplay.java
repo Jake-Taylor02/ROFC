@@ -2,9 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package uk.ac.tees.jakerofc.main;
+package uk.ac.tees.b1086175.ROFCApp.main;
 
-import edititem.EditItemFrame;
+import uk.ac.tees.b1086175.ROFCApp.newitem.EditItemFrame;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
@@ -12,10 +12,10 @@ import java.util.List;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import uk.ac.tees.jakerofc.Item;
-import uk.ac.tees.jakerofc.newitem.ChairPanel;
-import uk.ac.tees.jakerofc.newitem.DeskPanel;
-import uk.ac.tees.jakerofc.newitem.TablePanel;
+import uk.ac.tees.b1086175.ROFCApp.Item;
+import uk.ac.tees.b1086175.ROFCApp.newitem.ChairPanel;
+import uk.ac.tees.b1086175.ROFCApp.newitem.DeskPanel;
+import uk.ac.tees.b1086175.ROFCApp.newitem.TablePanel;
 
 /**
  *  JPanel that visually represents a single Item in CenterPanel.

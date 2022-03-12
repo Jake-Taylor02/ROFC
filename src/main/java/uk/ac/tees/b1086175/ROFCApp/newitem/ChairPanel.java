@@ -2,14 +2,14 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package uk.ac.tees.jakerofc.newitem;
+package uk.ac.tees.b1086175.ROFCApp.newitem;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JCheckBox;
 import javax.swing.SpringLayout;
-import uk.ac.tees.jakerofc.Chair;
-import uk.ac.tees.jakerofc.WoodType;
+import uk.ac.tees.b1086175.ROFCApp.Chair;
+import uk.ac.tees.b1086175.ROFCApp.WoodType;
 
 /**
  *

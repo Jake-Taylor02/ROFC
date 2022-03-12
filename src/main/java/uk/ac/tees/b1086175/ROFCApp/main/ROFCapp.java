@@ -1,15 +1,18 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ * TODO
+    Summary order
+    Does summary have to show more then Item attributes
+    correct access modifiers
+    clean up callbacks
  */
-package uk.ac.tees.jakerofc.main;
+package uk.ac.tees.b1086175.ROFCApp.main;
 
+import uk.ac.tees.b1086175.ROFCApp.*;
 import java.awt.BorderLayout;
 import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
-import uk.ac.tees.jakerofc.*;
 
 /**
  *
@@ -31,7 +34,7 @@ public class ROFCapp extends JFrame {
         itemArr.addItem(new Desk("003", WoodType.WALNUT, 1, 100, 75, 3));
         itemArr.addItem(new Chair("004", WoodType.OAK, 2, true));
         itemArr.addItem(new Table("005", WoodType.OAK, 1, TableBase.WOODEN, 60));
-        //
+
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setTitle("ROFC");
         this.setLayout(new BorderLayout(5, 5));

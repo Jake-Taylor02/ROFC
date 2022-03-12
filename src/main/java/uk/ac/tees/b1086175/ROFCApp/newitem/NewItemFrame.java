@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package uk.ac.tees.jakerofc.newitem;
+package uk.ac.tees.b1086175.ROFCApp.newitem;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
@@ -15,9 +15,9 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import uk.ac.tees.jakerofc.Item;
-import uk.ac.tees.jakerofc.main.ChangeItemListener;
-import uk.ac.tees.jakerofc.newitem.NewItemFrame.*;
+import uk.ac.tees.b1086175.ROFCApp.Item;
+import uk.ac.tees.b1086175.ROFCApp.main.ChangeItemListener;
+import uk.ac.tees.b1086175.ROFCApp.newitem.NewItemFrame.*;
 
 /**
  * change center panel to

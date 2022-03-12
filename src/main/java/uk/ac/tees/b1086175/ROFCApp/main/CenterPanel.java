@@ -2,13 +2,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package uk.ac.tees.jakerofc.main;
+package uk.ac.tees.b1086175.ROFCApp.main;
 
 
 import java.awt.GridLayout;
 import javax.swing.JPanel;
-import uk.ac.tees.jakerofc.Item;
-import uk.ac.tees.jakerofc.Order;
+import uk.ac.tees.b1086175.ROFCApp.Item;
+import uk.ac.tees.b1086175.ROFCApp.Order;
 
 /** Panel to hold Grid for displaying Order
  *
