@@ -2,8 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package edititem;
+package uk.ac.tees.b1086175.ROFCApp.newitem;
 
+import uk.ac.tees.b1086175.ROFCApp.main.ChangeItemListener;
+import uk.ac.tees.b1086175.ROFCApp.Item;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
@@ -14,9 +16,6 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import uk.ac.tees.jakerofc.*;
-import uk.ac.tees.jakerofc.main.*;
-import uk.ac.tees.jakerofc.newitem.*;
 
 /**
  * Frame allowing the user to access and modify items.
