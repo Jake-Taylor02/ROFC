@@ -13,6 +13,7 @@ import javax.swing.ImageIcon;
  * @author b1086175 | Jake Taylor
  */
 public class Desk extends Item implements java.io.Serializable {
+    public static final int HEIGHT = 80;
     private int draws;
     private int width, depth;
 
@@ -27,10 +28,10 @@ public class Desk extends Item implements java.io.Serializable {
     
     @Override
     protected void calculatePrice() {
-        this.itemPrice = (((80 * width * depth) *12) + (width * depth)) * wood.getPrice()
+        this.itemPrice = (((HEIGHT * width * depth) *12) + (width * depth)) * wood.getPrice()
                 + (draws * 850);
         
-        int hwd = (80 * width * depth) *12;
+        int hwd = (HEIGHT * width * depth) *12;
         System.out.println("hwd: " + hwd);
         
         int wd = width * depth;
