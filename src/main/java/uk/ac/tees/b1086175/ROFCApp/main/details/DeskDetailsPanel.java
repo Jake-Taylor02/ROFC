@@ -30,6 +30,13 @@ public class DeskDetailsPanel extends ItemDetailsPanel {
         drawsLabel = new JLabel(String.format("Draws: %d", myDesk.getDraws()));
         add(drawsLabel);
         
-        heightLabel = new JLabel(String.format("Height: %d", 80));
+        heightLabel = new JLabel(String.format("Height: %d", Desk.HEIGHT));
+        add(heightLabel);
+        
+        widthLabel = new JLabel(String.format("Width: %d", myDesk.getWidth()));
+        add(widthLabel);
+        
+        depthLabel = new JLabel(String.format("Depth: %d", myDesk.getDepth()));
+        add(depthLabel);
     }
 }

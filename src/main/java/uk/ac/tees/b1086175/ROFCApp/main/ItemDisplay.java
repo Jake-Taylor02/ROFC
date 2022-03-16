@@ -14,7 +14,9 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import uk.ac.tees.b1086175.ROFCApp.Item;
 import uk.ac.tees.b1086175.ROFCApp.main.details.ChairDetailsPanel;
+import uk.ac.tees.b1086175.ROFCApp.main.details.DeskDetailsPanel;
 import uk.ac.tees.b1086175.ROFCApp.main.details.ItemDetailsPanel;
+import uk.ac.tees.b1086175.ROFCApp.main.details.TableDetailsPanel;
 import uk.ac.tees.b1086175.ROFCApp.newitem.ChairPanel;
 import uk.ac.tees.b1086175.ROFCApp.newitem.DeskPanel;
 import uk.ac.tees.b1086175.ROFCApp.newitem.TablePanel;
@@ -74,16 +76,25 @@ public class ItemDisplay extends JPanel implements MouseListener {
         
         if (e.getButton() == 1) {
             // Show item details
-            ItemDetailsPanel summaryPanel;
+            ItemDetailsPanel summaryPanel = null;
             switch (myItem.getClass().getSimpleName()) {
                 case "Chair":
                     summaryPanel = new ChairDetailsPanel(myItem);
                     break;
                 case "Table":
-                    
+                    summaryPanel = new TableDetailsPanel(myItem);
+                    break;
+                case "Desk":
+                    summaryPanel = new DeskDetailsPanel(myItem);
             }
-            JOptionPane.showMessageDialog(this, new ChairDetailsPanel(myItem));
-            System.out.println(myItem.getSummary());
+            
+            if (summaryPanel != null) {
+                JOptionPane.showMessageDialog(this, summaryPanel);
+            } else {
+                System.out.println("Error - could not open details panel");
+                JOptionPane.showMessageDialog(this, "Error - could not open details panel");
+            }
+            
         } else if (e.getButton() == 2) {
             // Edit Item
             EditItemFrame edit;
