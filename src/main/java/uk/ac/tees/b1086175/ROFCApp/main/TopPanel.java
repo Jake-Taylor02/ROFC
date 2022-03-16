@@ -9,6 +9,7 @@ import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import uk.ac.tees.b1086175.ROFCApp.Order;
 
 /**
@@ -64,6 +65,9 @@ public class TopPanel extends JPanel implements ActionListener {
         }
         
         JFileChooser jfc = new JFileChooser();
+        jfc.setFileFilter(new FileNameExtensionFilter("DAT Files", "dat"));
+        jfc.setAcceptAllFileFilterUsed(false);
+        
         if (e.getSource() == jbSave) {
             int result = jfc.showSaveDialog(this);
             

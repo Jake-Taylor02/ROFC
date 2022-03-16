@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package uk.ac.tees.b1086175.ROFCApp.main;
+package uk.ac.tees.b1086175.ROFCApp.main.summary;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,14 +18,17 @@ import uk.ac.tees.b1086175.ROFCApp.Order;
 
 /**
  *
- * @author b1086175 | Jake Taylor
+ * @author jake
  */
-public class SummaryPanel extends JPanel{
-    private final Order items;
+public class Table_SummaryPanel extends JPanel{
+    private final Order items = Order.getInstance();
     private JTable table;
 
-    public SummaryPanel() {
-        this.items = Order.getInstance();
+    public Table_SummaryPanel() {
+        init();
+    }
+    
+    private void init() {
         table = new JTable();
         table.setModel(new ItemTableModel());
         
@@ -98,6 +101,4 @@ public class SummaryPanel extends JPanel{
         }
         
     }
-    
-    
 }

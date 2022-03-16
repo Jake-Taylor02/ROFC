@@ -27,8 +27,8 @@ public class Desk extends Item implements java.io.Serializable {
     }
     
     @Override
-    protected void calculatePrice() {
-        this.itemPrice = (((HEIGHT * width * depth) *12) + (width * depth)) * wood.getPrice()
+    protected void calculatePrice() {// is this correct?
+        this.itemPrice = (((HEIGHT + width + depth) *12) + (width * depth) * wood.getPrice())
                 + (draws * 850);
         
         int hwd = (HEIGHT * width * depth) *12;
