@@ -4,6 +4,7 @@
  */
 package uk.ac.tees.b1086175.ROFCApp.main;
 
+import uk.ac.tees.b1086175.ROFCApp.main.summary.SummaryPanel;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

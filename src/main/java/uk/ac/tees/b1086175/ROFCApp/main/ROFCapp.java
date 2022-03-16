@@ -1,17 +1,7 @@
-/*
- * TODO
-    Summary order
-    Does summary have to show more then Item attributes
-    correct access modifiers
-    clean up callbacks
- */
 package uk.ac.tees.b1086175.ROFCApp.main;
 
 import uk.ac.tees.b1086175.ROFCApp.*;
-import java.awt.BorderLayout;
 import java.awt.HeadlessException;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import javax.swing.*;
 
 /**
