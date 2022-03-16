@@ -77,7 +77,11 @@ public class TopPanel extends JPanel implements ActionListener {
             
             if (saveResult != JFileChooser.APPROVE_OPTION) return;
             
-            myOrder.load(jfc.getSelectedFile());
+            boolean result = myOrder.load(jfc.getSelectedFile());
+            
+            if (!result) {
+                JOptionPane.showMessageDialog(this, "Order could not be loaded, File may be invalid.");
+            }
             
             jlFile.setText("File:" + myOrder.getPath().getPath());
             

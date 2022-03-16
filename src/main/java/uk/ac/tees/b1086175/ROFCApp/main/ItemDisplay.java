@@ -13,6 +13,10 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import uk.ac.tees.b1086175.ROFCApp.Item;
+import uk.ac.tees.b1086175.ROFCApp.main.details.ChairDetailsPanel;
+import uk.ac.tees.b1086175.ROFCApp.main.details.DeskDetailsPanel;
+import uk.ac.tees.b1086175.ROFCApp.main.details.ItemDetailsPanel;
+import uk.ac.tees.b1086175.ROFCApp.main.details.TableDetailsPanel;
 import uk.ac.tees.b1086175.ROFCApp.newitem.ChairPanel;
 import uk.ac.tees.b1086175.ROFCApp.newitem.DeskPanel;
 import uk.ac.tees.b1086175.ROFCApp.newitem.TablePanel;
@@ -72,7 +76,25 @@ public class ItemDisplay extends JPanel implements MouseListener {
         
         if (e.getButton() == 1) {
             // Show item details
-            JOptionPane.showMessageDialog(this, myItem.getSummary());
+            ItemDetailsPanel summaryPanel = null;
+            switch (myItem.getClass().getSimpleName()) {
+                case "Chair":
+                    summaryPanel = new ChairDetailsPanel(myItem);
+                    break;
+                case "Table":
+                    summaryPanel = new TableDetailsPanel(myItem);
+                    break;
+                case "Desk":
+                    summaryPanel = new DeskDetailsPanel(myItem);
+            }
+            
+            if (summaryPanel != null) {
+                JOptionPane.showMessageDialog(this, summaryPanel);
+            } else {
+                System.out.println("Error - could not open details panel");
+                JOptionPane.showMessageDialog(this, "Error - could not open details panel");
+            }
+            
         } else if (e.getButton() == 2) {
             // Edit Item
             EditItemFrame edit;
@@ -80,15 +102,15 @@ public class ItemDisplay extends JPanel implements MouseListener {
             System.out.println(myItem.getClass().getSimpleName());
             
             if (myItem.getClass().getSimpleName().equals("Chair")) {
-                edit = new EditItemFrame(new ChairPanel(), myItem);
+                edit = new EditItemFrame(new ChairPanel(myItem), myItem);
                 edit.addChangeItemListener(parentCont);
             } else
             if (myItem.getClass().getSimpleName().equals("Table")) {
-                edit = new EditItemFrame(new TablePanel(), myItem);
+                edit = new EditItemFrame(new TablePanel(myItem), myItem);
                 edit.addChangeItemListener(parentCont);
             } else
             if (myItem.getClass().getSimpleName().equals("Desk")) {
-                edit = new EditItemFrame(new DeskPanel(), myItem);
+                edit = new EditItemFrame(new DeskPanel(myItem), myItem);
                 edit.addChangeItemListener(parentCont);
             }
         } else if (e.getButton() == 3) {

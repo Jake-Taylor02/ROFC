@@ -152,10 +152,16 @@ public class Order {
             fIn.close();
         } catch (FileNotFoundException ex) {
             System.out.println("Failed to load order - FileNotFoundException");
+            ex.printStackTrace();
+            return false;
         } catch (IOException ex) {
             System.out.println("Failed to load order - IOException");
+            ex.printStackTrace();
+            return false;
         } catch (ClassNotFoundException ex) {
             System.out.println("Failed to load order - ClassNotFoundException");
+            ex.printStackTrace();
+            return false;
         }
         
         path = loadPath;

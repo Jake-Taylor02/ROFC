@@ -12,6 +12,7 @@ import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.SpringLayout;
 import javax.swing.SwingConstants;
+import uk.ac.tees.b1086175.ROFCApp.Item;
 import uk.ac.tees.b1086175.ROFCApp.Table;
 import uk.ac.tees.b1086175.ROFCApp.TableBase;
 import uk.ac.tees.b1086175.ROFCApp.WoodType;
@@ -64,6 +65,29 @@ public class TablePanel extends ItemPanel implements ActionListener {
         spLayout.putConstraint(SpringLayout.NORTH, jspDiameter, 5, SpringLayout.SOUTH, jcbBase);
     }
     
+    public TablePanel(Item table) {
+        this();
+        
+        setItem(table);
+    }
+    
+    @Override
+    public void setItem(Item existingTable) {
+        super.setItem(existingTable);
+        
+        Table myTable;
+        try {
+            myTable = (Table) existingTable;
+        } catch (Exception ex) {
+            System.out.println("couldn't parse item to table");
+            return;
+        }
+        
+        jcbBase.setSelectedItem(myTable.getBase());
+        jspDiameter.setValue(myTable.getDiameter());
+        this.actionPerformed(null);
+    }
+    
     @Override
     public void actionPerformed(ActionEvent e) {
         super.actionPerformed(e);
@@ -80,7 +104,7 @@ public class TablePanel extends ItemPanel implements ActionListener {
                 (TableBase) jcbBase.getSelectedItem(),// TableBase
                 (Integer) jspDiameter.getValue()// Diameter
         );
-        this.upttotal();
+        this.updateTotal();
     }
 
     @Override
