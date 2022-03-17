@@ -15,7 +15,7 @@ import uk.ac.tees.b1086175.ROFCApp.Order;
 
 /**
  *
- * @author b1086175
+ * @author b1086175 | Jake Taylor
  */
 public class ItemRatios_SummaryPanel extends JPanel{
     private final Order myOrder = Order.getInstance();
@@ -42,7 +42,7 @@ public class ItemRatios_SummaryPanel extends JPanel{
     }
     
     private JFreeChart createItemRatioChart(PieDataset dataset) {
-        JFreeChart myChart = ChartFactory.createPieChart("Items", dataset, true, true, false);
+        JFreeChart myChart = ChartFactory.createPieChart("Items", dataset, true, true, true);
         
         return myChart;
     }
