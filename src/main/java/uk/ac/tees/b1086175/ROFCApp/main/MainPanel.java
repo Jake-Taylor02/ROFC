@@ -43,7 +43,7 @@ public class MainPanel extends JPanel{
         jsp.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
         this.add(jsp, BorderLayout.CENTER);
         
-        jpTop.setChangeItemListener(jpCenter);// !! Change tto list?
+        jpTop.addChangeItemListener(jpCenter);// !! Change tto list?
         
         jpLeft = new LeftPanel(jpCenter);
         this.add(jpLeft, BorderLayout.WEST);
