@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package uk.ac.tees.b1086175.ROFCApp.newitem;
+package uk.ac.tees.b1086175.ROFCApp.newitem.panels;
 
 import java.awt.Dimension;
 import java.awt.Font;
@@ -22,6 +22,7 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import uk.ac.tees.b1086175.ROFCApp.Item;
 import uk.ac.tees.b1086175.ROFCApp.WoodType;
+import uk.ac.tees.b1086175.ROFCApp.newitem.TotalUpdate;
 
 /** 
  *

@@ -4,6 +4,7 @@
  */
 package uk.ac.tees.b1086175.ROFCApp.newitem;
 
+import uk.ac.tees.b1086175.ROFCApp.newitem.panels.ItemPanel;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.HeadlessException;
