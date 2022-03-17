@@ -26,6 +26,7 @@ public class SummaryPanel extends JPanel{
     private JTabbedPane jtp;
     
     private Table_SummaryPanel table;
+    private JPanel piechart;
 
     public SummaryPanel() {
         init();
@@ -35,6 +36,9 @@ public class SummaryPanel extends JPanel{
         jtp = new JTabbedPane();
         table = new Table_SummaryPanel();
         jtp.add("Table", table);
+        
+        piechart = new ItemRatios_SummaryPanel();
+        jtp.add("Item Pie Chart", piechart);
         
         this.add(jtp);
     }
