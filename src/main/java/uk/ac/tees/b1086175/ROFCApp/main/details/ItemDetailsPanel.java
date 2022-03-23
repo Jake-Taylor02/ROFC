@@ -47,7 +47,9 @@ public abstract class ItemDetailsPanel extends JPanel{
         quantityLabel = new JLabel(String.format("Quantity: %d", myItem.getQuantity()));
         add(quantityLabel);
         
-        totalPriceLabel = new JLabel(String.format("Total Price: £%.2f", (double) (myItem.getItemPrice() * myItem.getQuantity()) / 100));
-        add(totalPriceLabel);
+        if (myItem.getQuantity() > 1) {
+            totalPriceLabel = new JLabel(String.format("Total Price: £%.2f", (double) (myItem.getTotalPrice()) / 100));
+            add(totalPriceLabel);
+        }
     }
 }
