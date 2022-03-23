@@ -5,8 +5,6 @@
 package uk.ac.tees.b1086175.ROFCApp;
 
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -16,6 +14,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.io.File;
+import java.io.FileInputStream;
 
 /**
  *
@@ -29,7 +29,7 @@ public class Order {
 
     private Order() {
         path = null;
-        items = new ArrayList<Item>();
+        items = new ArrayList<>();
     }
     
     public static Order getInstance() {
