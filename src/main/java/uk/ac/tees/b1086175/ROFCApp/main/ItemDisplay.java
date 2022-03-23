@@ -5,6 +5,7 @@
 package uk.ac.tees.b1086175.ROFCApp.main;
 
 import uk.ac.tees.b1086175.ROFCApp.newitem.EditItemFrame;
+import uk.ac.tees.b1086175.ROFCApp.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
@@ -13,13 +14,8 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import uk.ac.tees.b1086175.ROFCApp.Item;
-import uk.ac.tees.b1086175.ROFCApp.main.details.ChairDetailsPanel;
-import uk.ac.tees.b1086175.ROFCApp.main.details.DeskDetailsPanel;
-import uk.ac.tees.b1086175.ROFCApp.main.details.ItemDetailsPanel;
-import uk.ac.tees.b1086175.ROFCApp.main.details.TableDetailsPanel;
-import uk.ac.tees.b1086175.ROFCApp.newitem.panels.ChairPanel;
-import uk.ac.tees.b1086175.ROFCApp.newitem.panels.DeskPanel;
-import uk.ac.tees.b1086175.ROFCApp.newitem.panels.TablePanel;
+import uk.ac.tees.b1086175.ROFCApp.main.details.*;
+import uk.ac.tees.b1086175.ROFCApp.newitem.panels.*;
 
 /**
  *  JPanel that visually represents a single Item in CenterPanel.
@@ -31,7 +27,7 @@ public class ItemDisplay extends JPanel implements MouseListener {
     private JLabel jlItem;
     private Item myItem;
     private CenterPanel parentCont;
-    private boolean empty;
+    private final boolean empty;
 
     private List<ChangeItemListener> changeListeners = new ArrayList<>();
     
@@ -43,10 +39,7 @@ public class ItemDisplay extends JPanel implements MouseListener {
     public ItemDisplay(CenterPanel owner) {
         this.parentCont = owner;
         empty = true;
-        jlItem = new JLabel();
-        jlItem.setIcon(Item.defaultImage());
-        jlItem.addMouseListener(this);
-        this.add(jlItem);
+        init();
     }
     
     /**
@@ -56,12 +49,16 @@ public class ItemDisplay extends JPanel implements MouseListener {
      */
     public ItemDisplay(CenterPanel owner, Item myItem) {
         this.parentCont = owner;
-        empty = false;
-        
         this.myItem = myItem;
+        empty = false;
+        init();
+    }
+    
+    private void init() {
         jlItem = new JLabel();
-        jlItem.setIcon(myItem.getImage());
-        jlItem.addMouseListener(this);
+        if (!empty) jlItem.setIcon(myItem.getImage());
+        
+        this.addMouseListener(this);
         this.add(jlItem);
     }
     
@@ -74,18 +71,18 @@ public class ItemDisplay extends JPanel implements MouseListener {
             return;
         }
         
-        if (e.getButton() == 1) {
+        if (e.getButton() == MouseEvent.BUTTON1) {
             // Show item details
             ItemDetailsPanel summaryPanel = null;
-            switch (myItem.getClass().getSimpleName()) {
-                case "Chair":
-                    summaryPanel = new ChairDetailsPanel(myItem);
-                    break;
-                case "Table":
-                    summaryPanel = new TableDetailsPanel(myItem);
-                    break;
-                case "Desk":
-                    summaryPanel = new DeskDetailsPanel(myItem);
+            
+            if (myItem instanceof Chair) {
+                summaryPanel = new ChairDetailsPanel(myItem);
+                
+            } else if (myItem instanceof Table) {
+                summaryPanel = new TableDetailsPanel(myItem);
+                
+            } else if (myItem instanceof Desk) {
+                summaryPanel = new DeskDetailsPanel(myItem);
             }
             
             if (summaryPanel != null) {
@@ -95,25 +92,25 @@ public class ItemDisplay extends JPanel implements MouseListener {
                 JOptionPane.showMessageDialog(this, "Error - could not open details panel");
             }
             
-        } else if (e.getButton() == 2) {
+        } else if (e.getButton() == MouseEvent.BUTTON2) {
             // Edit Item
             EditItemFrame edit;
             System.out.println("button 3 clicked");
             System.out.println(myItem.getClass().getSimpleName());
-            
-            if (myItem.getClass().getSimpleName().equals("Chair")) {
+            // refactor?
+            if (myItem instanceof Chair) {
                 edit = new EditItemFrame(new ChairPanel(myItem), myItem);
                 edit.addChangeItemListener(parentCont);
             } else
-            if (myItem.getClass().getSimpleName().equals("Table")) {
+            if (myItem instanceof Table) {
                 edit = new EditItemFrame(new TablePanel(myItem), myItem);
                 edit.addChangeItemListener(parentCont);
             } else
-            if (myItem.getClass().getSimpleName().equals("Desk")) {
+            if (myItem instanceof Desk) {
                 edit = new EditItemFrame(new DeskPanel(myItem), myItem);
                 edit.addChangeItemListener(parentCont);
             }
-        } else if (e.getButton() == 3) {
+        } else if (e.getButton() == MouseEvent.BUTTON3) {
             
             // Remove the item
             int answer = JOptionPane.showConfirmDialog(this, "Are you sure you want to delete " + myItem.getID());
@@ -142,7 +139,7 @@ public class ItemDisplay extends JPanel implements MouseListener {
 
     @Override
     public void mouseExited(MouseEvent e) {
-        System.out.println("mouse ");
+        System.out.println("mouse exited");
     }
     
     public void addChangeItemListener(ChangeItemListener e) {
