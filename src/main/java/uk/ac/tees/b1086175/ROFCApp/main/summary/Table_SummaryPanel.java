@@ -18,7 +18,7 @@ import uk.ac.tees.b1086175.ROFCApp.Order;
 
 /**
  *
- * @author jake
+ * @author b1086175 | Jake Taylor
  */
 public class Table_SummaryPanel extends JPanel{
     private final Order items = Order.getInstance();

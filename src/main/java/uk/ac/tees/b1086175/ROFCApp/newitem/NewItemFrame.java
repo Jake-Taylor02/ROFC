@@ -4,6 +4,7 @@
  */
 package uk.ac.tees.b1086175.ROFCApp.newitem;
 
+import uk.ac.tees.b1086175.ROFCApp.newitem.panels.ItemPanel;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.HeadlessException;
@@ -21,7 +22,7 @@ import uk.ac.tees.b1086175.ROFCApp.newitem.NewItemFrame.*;
 
 /**
  * change center panel to
- * @author Jake
+ * @author b1086175 | Jake Taylor
  */
 public class NewItemFrame extends JFrame {
     

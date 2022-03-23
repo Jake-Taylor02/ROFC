@@ -8,6 +8,8 @@ import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import uk.ac.tees.b1086175.ROFCApp.Order;
@@ -17,7 +19,7 @@ import uk.ac.tees.b1086175.ROFCApp.Order;
  * @author b1086175
  */
 public class TopPanel extends JPanel implements ActionListener {
-    private ChangeItemListener cListener;
+    private List<ChangeItemListener> ciListeners = new ArrayList<>();
     JButton jbSave;
     JButton jbClear;
     JButton jbLoad;
@@ -59,7 +61,9 @@ public class TopPanel extends JPanel implements ActionListener {
             myOrder.clear();
             
             //update grid
-            cListener.updateGrid();
+            for (ChangeItemListener cil : ciListeners) {
+                cil.updateGrid();
+            }
             
             jlFile.setText("File:");
         }
@@ -89,12 +93,14 @@ public class TopPanel extends JPanel implements ActionListener {
             
             jlFile.setText("File:" + myOrder.getPath().getPath());
             
-            cListener.updateGrid();
+            for (ChangeItemListener cil : ciListeners) {
+                cil.updateGrid();
+            }
         }
     }
     
-    public void setChangeItemListener(ChangeItemListener cil) {
-        cListener = cil;
+    public void addChangeItemListener(ChangeItemListener cil) {
+        ciListeners.add(cil);
     }
     
     

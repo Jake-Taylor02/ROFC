@@ -17,9 +17,9 @@ import uk.ac.tees.b1086175.ROFCApp.main.details.ChairDetailsPanel;
 import uk.ac.tees.b1086175.ROFCApp.main.details.DeskDetailsPanel;
 import uk.ac.tees.b1086175.ROFCApp.main.details.ItemDetailsPanel;
 import uk.ac.tees.b1086175.ROFCApp.main.details.TableDetailsPanel;
-import uk.ac.tees.b1086175.ROFCApp.newitem.ChairPanel;
-import uk.ac.tees.b1086175.ROFCApp.newitem.DeskPanel;
-import uk.ac.tees.b1086175.ROFCApp.newitem.TablePanel;
+import uk.ac.tees.b1086175.ROFCApp.newitem.panels.ChairPanel;
+import uk.ac.tees.b1086175.ROFCApp.newitem.panels.DeskPanel;
+import uk.ac.tees.b1086175.ROFCApp.newitem.panels.TablePanel;
 
 /**
  *  JPanel that visually represents a single Item in CenterPanel.
