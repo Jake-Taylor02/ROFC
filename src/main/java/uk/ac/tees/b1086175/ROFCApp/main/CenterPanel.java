@@ -15,7 +15,7 @@ import uk.ac.tees.b1086175.ROFCApp.Order;
  * @author b1086175 | Jake Taylor
  */
 public class CenterPanel extends JPanel implements ChangeItemListener {
-    private Order myOrder;
+    private final Order myOrder;
     private ItemDisplay[] iPanels;
 
     public CenterPanel() {
@@ -29,6 +29,7 @@ public class CenterPanel extends JPanel implements ChangeItemListener {
         this.setLayout(new GridLayout(3, 3, 5, 5));
         
         iPanels = new ItemDisplay[9];
+        
         for (int i = 0; i < 9; i++) {
             
             if (i >= myOrder.size()) {
@@ -42,8 +43,6 @@ public class CenterPanel extends JPanel implements ChangeItemListener {
             this.add(iPanels[i]);
         }
         this.updateUI();
-        
-        
     }
 
     @Override

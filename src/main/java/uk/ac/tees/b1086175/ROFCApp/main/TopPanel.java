@@ -19,7 +19,7 @@ import uk.ac.tees.b1086175.ROFCApp.Order;
  * @author b1086175
  */
 public class TopPanel extends JPanel implements ActionListener {
-    private List<ChangeItemListener> ciListeners = new ArrayList<>();
+    private final List<ChangeItemListener> ciListeners = new ArrayList<>();
     JButton jbSave;
     JButton jbClear;
     JButton jbLoad;
