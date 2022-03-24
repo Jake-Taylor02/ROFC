@@ -12,14 +12,13 @@ import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
-import uk.ac.tees.b1086175.ROFCApp.newitem.EditItemFrame;
 
 /** Move to main internal?
  *
  * @author b1086175
  */
 public class LeftPanel extends JPanel {
-    private CenterPanel grid;
+    private final CenterPanel grid;
     NewItemFrame newIF;
 
     public LeftPanel(CenterPanel grid) {
@@ -52,7 +51,7 @@ public class LeftPanel extends JPanel {
                 
                 this.addActionListener(this);
             }
-            
+            // !!!! change these to one actipon listener, and use Orderview method
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.out.println("Add Chair has been pressed!");

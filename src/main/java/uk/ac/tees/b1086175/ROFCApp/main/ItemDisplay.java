@@ -16,6 +16,7 @@ import javax.swing.JPanel;
 import uk.ac.tees.b1086175.ROFCApp.Item;
 import uk.ac.tees.b1086175.ROFCApp.main.details.*;
 import uk.ac.tees.b1086175.ROFCApp.newitem.panels.*;
+import uk.ac.tees.b1086175.ROFCApp.view.OrderView;
 
 /**
  *  JPanel that visually represents a single Item in CenterPanel.
@@ -73,17 +74,7 @@ public class ItemDisplay extends JPanel implements MouseListener {
         
         if (e.getButton() == MouseEvent.BUTTON1) {
             // Show item details
-            ItemDetailsPanel summaryPanel = null;
-            
-            if (myItem instanceof Chair) {
-                summaryPanel = new ChairDetailsPanel(myItem);
-                
-            } else if (myItem instanceof Table) {
-                summaryPanel = new TableDetailsPanel(myItem);
-                
-            } else if (myItem instanceof Desk) {
-                summaryPanel = new DeskDetailsPanel(myItem);
-            }
+            JPanel summaryPanel = OrderView.getView(myItem).getDetailsPanel();
             
             if (summaryPanel != null) {
                 JOptionPane.showMessageDialog(this, summaryPanel);
@@ -95,21 +86,15 @@ public class ItemDisplay extends JPanel implements MouseListener {
         } else if (e.getButton() == MouseEvent.BUTTON2) {
             // Edit Item
             EditItemFrame edit;
+            ItemPanel editPanel;
             System.out.println("button 3 clicked");
             System.out.println(myItem.getClass().getSimpleName());
-            // refactor?
-            if (myItem instanceof Chair) {
-                edit = new EditItemFrame(new ChairPanel(myItem), myItem);
-                edit.addChangeItemListener(parentCont);
-            } else
-            if (myItem instanceof Table) {
-                edit = new EditItemFrame(new TablePanel(myItem), myItem);
-                edit.addChangeItemListener(parentCont);
-            } else
-            if (myItem instanceof Desk) {
-                edit = new EditItemFrame(new DeskPanel(myItem), myItem);
-                edit.addChangeItemListener(parentCont);
-            }
+            
+            editPanel = OrderView.getView(myItem).getEditPanel();
+            
+            edit = new EditItemFrame(editPanel, myItem);
+            edit.addChangeItemListener(parentCont);
+ 
         } else if (e.getButton() == MouseEvent.BUTTON3) {
             
             // Remove the item
