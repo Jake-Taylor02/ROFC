@@ -16,10 +16,11 @@ import uk.ac.tees.b1086175.ROFCApp.Order;
 
 /**
  *
- * @author b1086175
+ * @author b1086175 | Jake Taylor
  */
 public class TopPanel extends JPanel implements ActionListener {
-    private List<ChangeItemListener> ciListeners = new ArrayList<>();
+    private final List<ChangeItemListener> ciListeners = new ArrayList<>();
+    
     JButton jbSave;
     JButton jbClear;
     JButton jbLoad;
@@ -45,7 +46,6 @@ public class TopPanel extends JPanel implements ActionListener {
         jbClear.addActionListener(this);
         jbLoad.addActionListener(this);
         
-        //add components to panel
         add(jbSave);
         add(jbClear);
         add(jbLoad);
@@ -80,6 +80,7 @@ public class TopPanel extends JPanel implements ActionListener {
             myOrder.save(jfc.getSelectedFile());
             
             jlFile.setText("File:" + myOrder.getPath().getPath());
+            
         } else if (e.getSource() == jbLoad) {
             int saveResult = jfc.showOpenDialog(this);
             
