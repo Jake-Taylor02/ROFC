@@ -10,8 +10,8 @@ import javax.swing.JPanel;
 import uk.ac.tees.b1086175.ROFCApp.Item;
 
 /**
- *
- * @author jake
+ * 
+ * @author b1086175 | Jake Taylor
  */
 public abstract class ItemDetailsPanel extends JPanel{
     protected final Item myItem;

@@ -26,10 +26,10 @@ import uk.ac.tees.b1086175.ROFCApp.newitem.panels.*;
 public class ItemDisplay extends JPanel implements MouseListener {
     private JLabel jlItem;
     private Item myItem;
-    private CenterPanel parentCont;
+    private final CenterPanel parentCont;
     private final boolean empty;
 
-    private List<ChangeItemListener> changeListeners = new ArrayList<>();
+    private final List<ChangeItemListener> changeListeners = new ArrayList<>();
     
     /**
      * Constructor for when a grid cell should be empty.

@@ -12,18 +12,39 @@ import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
+import uk.ac.tees.b1086175.ROFCApp.newitem.EditItemFrame;
 
 /** Move to main internal?
  *
  * @author b1086175
  */
 public class LeftPanel extends JPanel {
+    private CenterPanel grid;
     NewItemFrame newIF;
 
     public LeftPanel(CenterPanel grid) {
-        
+        this.grid = grid;
         // define Add Chair button
-        class ChairButton extends JButton implements ActionListener {
+        ChairButton jbAddChair = new ChairButton();
+        
+        // Add Table Button
+        
+        TableButton jbAddTable = new TableButton();
+        
+        // Add Desk Button
+        
+        DeskButton jbAddDesk = new DeskButton();
+        
+        
+        setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
+        
+        // add buttons to left panel
+        add(jbAddChair);
+        add(jbAddTable);
+        add(jbAddDesk);
+    }
+    
+    class ChairButton extends JButton implements ActionListener {
 
             public ChairButton() {
                 this.setText("Add Chair");
@@ -40,10 +61,8 @@ public class LeftPanel extends JPanel {
             }
             
         }
-        ChairButton jbAddChair = new ChairButton();
-        
-        // Add Table Button
-        class TableButton extends JButton implements ActionListener {
+    
+    class TableButton extends JButton implements ActionListener {
 
             public TableButton() {
                 this.setText("Add Table");
@@ -60,10 +79,8 @@ public class LeftPanel extends JPanel {
             }
             
         }
-        TableButton jbAddTable = new TableButton();
-        
-        // Add Desk Button
-        class DeskButton extends JButton implements ActionListener {
+    
+    class DeskButton extends JButton implements ActionListener {
 
             public DeskButton() {
                 this.setText("Add Desk");
@@ -80,14 +97,4 @@ public class LeftPanel extends JPanel {
             }
             
         }
-        DeskButton jbAddDesk = new DeskButton();
-        
-        
-        setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
-        
-        // add buttons to left panel
-        add(jbAddChair);
-        add(jbAddTable);
-        add(jbAddDesk);
-    }
 }

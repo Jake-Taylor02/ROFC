@@ -18,7 +18,7 @@ import uk.ac.tees.b1086175.ROFCApp.Order;
 
 /**
  *
- * @author jake
+ * @author b1086175 | Jake Taylor
  */
 public class MainPanel extends JPanel{
     private final Order itemArr = Order.getInstance();
@@ -43,7 +43,7 @@ public class MainPanel extends JPanel{
         jsp.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
         this.add(jsp, BorderLayout.CENTER);
         
-        jpTop.addChangeItemListener(jpCenter);// !! Change tto list?
+        jpTop.addChangeItemListener(jpCenter);
         
         jpLeft = new LeftPanel(jpCenter);
         this.add(jpLeft, BorderLayout.WEST);
@@ -54,8 +54,8 @@ public class MainPanel extends JPanel{
             
     class BottomPanel extends Box implements ActionListener {
 
-        JButton jlTotal;
-        JButton jbSummary;
+        private JButton jlTotal;
+        private JButton jbSummary;
 
         public BottomPanel() {
             super(BoxLayout.X_AXIS);
