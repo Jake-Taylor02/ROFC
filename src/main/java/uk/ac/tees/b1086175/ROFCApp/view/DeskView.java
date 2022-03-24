@@ -8,7 +8,6 @@ import javax.swing.JPanel;
 import uk.ac.tees.b1086175.ROFCApp.Desk;
 import uk.ac.tees.b1086175.ROFCApp.Item;
 import uk.ac.tees.b1086175.ROFCApp.main.details.DeskDetailsPanel;
-import uk.ac.tees.b1086175.ROFCApp.newitem.panels.ChairPanel;
 import uk.ac.tees.b1086175.ROFCApp.newitem.panels.DeskPanel;
 import uk.ac.tees.b1086175.ROFCApp.newitem.panels.ItemPanel;
 

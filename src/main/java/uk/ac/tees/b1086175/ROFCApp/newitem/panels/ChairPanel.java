@@ -4,7 +4,6 @@
  */
 package uk.ac.tees.b1086175.ROFCApp.newitem.panels;
 
-import uk.ac.tees.b1086175.ROFCApp.newitem.panels.ItemPanel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JCheckBox;
