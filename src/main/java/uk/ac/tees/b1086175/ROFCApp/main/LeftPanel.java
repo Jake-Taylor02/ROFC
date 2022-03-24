@@ -23,15 +23,18 @@ public class LeftPanel extends JPanel {
 
     public LeftPanel(CenterPanel grid) {
         this.grid = grid;
+        
+        init();
+    }
+    
+    private void init() {
         // define Add Chair button
         ChairButton jbAddChair = new ChairButton();
         
         // Add Table Button
-        
         TableButton jbAddTable = new TableButton();
         
         // Add Desk Button
-        
         DeskButton jbAddDesk = new DeskButton();
         
         
@@ -45,25 +48,34 @@ public class LeftPanel extends JPanel {
     
     class ChairButton extends JButton implements ActionListener {
 
-            public ChairButton() {
-                this.setText("Add Chair");
-                this.setAlignmentX(Component.CENTER_ALIGNMENT);
-                
-                this.addActionListener(this);
-            }
-            // !!!! change these to one actipon listener, and use Orderview method
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                System.out.println("Add Chair has been pressed!");
-                newIF = new NewItemFrame(new ChairPanel());
-                newIF.addChangeItemListener(grid);
-            }
-            
+        public ChairButton() {
+            chairInit();
         }
+        
+        private void chairInit() {
+            this.setText("Add Chair");
+            this.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+            this.addActionListener(this);
+        }
+        // !!!! change these to one actipon listener, and use Orderview method
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            System.out.println("Add Chair has been pressed!");
+            newIF = new NewItemFrame(new ChairPanel());
+            newIF.addChangeItemListener(grid);
+        }
+
+    }
     
     class TableButton extends JButton implements ActionListener {
 
             public TableButton() {
+                tableInit();
+            }
+            
+            private void tableInit() {
                 this.setText("Add Table");
                 this.setAlignmentX(Component.CENTER_ALIGNMENT);
                 
@@ -82,6 +94,10 @@ public class LeftPanel extends JPanel {
     class DeskButton extends JButton implements ActionListener {
 
             public DeskButton() {
+                initDesk();
+            }
+            
+            private void initDesk() {
                 this.setText("Add Desk");
                 this.setAlignmentX(Component.CENTER_ALIGNMENT);
                 
