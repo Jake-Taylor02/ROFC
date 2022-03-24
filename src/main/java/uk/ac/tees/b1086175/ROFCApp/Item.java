@@ -16,28 +16,22 @@ public abstract class Item implements java.io.Serializable, java.util.Comparator
     protected WoodType wood;
     protected int itemPrice;
     private int quantity;
-    protected ImageIcon image;
 
     public Item(String ID, WoodType wood, int quantity) {
         this.ID = ID;
         this.wood = wood;
         this.quantity = quantity;
         
-        setImage();
     }
     
     
     protected abstract void calculatePrice();
     
-    protected abstract void setImage();
-    
     public static ImageIcon defaultImage() {
         return new ImageIcon("no_image2.jpg");
     }
     
-    public ImageIcon getImage() {
-        return image;
-    }
+    public abstract ImageIcon getImage();
     
     public String getSummary() {
         String result = String.format("%16s %s\n", "Type of Item:", this.getClass().getSimpleName());
