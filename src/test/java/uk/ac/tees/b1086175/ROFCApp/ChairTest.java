@@ -42,11 +42,13 @@ public class ChairTest {
     @org.junit.jupiter.api.Test
     public void testCalculatePrice() {
         System.out.println("calculatePrice");
-        Chair instance = new Chair("001", WoodType.OAK, 1, true);
-        instance.calculatePrice();
-        int result = instance.itemPrice;
+        Chair instance1 = new Chair("001", WoodType.OAK, 1, true);
+        instance1.calculatePrice();
+        int result = instance1.itemPrice;
         int expResult = 7500;
         assertEquals(expResult, result);
+        
+        
         
     }
 

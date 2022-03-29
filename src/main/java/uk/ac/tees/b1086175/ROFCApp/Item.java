@@ -13,10 +13,24 @@ import javax.swing.ImageIcon;
  */
 public abstract class Item implements java.io.Serializable, java.util.Comparator {
     private String ID;
+
+    /**
+     * Type of Wood used in the Item's manufacture
+     */
     protected WoodType wood;
+
+    /**
+     * The price of the Item, Disregarding the quantity
+     */
     protected int itemPrice;
     private int quantity;
 
+    /**
+     * Constructor using Item ID, Type of Wood, and Quantity
+     * @param ID
+     * @param wood
+     * @param quantity
+     */
     public Item(String ID, WoodType wood, int quantity) {
         this.ID = ID;
         this.wood = wood;
@@ -24,15 +38,29 @@ public abstract class Item implements java.io.Serializable, java.util.Comparator
         
     }
     
-    
+    /**
+     * Sets itemPrice to the correct price based on the item type and attributes
+     */
     protected abstract void calculatePrice();
     
+    /**
+     * 
+     * @return
+     */
     public static ImageIcon defaultImage() {
         return new ImageIcon("no_image2.jpg");
     }
     
+    /**
+     *
+     * @return
+     */
     public abstract ImageIcon getImage();
     
+    /**
+     *
+     * @return
+     */
     public String getSummary() {
         String result = String.format("%16s %s\n", "Type of Item:", this.getClass().getSimpleName());
         
@@ -44,35 +72,67 @@ public abstract class Item implements java.io.Serializable, java.util.Comparator
         return result;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getID() {
         return ID;
     }
 
+    /**
+     *
+     * @param ID
+     */
     public void setID(String ID) {
         this.ID = ID;
     }
 
+    /**
+     *
+     * @return
+     */
     public WoodType getWood() {
         return wood;
     }
 
+    /**
+     *
+     * @param wood
+     */
     public void setWood(WoodType wood) {
         this.wood = wood;
         calculatePrice();
     }
 
+    /**
+     *
+     * @return
+     */
     public int getQuantity() {
         return quantity;
     }
 
+    /**
+     *
+     * @param quantity
+     */
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getItemPrice() {
         return itemPrice;
     }
     
+    /**
+     *
+     * @return
+     */
     public int getTotalPrice() {
         return itemPrice * quantity;
     }
