@@ -49,6 +49,27 @@ public class ChairPanel extends ItemPanel implements ActionListener {
         jcbArmrest.setSelected(myChair.isArmrests());
         this.actionPerformed(null);
     }
+
+    @Override
+    protected boolean initialiseItem() {
+        // refactor into try-catch
+        newItem = new Chair(
+                this.txtidNum.getText(), // ID Number
+                (WoodType) jcbWoodType.getSelectedItem(), // Type of Wood | 
+                (Integer) this.spQuantity.getValue(),// Quantity
+                jcbArmrest.isSelected() // Armrest
+        );
+        return true;
+    }
+
+    @Override
+    protected boolean validInputs() {
+        if (!super.validInputs()) return false;
+        
+        
+        
+        return super.validInputs();
+    }
     
     @Override
     public void actionPerformed(ActionEvent e) {
