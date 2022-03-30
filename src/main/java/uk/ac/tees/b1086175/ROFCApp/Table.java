@@ -15,6 +15,8 @@ import javax.swing.ImageIcon;
 public class Table extends Item implements java.io.Serializable {
     private TableBase base;
     private int diameter;
+    
+    private static final ImageIcon myImage = new ImageIcon("table2.jpg");
 
     public Table(String ID, WoodType wood, int quantity, TableBase base, int diameter) {
         super(ID, wood, quantity);
@@ -29,11 +31,6 @@ public class Table extends Item implements java.io.Serializable {
         int units = diameter * diameter;
         
         this.itemPrice = (units * wood.getPrice()) + base.getPrice();
-    }
-    
-    @Override
-    protected void setImage() {
-        image = new ImageIcon("table2.jpg");
     }
 
     /*@Override
@@ -57,6 +54,11 @@ public class Table extends Item implements java.io.Serializable {
     public void setDiameter(int diameter) {
         this.diameter = diameter;
         calculatePrice();
+    }
+
+    @Override
+    public ImageIcon getImage() {
+        return myImage;
     }
     
     

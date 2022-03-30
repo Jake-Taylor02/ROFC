@@ -4,7 +4,11 @@ import uk.ac.tees.b1086175.ROFCApp.*;
 import java.awt.HeadlessException;
 import javax.swing.*;
 
-/**
+/** TODO
+ * - Item class uses ImageIcon, should use File or Path instead.
+ * - JUnitTest
+ * - Should i have grid lines?
+ * - is OrderView the right way to do it?
  *
  * @author b1086175 | Jake Taylor
  */

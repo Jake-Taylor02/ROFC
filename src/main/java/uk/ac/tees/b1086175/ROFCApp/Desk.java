@@ -16,6 +16,8 @@ public class Desk extends Item implements java.io.Serializable {
     public static final int HEIGHT = 80;
     private int draws;
     private int width, depth;
+    
+    private static final ImageIcon myImage = new ImageIcon("desk2.jpg");
 
     public Desk(String ID, WoodType wood, int quantity, int width, int depth, int draws) {
         super(ID, wood, quantity);
@@ -46,11 +48,6 @@ public class Desk extends Item implements java.io.Serializable {
 //        
 //        int total = timeswood + drw;
 //        System.out.println("total: " + total);
-    }
-    
-    @Override
-    protected void setImage() {
-        image = new ImageIcon("desk2.jpg");
     }
 
     /*@Override
@@ -83,6 +80,11 @@ public class Desk extends Item implements java.io.Serializable {
     public void setDepth(int depth) {
         this.depth = depth;
         calculatePrice();
+    }
+
+    @Override
+    public ImageIcon getImage() {
+        return myImage;
     }
     
     
