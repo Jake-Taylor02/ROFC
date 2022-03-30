@@ -37,7 +37,6 @@ public abstract class ItemPanel extends JPanel implements ActionListener, Change
     protected final Dimension lblSize;
     protected final Dimension txtSize;
     
-    protected boolean validEntries;
     
     protected Item newItem;
     
@@ -151,8 +150,8 @@ public abstract class ItemPanel extends JPanel implements ActionListener, Change
             newItem.setID(txtidNum.getText());
         } else if (e.getSource() == jcbWoodType) {
             newItem.setWood((WoodType) jcbWoodType.getSelectedItem()); // possible exception?
-            updateTotal();
         }
+        updateTotal();
     }
     
     @Override
@@ -161,12 +160,11 @@ public abstract class ItemPanel extends JPanel implements ActionListener, Change
         
         if (e.getSource() == spQuantity) {
             newItem.setQuantity((int) spQuantity.getValue());
-            updateTotal();
         }
+        updateTotal();
     }
     
     public Item getNewItem() {
-        this.actionPerformed(null);// refresh item
         return newItem;
     }
     
@@ -175,6 +173,8 @@ public abstract class ItemPanel extends JPanel implements ActionListener, Change
     }
     
     protected void updateTotal() {
+        if (newItem == null) return;
+        
         int data = newItem.getItemPrice() * newItem.getQuantity();
         for (TotalUpdate r : uListeners) {
             r.newTotal(data);

@@ -67,28 +67,18 @@ public class ChairPanel extends ItemPanel implements ActionListener {
         if (!super.validInputs()) return false;
         
         
-        
-        return super.validInputs();
+        return true;
     }
     
     @Override
     public void actionPerformed(ActionEvent e) {
-        // Perform Superclass action
         super.actionPerformed(e);
 
-        if (!this.validEntries) {
-            return;
+        if (e.getSource() == jcbArmrest) {
+            ((Chair)newItem).setArmrests(jcbArmrest.isSelected());
         }
-        // Do actions related to chair
-        WoodType s = (WoodType) jcbWoodType.getSelectedItem();// should a catch this?
-
-        newItem = new Chair(
-                this.txtidNum.getText(), // ID Number
-                s, // Type of Wood
-                (Integer) this.spQuantity.getValue(),// Quantity
-                jcbArmrest.isSelected() // Armrest
-        );
-        this.updateTotal();
+        
+        updateTotal();
     }
 
     @Override

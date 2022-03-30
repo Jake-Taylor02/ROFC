@@ -15,6 +15,7 @@ import java.util.List;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import uk.ac.tees.b1086175.ROFCApp.Item;
 import uk.ac.tees.b1086175.ROFCApp.main.ChangeItemListener;
@@ -50,7 +51,12 @@ public class NewItemFrame extends JFrame {
     }
     
     private void initFooter() {
-        class FooterPanel extends JPanel implements ActionListener, TotalUpdate {
+        
+        jpFooter = new FooterPanel();
+        this.add(jpFooter, BorderLayout.SOUTH);
+    }
+    
+    class FooterPanel extends JPanel implements ActionListener, TotalUpdate {
             private JLabel jlTotal;
             private JButton jbCancel;
             private JButton jbSave;
@@ -90,6 +96,7 @@ public class NewItemFrame extends JFrame {
                 
                 if (newItem == null) {
                     System.out.println("newItem is null");
+                    JOptionPane.showMessageDialog(this, "Cannot Save Item - Item Fields are not valid");
                     return;
                 }
                 
@@ -111,9 +118,6 @@ public class NewItemFrame extends JFrame {
             }
             
         }
-        jpFooter = new FooterPanel();
-        this.add(jpFooter, BorderLayout.SOUTH);
-    }
     
     public void addChangeItemListener(ChangeItemListener e) {
         changeListeners.add(e);

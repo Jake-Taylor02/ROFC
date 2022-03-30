@@ -12,6 +12,7 @@ import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.SpringLayout;
 import javax.swing.SwingConstants;
+import javax.swing.event.ChangeEvent;
 import uk.ac.tees.b1086175.ROFCApp.Desk;
 import uk.ac.tees.b1086175.ROFCApp.Item;
 import uk.ac.tees.b1086175.ROFCApp.WoodType;
@@ -114,15 +115,9 @@ public class DeskPanel extends ItemPanel implements ActionListener {
         jsDraws.setValue(myDesk.getDraws());
         this.actionPerformed(null);
     }
-    
+
     @Override
-    public void actionPerformed(ActionEvent e) {
-        super.actionPerformed(e);
-
-        if (!this.validEntries) {
-            return;
-        }
-
+    protected boolean initialiseItem() {
         newItem = new Desk(
                 this.txtidNum.getText(),// ID Number
                 (WoodType) jcbWoodType.getSelectedItem(),// Type of Wood
@@ -131,8 +126,34 @@ public class DeskPanel extends ItemPanel implements ActionListener {
                 (Integer) jsDepth.getValue(),// Depth
                 (Integer) jsDraws.getValue()// Draws
         );
-        this.updateTotal();
+        return true;
     }
+
+    @Override
+    protected boolean validInputs() {
+        if (!super.validInputs()) return false;
+        
+        // do i need to validate jspinners?
+        
+        return true;
+    }
+
+    @Override
+    public void stateChanged(ChangeEvent e) {
+        super.stateChanged(e);
+        
+        if (e.getSource() == jsDraws) {
+            ((Desk) newItem).setDraws((int) jsDraws.getValue());
+        } else if (e.getSource() == jsWidth) {
+            ((Desk) newItem).setWidth((int) jsWidth.getValue());
+        } else if (e.getSource() == jsDepth) {
+            ((Desk) newItem).setDepth((int) jsDepth.getValue());
+        }
+        
+        updateTotal();
+    }
+    
+    
 
     @Override
     public String getTitle() {
