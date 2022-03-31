@@ -44,18 +44,10 @@ public abstract class Item implements java.io.Serializable, java.util.Comparator
     protected abstract void calculatePrice();
     
     /**
-     * 
-     * @return
-     */
-    public static ImageIcon defaultImage() {
-        return new ImageIcon("no_image2.jpg");
-    }
-    
-    /**
      *
      * @return
      */
-    public abstract ImageIcon getImage();
+    public abstract File getImage();
     
     /**
      *

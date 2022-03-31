@@ -15,7 +15,7 @@ import javax.swing.ImageIcon;
 public class Chair extends Item implements java.io.Serializable {
     private boolean armrests;
     
-    private static ImageIcon myImage = new ImageIcon("chair3.png");;
+    private static final File myImage = new File("chair3.png");
 
     public Chair(String ID, WoodType wood, int quantity, boolean armrests) {
         super(ID, wood, quantity);
@@ -57,7 +57,7 @@ public class Chair extends Item implements java.io.Serializable {
     }
 
     @Override
-    public ImageIcon getImage() {
+    public File getImage() {
         return myImage;
     }
     

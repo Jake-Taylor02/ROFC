@@ -16,7 +16,7 @@ public class Table extends Item implements java.io.Serializable {
     private TableBase base;
     private int diameter;
     
-    private static final ImageIcon myImage = new ImageIcon("table2.jpg");
+    private static final File myImage = new File("table2.jpg");
 
     public Table(String ID, WoodType wood, int quantity, TableBase base, int diameter) {
         super(ID, wood, quantity);
@@ -57,7 +57,7 @@ public class Table extends Item implements java.io.Serializable {
     }
 
     @Override
-    public ImageIcon getImage() {
+    public File getImage() {
         return myImage;
     }
     
