@@ -34,16 +34,16 @@ public class Chair extends Item implements java.io.Serializable {
     }
     
     @Override
-    public String getSummary() {
-        String result = super.getSummary();
+    public String toString() {
+        String result = super.toString();
         
-        result += String.format("%16s %s\n", "Armrests:", armrests ? "Yes" : "No");
+        result += String.format("Armrests: %s\n", armrests ? "Yes" : "No");
         
         return result;
     }
     
     /*@Override
-    public String getSummary() {
+    public String toString() {
     
     }*/
 

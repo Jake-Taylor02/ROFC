@@ -50,10 +50,16 @@ public class Desk extends Item implements java.io.Serializable {
 //        System.out.println("total: " + total);
     }
 
-    /*@Override
-    public String getSummary() {
-    return "";
-    }*/
+    @Override
+    public String toString() {
+        String result = super.toString();
+        
+        result += String.format("Draws: %d\n", draws);
+        result += String.format("Width: %d\n", width);
+        result += String.format("Depth: %d\n", depth);
+        
+        return "";
+    }
 
     public int getDraws() {
         return draws;

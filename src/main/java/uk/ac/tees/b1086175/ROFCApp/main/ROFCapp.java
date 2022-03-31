@@ -27,12 +27,28 @@ public class ROFCapp extends JFrame {
                 1,// Quantity
                 true// Armrest
         ));
+        myOrder.addItem(new Chair("CH002", WoodType.OAK, 2, false));
         
-        myOrder.addItem(new Chair("004", WoodType.OAK, 2, true));
-        myOrder.addItem(new Desk("002", WoodType.WALNUT, 1, 100, 75, 3));
-        myOrder.addItem(new Desk("003", WoodType.WALNUT, 1, 100, 75, 3));
-        myOrder.addItem(new Chair("004", WoodType.OAK, 2, true));
-        myOrder.addItem(new Table("005", WoodType.OAK, 1, TableBase.WOODEN, 60));
+        myOrder.addItem(new Table(
+                "TA001",// Item ID
+                WoodType.OAK,// Type of Wood
+                4,// Quantity
+                TableBase.WOODEN,// Table Base 
+                60// Diameter
+        ));
+        myOrder.addItem(new Table("TA002", WoodType.WALNUT, 2, TableBase.CHROME, 100));
+        
+        myOrder.addItem(new Desk(
+                "DE001",// Item ID
+                WoodType.WALNUT,// Type of Wood 
+                1,// Quantity
+                100,// Width
+                75,// Depth
+                3// Draws
+        ));
+        myOrder.addItem(new Desk("DE002", WoodType.OAK, 1, 150, 75, 0));
+        
+        
         
         
         OrderView.getInstance().populate();

@@ -33,10 +33,15 @@ public class Table extends Item implements java.io.Serializable {
         this.itemPrice = (units * wood.getPrice()) + base.getPrice();
     }
 
-    /*@Override
-    public String getSummary() {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }*/
+    @Override
+    public String toString() {
+        String result = super.toString();
+        
+        result += String.format("Table Base: %s\n", this.base.toString());
+        result += String.format("Diameter: %d\n", this.diameter);
+        
+        return result;
+    }
 
     public TableBase getBase() {
         return base;
