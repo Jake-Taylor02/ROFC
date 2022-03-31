@@ -3,6 +3,7 @@ package uk.ac.tees.b1086175.ROFCApp.main;
 import uk.ac.tees.b1086175.ROFCApp.*;
 import java.awt.HeadlessException;
 import javax.swing.*;
+import uk.ac.tees.b1086175.ROFCApp.view.OrderView;
 
 /** TODO
  * - 
@@ -25,6 +26,8 @@ public class ROFCapp extends JFrame {
         itemArr.addItem(new Desk("003", WoodType.WALNUT, 1, 100, 75, 3));
         itemArr.addItem(new Chair("004", WoodType.OAK, 2, true));
         itemArr.addItem(new Table("005", WoodType.OAK, 1, TableBase.WOODEN, 60));
+        
+        OrderView.getInstance().populate();
         
         SwingUtilities.invokeLater(new Runnable() {
             @Override

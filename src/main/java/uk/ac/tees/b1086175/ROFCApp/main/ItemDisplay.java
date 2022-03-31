@@ -4,16 +4,19 @@
  */
 package uk.ac.tees.b1086175.ROFCApp.main;
 
+import java.awt.Color;
 import uk.ac.tees.b1086175.ROFCApp.newitem.ItemPanel;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
+import javax.swing.border.Border;
 import uk.ac.tees.b1086175.ROFCApp.Item;
 import uk.ac.tees.b1086175.ROFCApp.newitem.NewItemFrame;
 import uk.ac.tees.b1086175.ROFCApp.view.OrderView;
@@ -61,6 +64,15 @@ public class ItemDisplay extends JPanel implements MouseListener {
         
         this.addMouseListener(this);
         this.add(jlItem);
+        
+        if (!empty) {
+            JLabel jlID = new JLabel(myItem.getClass().getSimpleName() + ": " + myItem.getID());
+            this.add(jlID);
+            
+            this.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY));
+        }
+        
+        
     }
     
     @Override
