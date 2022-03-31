@@ -12,20 +12,9 @@ import uk.ac.tees.b1086175.ROFCApp.newitem.ItemPanel;
  *
  * @author b1086175
  */
-public abstract class ItemView {
-    protected Item item;
-
-    public ItemView(Item item) {
-        this.item = item;
-    }
+public interface ItemView {
     
-    public abstract JPanel getDetailsPanel();
+    public JPanel getDetailsPanel(Item item);
     
-    public abstract ItemPanel getEditPanel();
-
-    public Item getItem() {
-        return item;
-    }
-    
-    
+    public abstract ItemPanel getEditPanel(Item item);
 }

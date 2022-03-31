@@ -16,6 +16,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.io.File;
 import java.io.FileInputStream;
+import uk.ac.tees.b1086175.ROFCApp.view.OrderView;
 
 /**
  *
@@ -45,14 +46,14 @@ public class Order {
     public boolean removeItem(int index) {
         if (index < 0 || index >= items.size()) return false;
         
-        items.remove(0);
+        items.remove(index);
         return true;
     }
     
     public void removeItem(Item item) {
         items.remove(item);
     }
-    
+    // this isnt used anymore
     public void replaceItem(int index, Item newItem) {
         items.set(index, newItem);
     }

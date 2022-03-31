@@ -18,6 +18,7 @@ import uk.ac.tees.b1086175.ROFCApp.Item;
 import uk.ac.tees.b1086175.ROFCApp.Table;
 import uk.ac.tees.b1086175.ROFCApp.TableBase;
 import uk.ac.tees.b1086175.ROFCApp.WoodType;
+import uk.ac.tees.b1086175.ROFCApp.view.OrderView;
 
 /**
  *
@@ -101,6 +102,7 @@ public class TablePanel extends ItemPanel implements ActionListener {
                 (TableBase) jcbBase.getSelectedItem(),// TableBase
                 (Integer) jspDiameter.getValue()// Diameter
         );
+        OrderView.getInstance().add(newItem);
         return true;
     }
 

@@ -15,19 +15,15 @@ import uk.ac.tees.b1086175.ROFCApp.newitem.ItemPanel;
  *
  * @author b1086175
  */
-public class DeskView extends ItemView{
-
-    public DeskView(Item item) {
-        super(item);
-    }
+public class DeskView implements ItemView{
 
     @Override
-    public JPanel getDetailsPanel() {
+    public JPanel getDetailsPanel(Item item) {
         return new DeskDetailsPanel(item);
     }
 
     @Override
-    public ItemPanel getEditPanel() {
+    public ItemPanel getEditPanel(Item item) {
         return new DeskPanel((Desk) item);
     }
     

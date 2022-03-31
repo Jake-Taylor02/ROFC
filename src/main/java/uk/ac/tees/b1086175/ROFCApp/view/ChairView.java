@@ -15,24 +15,38 @@ import uk.ac.tees.b1086175.ROFCApp.newitem.ItemPanel;
  *
  * @author b1086175
  */
-public class ChairView extends ItemView{
+public class ChairView implements ItemView{
 
-    public ChairView(Item item) {
-        super(item);
+    @Override
+    public JPanel getDetailsPanel(Item item) {
+        return new ChairDetailsPanel(item);
     }
 
     @Override
-    public JPanel getDetailsPanel() {
-        return new ChairDetailsPanel(this.item);
-    }
-
-    @Override
-    public ItemPanel getEditPanel() {
+    public ItemPanel getEditPanel(Item item) {
         return new ChairPanel((Chair) item);
     }
     
     public static ItemPanel getNewItemPanel() {
         return new ChairPanel();
     }
+
+//    public ChairView(Item item) {
+//        super(item);
+//    }
+//
+//    @Override
+//    public JPanel getDetailsPanel() {
+//        return new ChairDetailsPanel(this.item);
+//    }
+//
+//    @Override
+//    public ItemPanel getEditPanel() {
+//        return new ChairPanel((Chair) item);
+//    }
+//    
+//    public static ItemPanel getNewItemPanel() {
+//        return new ChairPanel();
+//    }
     
 }
