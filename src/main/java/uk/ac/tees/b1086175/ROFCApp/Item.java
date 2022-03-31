@@ -54,11 +54,11 @@ public abstract class Item implements java.io.Serializable, java.util.Comparator
      * @return
      */
     public String getSummary() {
-        String result = String.format("%16s %s\n", "Type of Item:", this.getClass().getSimpleName());
+        String result = String.format("Type of Item: %s\n", this.getClass().getSimpleName());
         
-        result += String.format("%16s %s\n", "ID:", this.ID);
-        result += String.format("%16s £%.2f\n", "Item Price:", (double)this.itemPrice / 100);
-        result += String.format("%16s %d\n", "Quantity:", this.quantity);
+        result += String.format("Item ID: %s\n", this.ID);
+        result += String.format("Item Price: £%.2f\n", (double)this.itemPrice / 100);
+        result += String.format("Quantity: %d\n", this.quantity);
         result += String.format("%16s £%.2f\n", "Total Price:", (double)this.getTotalPrice() / 100);
         
         return result;

@@ -15,17 +15,25 @@ import uk.ac.tees.b1086175.ROFCApp.view.OrderView;
  */
 public class ROFCapp extends JFrame {
     private MainPanel mainPanel;
-    private static final Order itemArr = Order.getInstance();
+    private static final Order myOrder = Order.getInstance();
     private static ROFCapp myGUI;
     
     
     public static void main(String[] args) {
         // Test items
-        itemArr.addItem(new Chair("001", WoodType.OAK, 1, true));
-        itemArr.addItem(new Desk("002", WoodType.WALNUT, 1, 100, 75, 3));
-        itemArr.addItem(new Desk("003", WoodType.WALNUT, 1, 100, 75, 3));
-        itemArr.addItem(new Chair("004", WoodType.OAK, 2, true));
-        itemArr.addItem(new Table("005", WoodType.OAK, 1, TableBase.WOODEN, 60));
+        myOrder.addItem(new Chair(
+                "CH001",// Item ID
+                WoodType.OAK,// Type of Wood
+                1,// Quantity
+                true// Armrest
+        ));
+        
+        myOrder.addItem(new Chair("004", WoodType.OAK, 2, true));
+        myOrder.addItem(new Desk("002", WoodType.WALNUT, 1, 100, 75, 3));
+        myOrder.addItem(new Desk("003", WoodType.WALNUT, 1, 100, 75, 3));
+        myOrder.addItem(new Chair("004", WoodType.OAK, 2, true));
+        myOrder.addItem(new Table("005", WoodType.OAK, 1, TableBase.WOODEN, 60));
+        
         
         OrderView.getInstance().populate();
         

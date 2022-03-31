@@ -86,7 +86,6 @@ public class MainPanel extends JPanel{
                 JOptionPane.showMessageDialog(this, new SummaryPanel(),
                     "Order Summary", JOptionPane.INFORMATION_MESSAGE);
                 
-                System.out.println(itemArr.orderSummary());
             }
         }
     } 
