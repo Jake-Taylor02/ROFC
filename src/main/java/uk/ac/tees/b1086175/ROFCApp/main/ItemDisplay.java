@@ -5,12 +5,14 @@
 package uk.ac.tees.b1086175.ROFCApp.main;
 
 import java.awt.Color;
+import java.awt.FlowLayout;
 import uk.ac.tees.b1086175.ROFCApp.newitem.ItemPanel;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.BorderFactory;
+import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -66,6 +68,7 @@ public class ItemDisplay extends JPanel implements MouseListener {
         this.add(jlItem);
         
         if (!empty) {
+            this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
             JLabel jlID = new JLabel(myItem.getClass().getSimpleName() + ": " + myItem.getID());
             this.add(jlID);
             
