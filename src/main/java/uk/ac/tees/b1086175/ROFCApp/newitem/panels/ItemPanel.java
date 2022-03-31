@@ -152,6 +152,7 @@ public abstract class ItemPanel extends JPanel implements ActionListener, Change
             newItem.setWood((WoodType) jcbWoodType.getSelectedItem()); // possible exception?
         }
         updateTotal();
+
     }
     
     @Override

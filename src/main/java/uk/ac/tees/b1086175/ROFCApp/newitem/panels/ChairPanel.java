@@ -47,7 +47,7 @@ public class ChairPanel extends ItemPanel implements ActionListener {
         }
         
         jcbArmrest.setSelected(myChair.isArmrests());
-        this.actionPerformed(null);
+        this.updateTotal();
     }
 
     @Override

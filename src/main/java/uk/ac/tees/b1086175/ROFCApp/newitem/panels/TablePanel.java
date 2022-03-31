@@ -87,7 +87,7 @@ public class TablePanel extends ItemPanel implements ActionListener {
         
         jcbBase.setSelectedItem(myTable.getBase());
         jspDiameter.setValue(myTable.getDiameter());
-        this.actionPerformed(null);
+        this.updateTotal();
     }
 
     @Override

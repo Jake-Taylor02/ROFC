@@ -4,8 +4,6 @@
  */
 package uk.ac.tees.b1086175.ROFCApp.main;
 
-import uk.ac.tees.b1086175.ROFCApp.newitem.EditItemFrame;
-import uk.ac.tees.b1086175.ROFCApp.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
@@ -14,7 +12,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import uk.ac.tees.b1086175.ROFCApp.Item;
-import uk.ac.tees.b1086175.ROFCApp.main.details.*;
+import uk.ac.tees.b1086175.ROFCApp.newitem.NewItemFrame;
 import uk.ac.tees.b1086175.ROFCApp.newitem.panels.*;
 import uk.ac.tees.b1086175.ROFCApp.view.OrderView;
 
@@ -85,14 +83,14 @@ public class ItemDisplay extends JPanel implements MouseListener {
             
         } else if (e.getButton() == MouseEvent.BUTTON2) {
             // Edit Item
-            EditItemFrame edit;
+            NewItemFrame edit;
             ItemPanel editPanel;
             System.out.println("button 3 clicked");
             System.out.println(myItem.getClass().getSimpleName());
             
             editPanel = OrderView.getView(myItem).getEditPanel();
             
-            edit = new EditItemFrame(editPanel, myItem);
+            edit = new NewItemFrame(editPanel, myItem);
             edit.addChangeItemListener(parentCont);
  
         } else if (e.getButton() == MouseEvent.BUTTON3) {

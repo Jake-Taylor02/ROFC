@@ -45,10 +45,22 @@ public class NewItemFrame extends JFrame {
         // Add Footer buttons
         initFooter();
         
-        this.setTitle("New" + jpCenter.getTitle());
+        this.setTitle("New " + jpCenter.getTitle());
         this.setSize(400, 400);
         this.setVisible(true);// should be in subclass
     }
+
+    public NewItemFrame(ItemPanel jpCenter, Item newItem) {
+        this(jpCenter);
+        
+        this.newItem = newItem;
+        
+        this.setTitle("Edit " + jpCenter.getTitle());
+        
+        this.jpCenter.setItem(newItem);
+    }
+    
+    
     
     private void initFooter() {
         

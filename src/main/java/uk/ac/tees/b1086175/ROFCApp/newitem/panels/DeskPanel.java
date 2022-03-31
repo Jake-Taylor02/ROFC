@@ -113,7 +113,7 @@ public class DeskPanel extends ItemPanel implements ActionListener {
         jsWidth.setValue(myDesk.getWidth());
         jsDepth.setValue(myDesk.getDepth());
         jsDraws.setValue(myDesk.getDraws());
-        this.actionPerformed(null);
+        this.updateTotal();
     }
 
     @Override
