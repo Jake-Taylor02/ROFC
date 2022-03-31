@@ -15,19 +15,15 @@ import uk.ac.tees.b1086175.ROFCApp.newitem.TablePanel;
  *
  * @author b1086175
  */
-public class TableView extends ItemView{
-
-    public TableView(Item item) {
-        super(item);
-    }
+public class TableView implements ItemView{
 
     @Override
-    public JPanel getDetailsPanel() {
+    public JPanel getDetailsPanel(Item item) {
         return new TableDetailsPanel(item);
     }
 
     @Override
-    public ItemPanel getEditPanel() {
+    public ItemPanel getEditPanel(Item item) {
         return new TablePanel((Table) item);
     }
     

@@ -9,6 +9,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JCheckBox;
 import javax.swing.SpringLayout;
 import uk.ac.tees.b1086175.ROFCApp.*;
+import uk.ac.tees.b1086175.ROFCApp.view.OrderView;
 
 /**
  *
@@ -59,6 +60,8 @@ public class ChairPanel extends ItemPanel implements ActionListener {
                 (Integer) this.spQuantity.getValue(),// Quantity
                 jcbArmrest.isSelected() // Armrest
         );
+        
+        OrderView.getInstance().add(newItem);
         return true;
     }
 

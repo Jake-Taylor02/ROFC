@@ -4,7 +4,9 @@
  */
 package uk.ac.tees.b1086175.ROFCApp.view;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import uk.ac.tees.b1086175.ROFCApp.Chair;
 import uk.ac.tees.b1086175.ROFCApp.Desk;
 import uk.ac.tees.b1086175.ROFCApp.Item;
@@ -16,21 +18,72 @@ import uk.ac.tees.b1086175.ROFCApp.Table;
  * @author b1086175 | Jake Taylor
  */
 public class OrderView {
+    private Map<Item, ItemView> viewMap = new HashMap<>();
+    private static OrderView myView;
     
-    public static ItemView getView(Item myItem) {
+    private OrderView() {
+        
+    }
+    
+    public static OrderView getInstance() {
+        if (myView == null) myView = new OrderView();
+        
+        return myView;
+    }
+    
+    public void add(Item newItem) {
+        if (viewMap.containsKey(newItem)) return;
+        
         ItemView newItemView = null;
 
-        if (myItem instanceof Chair) {
-            newItemView = new ChairView(myItem);
+        if (newItem instanceof Chair) {
+            newItemView = new ChairView();
 
-        } else if (myItem instanceof Table) {
-            newItemView = new TableView(myItem);
+        } else if (newItem instanceof Table) {
+            newItemView = new TableView();
 
-        } else if (myItem instanceof Desk) {
-            newItemView = new DeskView(myItem);
+        } else if (newItem instanceof Desk) {
+            newItemView = new DeskView();
         }
         
-        return newItemView;
+        viewMap.put(newItem, newItemView);
     }
+    
+    public void remove(Item toRemove) {
+        if (!viewMap.containsKey(toRemove)) return;
+        
+        viewMap.remove(toRemove);
+    }
+    
+    public ItemView getView(Item item) {
+        return viewMap.get(item);
+    }
+    
+    public void clearAll() {
+        viewMap.clear();
+    }
+    
+    public void populate() {
+        Order myOrder = Order.getInstance();
+        for (int i = 0; i < myOrder.size(); i++) {
+            this.add(myOrder.get(i));
+        }
+    }
+    
+//    public static ItemView getView(Item myItem) {
+//        ItemView newItemView = null;
+//
+//        if (myItem instanceof Chair) {
+//            newItemView = new ChairView(myItem);
+//
+//        } else if (myItem instanceof Table) {
+//            newItemView = new TableView(myItem);
+//
+//        } else if (myItem instanceof Desk) {
+//            newItemView = new DeskView(myItem);
+//        }
+//        
+//        return newItemView;
+//    }
     
 }

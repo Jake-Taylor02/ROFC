@@ -74,7 +74,7 @@ public class ItemDisplay extends JPanel implements MouseListener {
         
         if (e.getButton() == MouseEvent.BUTTON1) {
             // Show item details
-            JPanel summaryPanel = OrderView.getView(myItem).getDetailsPanel();
+            JPanel summaryPanel = OrderView.getInstance().getView(myItem).getDetailsPanel(myItem);
             
             if (summaryPanel != null) {
                 JOptionPane.showMessageDialog(this, summaryPanel);
@@ -91,7 +91,7 @@ public class ItemDisplay extends JPanel implements MouseListener {
             SwingUtilities.invokeLater(new Runnable() {
                 @Override
                 public void run() {
-                    ItemPanel editPanel  = OrderView.getView(myItem).getEditPanel();
+                    ItemPanel editPanel  = OrderView.getInstance().getView(myItem).getEditPanel(myItem);
                     NewItemFrame edit = new NewItemFrame(editPanel, myItem);
                     edit.addChangeItemListener(parentCont);
                 }

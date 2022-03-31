@@ -13,6 +13,7 @@ import java.util.List;
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import uk.ac.tees.b1086175.ROFCApp.Order;
+import uk.ac.tees.b1086175.ROFCApp.view.OrderView;
 
 /**
  *
@@ -55,10 +56,12 @@ public class Main_TopPanel extends JPanel implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         Order myOrder = Order.getInstance();
+        OrderView orderView = OrderView.getInstance();
         
         if (e.getSource() == jbClear) {
             //clear order List
             myOrder.clear();
+            orderView.clearAll();
             
             //update grid
             for (ChangeItemListener cil : ciListeners) {
@@ -93,6 +96,8 @@ public class Main_TopPanel extends JPanel implements ActionListener {
             }
             
             jlFile.setText("File:" + myOrder.getPath().getPath());
+            
+            orderView.populate();
             
             for (ChangeItemListener cil : ciListeners) {
                 cil.updateGrid();
