@@ -2,9 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package uk.ac.tees.b1086175.ROFCApp.newitem.panels;
+package uk.ac.tees.b1086175.ROFCApp.newitem;
 
-import uk.ac.tees.b1086175.ROFCApp.newitem.panels.ItemPanel;
+import uk.ac.tees.b1086175.ROFCApp.newitem.ItemPanel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JLabel;

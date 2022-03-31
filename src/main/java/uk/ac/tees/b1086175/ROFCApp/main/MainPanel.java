@@ -23,8 +23,8 @@ import uk.ac.tees.b1086175.ROFCApp.Order;
 public class MainPanel extends JPanel{
     private final Order itemArr = Order.getInstance();
     
-    private CenterPanel jpCenter;
-    private TopPanel jpTop;
+    private Main_CenterPanel jpCenter;
+    private Main_TopPanel jpTop;
     private JPanel jpLeft;
     private BottomPanel jpBottom;
 
@@ -35,17 +35,17 @@ public class MainPanel extends JPanel{
     private void init() {
         this.setLayout(new BorderLayout(5, 5));
         
-        jpTop = new TopPanel();
+        jpTop = new Main_TopPanel();
         this.add(jpTop, BorderLayout.NORTH);
         
-        jpCenter = new CenterPanel();
+        jpCenter = new Main_CenterPanel();
         JScrollPane jsp = new JScrollPane(jpCenter);
         jsp.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
         this.add(jsp, BorderLayout.CENTER);
         
         jpTop.addChangeItemListener(jpCenter);
         
-        jpLeft = new LeftPanel(jpCenter);
+        jpLeft = new Main_LeftPanel(jpCenter);
         this.add(jpLeft, BorderLayout.WEST);
         
         jpBottom = new BottomPanel();

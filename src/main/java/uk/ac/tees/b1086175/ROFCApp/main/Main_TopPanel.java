@@ -18,7 +18,7 @@ import uk.ac.tees.b1086175.ROFCApp.Order;
  *
  * @author b1086175 | Jake Taylor
  */
-public class TopPanel extends JPanel implements ActionListener {
+public class Main_TopPanel extends JPanel implements ActionListener {
     private final List<ChangeItemListener> ciListeners = new ArrayList<>();
     
     JButton jbSave;
@@ -26,7 +26,7 @@ public class TopPanel extends JPanel implements ActionListener {
     JButton jbLoad;
     JLabel jlFile;
 
-    public TopPanel() {
+    public Main_TopPanel() {
         init();
     }
 
