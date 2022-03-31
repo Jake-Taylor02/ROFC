@@ -12,6 +12,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 import uk.ac.tees.b1086175.ROFCApp.Item;
 import uk.ac.tees.b1086175.ROFCApp.newitem.NewItemFrame;
 import uk.ac.tees.b1086175.ROFCApp.newitem.panels.*;
@@ -84,15 +85,17 @@ public class ItemDisplay extends JPanel implements MouseListener {
             
         } else if (e.getButton() == MouseEvent.BUTTON2) {
             // Edit Item
-            NewItemFrame edit;
-            ItemPanel editPanel;
             System.out.println("button 3 clicked");
             System.out.println(myItem.getClass().getSimpleName());
             
-            editPanel = OrderView.getView(myItem).getEditPanel();
-            
-            edit = new NewItemFrame(editPanel, myItem);
-            edit.addChangeItemListener(parentCont);
+            SwingUtilities.invokeLater(new Runnable() {
+                @Override
+                public void run() {
+                    ItemPanel editPanel  = OrderView.getView(myItem).getEditPanel();
+                    NewItemFrame edit = new NewItemFrame(editPanel, myItem);
+                    edit.addChangeItemListener(parentCont);
+                }
+            });
  
         } else if (e.getButton() == MouseEvent.BUTTON3) {
             
