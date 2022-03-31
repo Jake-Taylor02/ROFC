@@ -5,6 +5,7 @@
 package uk.ac.tees.b1086175.ROFCApp.main.details;
 
 import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import uk.ac.tees.b1086175.ROFCApp.Item;
@@ -32,7 +33,7 @@ public abstract class ItemDetailsPanel extends JPanel{
     private void init() {
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         
-        itemImage = new JLabel(myItem.getImage());
+        itemImage = new JLabel(new ImageIcon(myItem.getImage().getPath()));
         add(itemImage);
         
         idLabel = new JLabel(String.format("Item ID: %s", myItem.getID()));

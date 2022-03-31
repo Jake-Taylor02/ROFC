@@ -8,6 +8,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -55,7 +56,7 @@ public class ItemDisplay extends JPanel implements MouseListener {
     
     private void init() {
         jlItem = new JLabel();
-        if (!empty) jlItem.setIcon(myItem.getImage());
+        if (!empty) jlItem.setIcon(new ImageIcon(myItem.getImage().getPath()));
         
         this.addMouseListener(this);
         this.add(jlItem);

@@ -17,7 +17,7 @@ public class Desk extends Item implements java.io.Serializable {
     private int draws;
     private int width, depth;
     
-    private static final ImageIcon myImage = new ImageIcon("desk2.jpg");
+    private static final File myImage = new File("desk2.jpg");
 
     public Desk(String ID, WoodType wood, int quantity, int width, int depth, int draws) {
         super(ID, wood, quantity);
@@ -83,7 +83,7 @@ public class Desk extends Item implements java.io.Serializable {
     }
 
     @Override
-    public ImageIcon getImage() {
+    public File getImage() {
         return myImage;
     }
     
