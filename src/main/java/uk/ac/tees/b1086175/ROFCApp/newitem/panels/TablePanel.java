@@ -13,6 +13,7 @@ import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.SpringLayout;
 import javax.swing.SwingConstants;
+import javax.swing.event.ChangeEvent;
 import uk.ac.tees.b1086175.ROFCApp.Item;
 import uk.ac.tees.b1086175.ROFCApp.Table;
 import uk.ac.tees.b1086175.ROFCApp.TableBase;
@@ -86,18 +87,13 @@ public class TablePanel extends ItemPanel implements ActionListener {
         
         jcbBase.setSelectedItem(myTable.getBase());
         jspDiameter.setValue(myTable.getDiameter());
-        this.actionPerformed(null);
+        this.updateTotal();
     }
-    
+
     @Override
-    public void actionPerformed(ActionEvent e) {
-        super.actionPerformed(e);
-
-        if (!this.validEntries) {
-            return;
-        }
+    protected boolean initialiseItem() {
         // Do actions related to chair
-
+        // refactor with try-catch.
         newItem = new Table(
                 this.txtidNum.getText(),// ID Number
                 (WoodType) jcbWoodType.getSelectedItem(),// Type of Wood
@@ -105,8 +101,43 @@ public class TablePanel extends ItemPanel implements ActionListener {
                 (TableBase) jcbBase.getSelectedItem(),// TableBase
                 (Integer) jspDiameter.getValue()// Diameter
         );
-        this.updateTotal();
+        return true;
     }
+
+    @Override
+    protected boolean validInputs() {
+        if (!super.validInputs()) return false;
+
+        // do i need to validate cbox or jspinner values?
+        
+        return true; //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    
+    
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        super.actionPerformed(e);
+
+        if (e.getSource() == jcbBase) {
+            ((Table) newItem).setBase((TableBase)jcbBase.getSelectedItem());
+        }
+        
+        updateTotal();
+    }
+
+    @Override
+    public void stateChanged(ChangeEvent e) {
+        super.stateChanged(e);
+        
+        if (e.getSource() == jspDiameter) {
+            ((Table) newItem).setDiameter((int) jspDiameter.getValue());
+        }
+        
+        updateTotal();
+    }
+    
+    
 
     @Override
     public String getTitle() {

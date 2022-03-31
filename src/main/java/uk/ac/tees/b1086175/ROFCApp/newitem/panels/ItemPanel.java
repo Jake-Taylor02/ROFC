@@ -37,7 +37,6 @@ public abstract class ItemPanel extends JPanel implements ActionListener, Change
     protected final Dimension lblSize;
     protected final Dimension txtSize;
     
-    protected boolean validEntries;
     
     protected Item newItem;
     
@@ -126,32 +125,47 @@ public abstract class ItemPanel extends JPanel implements ActionListener, Change
         jcbWoodType.setSelectedItem(newItem.getWood());
         spQuantity.setValue(newItem.getQuantity());
     }
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        validEntries = true;
-        // Check all fields have valid inputs
-        
-        if (txtidNum.getText().length() <= 2) {
-            validEntries = false;
-            return;
-        }
+    
+    protected boolean validInputs() {
+        if (txtidNum.getText().length() <= 2) return false;
         
         // how can i validate wood type?
         
-        if ((Integer) spQuantity.getValue() < 1 || (Integer) spQuantity.getValue() > 20) {
-            validEntries = false;
-            return;
+        if ((Integer) spQuantity.getValue() < 1 || (Integer) spQuantity.getValue() > 20) return false;// redundant because spinner restricts input?
+        
+        if (newItem == null) {
+            initialiseItem();
         }
+        
+        return true;
     }
+    
+    protected abstract boolean initialiseItem();
 
     @Override
+    public void actionPerformed(ActionEvent e) {
+        if (!validInputs()) return;
+        
+        if (e.getSource() == txtidNum) {
+            newItem.setID(txtidNum.getText());
+        } else if (e.getSource() == jcbWoodType) {
+            newItem.setWood((WoodType) jcbWoodType.getSelectedItem()); // possible exception?
+        }
+        updateTotal();
+
+    }
+    
+    @Override
     public void stateChanged(ChangeEvent e) {
-        actionPerformed(null);
+        if (!validInputs()) return;
+        
+        if (e.getSource() == spQuantity) {
+            newItem.setQuantity((int) spQuantity.getValue());
+        }
+        updateTotal();
     }
     
     public Item getNewItem() {
-        this.actionPerformed(null);// refresh item
         return newItem;
     }
     
@@ -160,6 +174,8 @@ public abstract class ItemPanel extends JPanel implements ActionListener, Change
     }
     
     protected void updateTotal() {
+        if (newItem == null) return;
+        
         int data = newItem.getItemPrice() * newItem.getQuantity();
         for (TotalUpdate r : uListeners) {
             r.newTotal(data);

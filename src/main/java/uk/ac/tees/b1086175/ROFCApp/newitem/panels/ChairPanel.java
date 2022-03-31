@@ -47,27 +47,38 @@ public class ChairPanel extends ItemPanel implements ActionListener {
         }
         
         jcbArmrest.setSelected(myChair.isArmrests());
-        this.actionPerformed(null);
+        this.updateTotal();
+    }
+
+    @Override
+    protected boolean initialiseItem() {
+        // refactor into try-catch
+        newItem = new Chair(
+                this.txtidNum.getText(), // ID Number
+                (WoodType) jcbWoodType.getSelectedItem(), // Type of Wood | 
+                (Integer) this.spQuantity.getValue(),// Quantity
+                jcbArmrest.isSelected() // Armrest
+        );
+        return true;
+    }
+
+    @Override
+    protected boolean validInputs() {
+        if (!super.validInputs()) return false;
+        
+        
+        return true;
     }
     
     @Override
     public void actionPerformed(ActionEvent e) {
-        // Perform Superclass action
         super.actionPerformed(e);
 
-        if (!this.validEntries) {
-            return;
+        if (e.getSource() == jcbArmrest) {
+            ((Chair)newItem).setArmrests(jcbArmrest.isSelected());
         }
-        // Do actions related to chair
-        WoodType s = (WoodType) jcbWoodType.getSelectedItem();// should a catch this?
-
-        newItem = new Chair(
-                this.txtidNum.getText(), // ID Number
-                s, // Type of Wood
-                (Integer) this.spQuantity.getValue(),// Quantity
-                jcbArmrest.isSelected() // Armrest
-        );
-        this.updateTotal();
+        
+        updateTotal();
     }
 
     @Override
