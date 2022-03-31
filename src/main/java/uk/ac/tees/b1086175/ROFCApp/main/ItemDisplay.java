@@ -4,6 +4,7 @@
  */
 package uk.ac.tees.b1086175.ROFCApp.main;
 
+import uk.ac.tees.b1086175.ROFCApp.newitem.ItemPanel;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
@@ -15,19 +16,18 @@ import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 import uk.ac.tees.b1086175.ROFCApp.Item;
 import uk.ac.tees.b1086175.ROFCApp.newitem.NewItemFrame;
-import uk.ac.tees.b1086175.ROFCApp.newitem.panels.*;
 import uk.ac.tees.b1086175.ROFCApp.view.OrderView;
 
 /**
- *  JPanel that visually represents a single Item in CenterPanel.
+ *  JPanel that visually represents a single Item in Main_CenterPanel.
  *  
- * @see CenterPanel
+ * @see Main_CenterPanel
  * @author jake
  */
 public class ItemDisplay extends JPanel implements MouseListener {
     private JLabel jlItem;
     private Item myItem;
-    private final CenterPanel parentCont;
+    private final Main_CenterPanel parentCont;
     private final boolean empty;
 
     private final List<ChangeItemListener> changeListeners = new ArrayList<>();
@@ -37,7 +37,7 @@ public class ItemDisplay extends JPanel implements MouseListener {
      * icon is set to default image
      * @param owner Reference to parent container
      */
-    public ItemDisplay(CenterPanel owner) {
+    public ItemDisplay(Main_CenterPanel owner) {
         this.parentCont = owner;
         empty = true;
         init();
@@ -48,7 +48,7 @@ public class ItemDisplay extends JPanel implements MouseListener {
      * @param owner Reference to parent container
      * @param myItem Reference to the Item which the JPanel represents
      */
-    public ItemDisplay(CenterPanel owner, Item myItem) {
+    public ItemDisplay(Main_CenterPanel owner, Item myItem) {
         this.parentCont = owner;
         this.myItem = myItem;
         empty = false;

@@ -4,25 +4,25 @@
  */
 package uk.ac.tees.b1086175.ROFCApp.main;
 
-import uk.ac.tees.b1086175.ROFCApp.newitem.panels.DeskPanel;
-import uk.ac.tees.b1086175.ROFCApp.newitem.panels.ChairPanel;
+import uk.ac.tees.b1086175.ROFCApp.newitem.DeskPanel;
+import uk.ac.tees.b1086175.ROFCApp.newitem.ChairPanel;
 import uk.ac.tees.b1086175.ROFCApp.newitem.NewItemFrame;
-import uk.ac.tees.b1086175.ROFCApp.newitem.panels.TablePanel;
+import uk.ac.tees.b1086175.ROFCApp.newitem.TablePanel;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
-import uk.ac.tees.b1086175.ROFCApp.newitem.panels.ItemPanel;
+import uk.ac.tees.b1086175.ROFCApp.newitem.ItemPanel;
 
 /** Move to main internal?
  *
  * @author b1086175
  */
-public class LeftPanel extends JPanel {
-    private final CenterPanel grid;
+public class Main_LeftPanel extends JPanel {
+    private final Main_CenterPanel grid;
     NewItemFrame newIF;
 
-    public LeftPanel(CenterPanel grid) {
+    public Main_LeftPanel(Main_CenterPanel grid) {
         this.grid = grid;
         
         init();

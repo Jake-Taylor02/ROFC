@@ -6,7 +6,7 @@ package uk.ac.tees.b1086175.ROFCApp.view;
 
 import javax.swing.JPanel;
 import uk.ac.tees.b1086175.ROFCApp.Item;
-import uk.ac.tees.b1086175.ROFCApp.newitem.panels.ItemPanel;
+import uk.ac.tees.b1086175.ROFCApp.newitem.ItemPanel;
 
 /**
  *
