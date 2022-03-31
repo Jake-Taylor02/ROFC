@@ -5,7 +5,7 @@ import java.awt.HeadlessException;
 import javax.swing.*;
 
 /** TODO
- * - Item class uses ImageIcon, should use File or Path instead.
+ * - 
  * - JUnitTest
  * - Should i have grid lines?
  * - is OrderView the right way to do it?
@@ -15,6 +15,8 @@ import javax.swing.*;
 public class ROFCapp extends JFrame {
     private MainPanel mainPanel;
     private static final Order itemArr = Order.getInstance();
+    private static ROFCapp myGUI;
+    
     
     public static void main(String[] args) {
         // Test items
@@ -24,7 +26,12 @@ public class ROFCapp extends JFrame {
         itemArr.addItem(new Chair("004", WoodType.OAK, 2, true));
         itemArr.addItem(new Table("005", WoodType.OAK, 1, TableBase.WOODEN, 60));
         
-        new ROFCapp();
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                myGUI = new ROFCapp();
+            }
+        });
     }
 
     public ROFCapp() throws HeadlessException {
@@ -42,7 +49,7 @@ public class ROFCapp extends JFrame {
         this.setVisible(true);
     }
 
-   
+    
     
     
 }

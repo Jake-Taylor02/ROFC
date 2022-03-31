@@ -31,10 +31,12 @@ public class NewItemFrame extends JFrame {
     public JPanel jpFooter;
     protected ItemPanel jpCenter;
     protected Item newItem;
+    private boolean editMode;
     
     private List<ChangeItemListener> changeListeners = new ArrayList<>();
     
     public NewItemFrame(ItemPanel panel) throws HeadlessException {
+        editMode = false;
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setLayout(new BorderLayout());
     
@@ -53,6 +55,7 @@ public class NewItemFrame extends JFrame {
     public NewItemFrame(ItemPanel jpCenter, Item newItem) {
         this(jpCenter);
         
+        editMode = true;
         this.newItem = newItem;
         
         this.setTitle("Edit " + jpCenter.getTitle());
@@ -114,10 +117,20 @@ public class NewItemFrame extends JFrame {
                 
                 if (e.getSource() == jbSave) {
                     System.out.println("Save has been pressed");
-
-                    for (ChangeItemListener l : changeListeners) {
-                        l.newItem(newItem);
+                    
+                    //Refresh the item
+                    
+                    if (editMode) {
+                        for (ChangeItemListener l : changeListeners) {
+                            l.updateGrid();
+                        }
+                    } else {
+                        for (ChangeItemListener l : changeListeners) {
+                            l.newItem(newItem);
+                        }
                     }
+
+                    
                     dispose();// Shut the frame
                 } else {
                     System.out.println("Error - Action performed but no source.");
