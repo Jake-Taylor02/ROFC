@@ -5,6 +5,7 @@
 package uk.ac.tees.b1086175.ROFCApp.main;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 import uk.ac.tees.b1086175.ROFCApp.newitem.ItemPanel;
 import java.awt.event.MouseEvent;
@@ -75,8 +76,6 @@ public class ItemDisplay extends JPanel implements MouseListener {
             
             this.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY));
         }
-        
-        
     }
     
     @Override
