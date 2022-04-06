@@ -16,6 +16,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.io.File;
 import java.io.FileInputStream;
+import java.util.HashMap;
+import java.util.Map;
+import uk.ac.tees.b1086175.ROFCApp.view.ItemView;
+import uk.ac.tees.b1086175.ROFCApp.view.OrderView;
 
 /**
  *
@@ -23,6 +27,7 @@ import java.io.FileInputStream;
  */
 public class Order {
     private static Order myOrder;
+    public OrderView myViews;
     
     private File path;
     private List<Item> items;
@@ -30,6 +35,7 @@ public class Order {
     private Order() {
         path = null;
         items = new ArrayList<>();
+        myViews = new OrderView();
     }
     
     public static Order getInstance() {
@@ -76,7 +82,7 @@ public class Order {
     public int calcTotal() {
         int result = 0;
         for (Item e : items) {
-            result += e.getItemPrice();
+            result += e.getTotalPrice();
         }
         return result;
     }

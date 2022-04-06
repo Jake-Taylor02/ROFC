@@ -20,6 +20,7 @@ import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 import javax.swing.border.Border;
 import uk.ac.tees.b1086175.ROFCApp.Item;
+import uk.ac.tees.b1086175.ROFCApp.Order;
 import uk.ac.tees.b1086175.ROFCApp.newitem.NewItemFrame;
 import uk.ac.tees.b1086175.ROFCApp.view.OrderView;
 
@@ -89,7 +90,9 @@ public class ItemDisplay extends JPanel implements MouseListener {
         
         if (e.getButton() == MouseEvent.BUTTON1) {
             // Show item details
-            JPanel summaryPanel = OrderView.getInstance().getView(myItem).getDetailsPanel(myItem);
+            JPanel summaryPanel = Order.getInstance()
+                    .myViews.getView(myItem)
+                    .getDetailsPanel(myItem);
             
             if (summaryPanel != null) {
                 JOptionPane.showMessageDialog(this, summaryPanel);
@@ -106,7 +109,9 @@ public class ItemDisplay extends JPanel implements MouseListener {
             SwingUtilities.invokeLater(new Runnable() {
                 @Override
                 public void run() {
-                    ItemPanel editPanel  = OrderView.getInstance().getView(myItem).getEditPanel(myItem);
+                    ItemPanel editPanel  = Order.getInstance()
+                            .myViews.getView(myItem)
+                            .getEditPanel(myItem);
                     NewItemFrame edit = new NewItemFrame(editPanel, myItem);
                     edit.addChangeItemListener(parentCont);
                 }
