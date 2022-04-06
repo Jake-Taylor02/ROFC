@@ -5,7 +5,6 @@
 package uk.ac.tees.b1086175.ROFCApp.view;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import uk.ac.tees.b1086175.ROFCApp.Chair;
 import uk.ac.tees.b1086175.ROFCApp.Desk;
@@ -18,21 +17,14 @@ import uk.ac.tees.b1086175.ROFCApp.Table;
  * @author b1086175 | Jake Taylor
  */
 public class OrderView {
-    private Map<Item, ItemView> viewMap = new HashMap<>();
-    private static OrderView myView;
+    private final Map<Class, ItemView> viewMap = new HashMap<>();
     
-    private OrderView() {
+    public OrderView() {
         
-    }
-    
-    public static OrderView getInstance() {
-        if (myView == null) myView = new OrderView();
-        
-        return myView;
     }
     
     public void add(Item newItem) {
-        if (viewMap.containsKey(newItem)) return;
+        if (viewMap.containsKey(newItem.getClass())) return;
         
         ItemView newItemView = null;
 
@@ -46,17 +38,17 @@ public class OrderView {
             newItemView = new DeskView();
         }
         
-        viewMap.put(newItem, newItemView);
+        viewMap.put(newItem.getClass(), newItemView);
     }
     
     public void remove(Item toRemove) {
-        if (!viewMap.containsKey(toRemove)) return;
+        if (!viewMap.containsKey(toRemove.getClass())) return;
         
-        viewMap.remove(toRemove);
+        viewMap.remove(toRemove.getClass());
     }
     
     public ItemView getView(Item item) {
-        return viewMap.get(item);
+        return viewMap.get(item.getClass());
     }
     
     public void clearAll() {

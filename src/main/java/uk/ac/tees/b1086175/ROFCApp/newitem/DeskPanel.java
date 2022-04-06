@@ -15,6 +15,7 @@ import javax.swing.SwingConstants;
 import javax.swing.event.ChangeEvent;
 import uk.ac.tees.b1086175.ROFCApp.Desk;
 import uk.ac.tees.b1086175.ROFCApp.Item;
+import uk.ac.tees.b1086175.ROFCApp.Order;
 import uk.ac.tees.b1086175.ROFCApp.WoodType;
 import uk.ac.tees.b1086175.ROFCApp.view.OrderView;
 
@@ -127,7 +128,7 @@ public class DeskPanel extends ItemPanel implements ActionListener {
                 (Integer) jsDepth.getValue(),// Depth
                 (Integer) jsDraws.getValue()// Draws
         );
-        OrderView.getInstance().add(newItem);
+        Order.getInstance().myViews.add(newItem);
         return true;
     }
 

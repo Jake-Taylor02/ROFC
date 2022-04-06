@@ -56,7 +56,7 @@ public class Main_TopPanel extends JPanel implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         Order myOrder = Order.getInstance();
-        OrderView orderView = OrderView.getInstance();
+        OrderView orderView = Order.getInstance().myViews;
         
         if (e.getSource() == jbClear) {
             //clear order List

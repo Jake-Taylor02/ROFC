@@ -15,6 +15,7 @@ import javax.swing.SpringLayout;
 import javax.swing.SwingConstants;
 import javax.swing.event.ChangeEvent;
 import uk.ac.tees.b1086175.ROFCApp.Item;
+import uk.ac.tees.b1086175.ROFCApp.Order;
 import uk.ac.tees.b1086175.ROFCApp.Table;
 import uk.ac.tees.b1086175.ROFCApp.TableBase;
 import uk.ac.tees.b1086175.ROFCApp.WoodType;
@@ -102,7 +103,7 @@ public class TablePanel extends ItemPanel implements ActionListener {
                 (TableBase) jcbBase.getSelectedItem(),// TableBase
                 (Integer) jspDiameter.getValue()// Diameter
         );
-        OrderView.getInstance().add(newItem);
+        Order.getInstance().myViews.add(newItem);
         return true;
     }
 

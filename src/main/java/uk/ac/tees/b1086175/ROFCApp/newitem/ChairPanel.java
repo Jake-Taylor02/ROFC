@@ -61,7 +61,7 @@ public class ChairPanel extends ItemPanel implements ActionListener {
                 jcbArmrest.isSelected() // Armrest
         );
         
-        OrderView.getInstance().add(newItem);
+        Order.getInstance().myViews.add(newItem);
         return true;
     }
 
