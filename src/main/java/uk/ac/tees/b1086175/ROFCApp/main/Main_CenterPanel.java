@@ -5,6 +5,7 @@
 package uk.ac.tees.b1086175.ROFCApp.main;
 
 
+import java.awt.Dimension;
 import java.awt.GridLayout;
 import javax.swing.JPanel;
 import uk.ac.tees.b1086175.ROFCApp.Item;
@@ -42,6 +43,7 @@ public class Main_CenterPanel extends JPanel implements ChangeItemListener {
 
             this.add(iPanels[i]);
         }
+        
         this.updateUI();
     }
 
