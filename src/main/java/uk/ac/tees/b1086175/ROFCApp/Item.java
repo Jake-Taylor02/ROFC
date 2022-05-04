@@ -115,7 +115,7 @@ public abstract class Item implements java.io.Serializable {
         this.quantity = quantity;
     }
 
-    /**
+    /** Returns the Item price
      *
      * @return
      */
@@ -123,7 +123,7 @@ public abstract class Item implements java.io.Serializable {
         return itemPrice;
     }
     
-    /**
+    /** Returns the Total price
      *
      * @return
      */

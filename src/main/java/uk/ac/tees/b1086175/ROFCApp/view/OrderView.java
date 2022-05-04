@@ -62,20 +62,4 @@ public class OrderView {
         }
     }
     
-//    public static ItemView getView(Item myItem) {
-//        ItemView newItemView = null;
-//
-//        if (myItem instanceof Chair) {
-//            newItemView = new ChairView(myItem);
-//
-//        } else if (myItem instanceof Table) {
-//            newItemView = new TableView(myItem);
-//
-//        } else if (myItem instanceof Desk) {
-//            newItemView = new DeskView(myItem);
-//        }
-//        
-//        return newItemView;
-//    }
-    
 }

@@ -16,7 +16,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import uk.ac.tees.b1086175.ROFCApp.Order;
 
-/**
+/** The Main Panel to hold all other components within the main JFrame.
  *
  * @author b1086175 | Jake Taylor
  */
@@ -28,6 +28,9 @@ public class MainPanel extends JPanel{
     private JPanel jpLeft;
     private BottomPanel jpBottom;
 
+    /**
+     * Constructor which initialises and adds the components within the panel..
+     */
     public MainPanel() {
         init();
     }

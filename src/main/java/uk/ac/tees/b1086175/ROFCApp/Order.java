@@ -16,14 +16,12 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.io.File;
 import java.io.FileInputStream;
-import java.util.HashMap;
-import java.util.Map;
-import uk.ac.tees.b1086175.ROFCApp.view.ItemView;
 import uk.ac.tees.b1086175.ROFCApp.view.OrderView;
 
-/**
- *
- * @author b1086175
+/** Singleton class representing an Order of Items.
+ * Wraps the List of items and provides the relevant methods.
+ * 
+ * @author b1086175 | Jake Taylor
  */
 public class Order {
     private static Order myOrder;

@@ -6,13 +6,33 @@ package uk.ac.tees.b1086175.ROFCApp.main;
 
 import uk.ac.tees.b1086175.ROFCApp.Item;
 
-/**
+/** Observer interface to notify subscribers of a change in the order.
  *
- * @author jake
+ * @author b1086175 | Jake Taylor
  */
 public interface ChangeItemListener {
+
+    /** A new item being added to the order.
+     *
+     * @param nItem the new item
+     */
     public void newItem(Item nItem);
+
+    /** The visual representation of the order needs to be updated
+     *
+     */
     public void updateGrid();
+
+    /** Delete the specified item from the order
+     *
+     * @param dItem the item to be deleted
+     */
     public void deleteItem(Item dItem);
+
+    /** Replace the specified item with the new item.
+     *
+     * @param oItem the item to be replaced
+     * @param nItem the new item
+     */
     public void replaceItem(Item oItem, Item nItem);
 }

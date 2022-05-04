@@ -14,14 +14,18 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 import uk.ac.tees.b1086175.ROFCApp.newitem.ItemPanel;
 
-/** Move to main internal?
+/** Panel holding the buttons for adding new items.
  *
- * @author b1086175
+ * @author b1086175 | Jake Taylor
  */
 public class Main_LeftPanel extends JPanel {
     private final Main_CenterPanel grid;
     NewItemFrame newIF;
 
+    /**
+     * Constructor requiring a reference the the grid holding the order.
+     * @param grid
+     */
     public Main_LeftPanel(Main_CenterPanel grid) {
         this.grid = grid;
         

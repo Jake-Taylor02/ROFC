@@ -5,8 +5,6 @@
 package uk.ac.tees.b1086175.ROFCApp.main;
 
 import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
 import uk.ac.tees.b1086175.ROFCApp.newitem.ItemPanel;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -19,17 +17,14 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
-import javax.swing.border.Border;
 import uk.ac.tees.b1086175.ROFCApp.Item;
 import uk.ac.tees.b1086175.ROFCApp.Order;
 import uk.ac.tees.b1086175.ROFCApp.newitem.NewItemFrame;
-import uk.ac.tees.b1086175.ROFCApp.view.OrderView;
-
 /**
  *  JPanel that visually represents a single Item in Main_CenterPanel.
  *  
  * @see Main_CenterPanel
- * @author jake
+ * @author b1086175 | Jake Taylor
  */
 public class ItemDisplay extends JPanel implements MouseListener {
     private JLabel jlItem;
@@ -51,7 +46,7 @@ public class ItemDisplay extends JPanel implements MouseListener {
     }
     
     /**
-     * 
+     * Constructor for when the grid cell is occupied with an item.
      * @param owner Reference to parent container
      * @param myItem Reference to the Item which the JPanel represents
      */
@@ -130,24 +125,24 @@ public class ItemDisplay extends JPanel implements MouseListener {
 
     @Override
     public void mousePressed(MouseEvent e) {
-        System.out.println("Mouse pressed");
     }
 
     @Override
     public void mouseReleased(MouseEvent e) {
-        System.out.println("mouse released");
     }
 
     @Override
     public void mouseEntered(MouseEvent e) {
-        System.out.println("mouse entered");
     }
 
     @Override
     public void mouseExited(MouseEvent e) {
-        System.out.println("mouse exited");
     }
     
+    /** Add a subscriber to be notified when there is a change to this item.
+     *
+     * @param e the subscriber
+     */
     public void addChangeItemListener(ChangeItemListener e) {
         changeListeners.add(e);
     }
