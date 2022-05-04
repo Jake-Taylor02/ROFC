@@ -5,7 +5,7 @@ import java.util.List;
 import uk.ac.tees.b1086175.ROFCApp.*;
 import javax.swing.*;
 
-/**
+/** Main Frame used to manage orders.
  *
  * @author b1086175 | Jake Taylor
  */
@@ -43,6 +43,9 @@ public class ROFCapp extends JFrame {
         myGUI.setVisible(true);
     }
     
+    /**
+     * Demonstrating the Furniture classes and printing their toString() methods to console.
+     */
     private static void cliFurnitureTest() {
         List<Item> testList = new ArrayList<>();
         
@@ -79,7 +82,7 @@ public class ROFCapp extends JFrame {
             System.out.println(it.toString());
         }
         
-       // myOrder.addItem(itemIn);    
+        
     }
 
 }

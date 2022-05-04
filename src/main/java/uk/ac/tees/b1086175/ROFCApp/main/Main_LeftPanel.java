@@ -68,7 +68,6 @@ public class Main_LeftPanel extends JPanel {
 
             this.addActionListener(this);
         }
-        // !!!! change these to one actipon listener, and use Orderview method
 
         @Override
         public void actionPerformed(ActionEvent e) {

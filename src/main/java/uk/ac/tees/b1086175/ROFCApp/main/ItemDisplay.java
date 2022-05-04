@@ -139,7 +139,7 @@ public class ItemDisplay extends JPanel implements MouseListener {
     public void mouseExited(MouseEvent e) {
     }
     
-    /** Add a subscriber to be notified when there is a change to this item.
+    /** Adds a subscriber to be notified when there is a change to this item.
      *
      * @param e the subscriber
      */
