@@ -14,7 +14,10 @@ public class ROFCapp extends JFrame {
     private static final Order myOrder = Order.getInstance();
     private static JFrame myGUI;
     
-    
+    /** Initialises JFrame and adds MainPanel component
+     *
+     * @param args
+     */
     public static void main(String[] args) {
         // Test items
         cliFurnitureTest();
@@ -51,6 +54,7 @@ public class ROFCapp extends JFrame {
         ));
         testList.add(new Chair("CH002", WoodType.OAK, 2, false));
         
+        
         testList.add(new Table(
                 "TA001",// Item ID
                 WoodType.OAK,// Type of Wood
@@ -74,6 +78,8 @@ public class ROFCapp extends JFrame {
         for (Item it : testList) {
             System.out.println(it.toString());
         }
+        
+       // myOrder.addItem(itemIn);    
     }
 
 }

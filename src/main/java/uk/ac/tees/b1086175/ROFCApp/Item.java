@@ -11,7 +11,7 @@ import javax.swing.ImageIcon;
  *
  * @author b1086175 | Jake Taylor
  */
-public abstract class Item implements java.io.Serializable, java.util.Comparator {
+public abstract class Item implements java.io.Serializable {
     private String ID;
 
     /**
@@ -39,17 +39,17 @@ public abstract class Item implements java.io.Serializable, java.util.Comparator
     }
     
     /**
-     * Sets itemPrice to the correct price based on the item type and attributes
+     * Sets itemPrice to the correct price based on the item type and attributes.
      */
     protected abstract void calculatePrice();
     
-    /**
+    /** Returns the image file to represent a type of item.
      *
-     * @return
+     * @return image file
      */
     public abstract File getImage();
     
-    /**
+    /** Returns a String indicating the state of the object.
      *
      * @return
      */
@@ -58,6 +58,7 @@ public abstract class Item implements java.io.Serializable, java.util.Comparator
         String result = String.format("Type of Item: %s\n", this.getClass().getSimpleName());
         
         result += String.format("Item ID: %s\n", this.ID);
+        result += String.format("Type of Wood: %s\n", this.wood.toString());
         result += String.format("Item Price: £%.2f\n", (double)this.itemPrice / 100);
         result += String.format("Quantity: %d\n", this.quantity);
         result += String.format("Total Price: £%.2f\n", (double)this.getTotalPrice() / 100);
@@ -65,48 +66,48 @@ public abstract class Item implements java.io.Serializable, java.util.Comparator
         return result;
     }
 
-    /**
+    /** Returns the ID Number of the Item.
      *
-     * @return
+     * @return ID Number
      */
     public String getID() {
         return ID;
     }
 
-    /**
+    /** Sets the ID Number of the Item.
      *
-     * @param ID
+     * @param ID the new ID Number.
      */
     public void setID(String ID) {
         this.ID = ID;
     }
 
-    /**
+    /** Returns the Type of Wood of the Item.
      *
-     * @return
+     * @return the Type of Wood
      */
     public WoodType getWood() {
         return wood;
     }
 
-    /**
+    /** Sets the Type of Wood of the Item.
      *
-     * @param wood
+     * @param wood the new Type of Wood
      */
     public void setWood(WoodType wood) {
         this.wood = wood;
         calculatePrice();
     }
 
-    /**
+    /** Returns the Quantity of the Item.
      *
-     * @return
+     * @return Quantity
      */
     public int getQuantity() {
         return quantity;
     }
 
-    /**
+    /** Sets the Quantity of the Item.
      *
      * @param quantity
      */
@@ -128,17 +129,6 @@ public abstract class Item implements java.io.Serializable, java.util.Comparator
      */
     public int getTotalPrice() {
         return itemPrice * quantity;
-    }
-
-    @Override
-    public int compare(Object o1, Object o2) {
-        Item a = (Item) o1;
-        Item b = (Item) o2;
-        if (a.itemPrice < b.itemPrice) return -1;
-        
-        if (a.itemPrice == b.itemPrice) return 0;
-        
-        return 1;
     }
     
 }
