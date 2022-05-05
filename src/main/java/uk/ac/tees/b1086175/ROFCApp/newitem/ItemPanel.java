@@ -15,7 +15,7 @@ import javax.swing.event.ChangeListener;
 import uk.ac.tees.b1086175.ROFCApp.Item;
 import uk.ac.tees.b1086175.ROFCApp.WoodType;
 
-/** Provides the necessary fields 
+/** Provides the necessary input fields for an Item.
  *
  * @author b1086175 | Jake Taylor
  */
@@ -42,32 +42,32 @@ public abstract class ItemPanel extends JPanel implements ActionListener, Change
     protected JSpinner spQuantity;
 
     /**
-     * 
+     * Label indicating the quality field.
      */
     protected JLabel jlQuantity;
     
     /**
-     *
+     * Default size of all JLabels.
      */
     protected final Dimension lblSize;
 
     /**
-     *
+     * Default size of input fields.
      */
     protected final Dimension fieldSize;
     
     /**
-     *
+     * The item created from the user input.
      */
     protected Item newItem;
     
     /**
-     *
+     * Subscribers to be notified when the total changes.
      */
     protected List<TotalUpdate> uListeners = new ArrayList<>();
 
     /**
-     *
+     * Constructor.
      */
     public ItemPanel() {
         // Set standard Dimensions of components
@@ -205,15 +205,15 @@ public abstract class ItemPanel extends JPanel implements ActionListener, Change
     }
     
     /**
-     *
-     * @return
+     * Returns the new item.
+     * @return Item
      */
     public Item getNewItem() {
         return newItem;
     }
     
     /**
-     *
+     * Adds a subscriber to be notified when the total changes.
      * @param e
      */
     public void addTotalUpdate(TotalUpdate e) {
@@ -221,7 +221,7 @@ public abstract class ItemPanel extends JPanel implements ActionListener, Change
     }
     
     /**
-     *
+     * Notify subscribers of the total changing.
      */
     protected void updateTotal() {
         if (newItem == null) return;

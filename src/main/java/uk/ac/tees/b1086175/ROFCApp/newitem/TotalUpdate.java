@@ -9,5 +9,10 @@ package uk.ac.tees.b1086175.ROFCApp.newitem;
  * @author b1086175 | Jake Taylor
  */
 public interface TotalUpdate {
+
+    /**
+     * Notify subscribers of new total.
+     * @param total
+     */
     public void newTotal(int total);
 }

@@ -4,7 +4,6 @@
  */
 package uk.ac.tees.b1086175.ROFCApp.newitem;
 
-import uk.ac.tees.b1086175.ROFCApp.newitem.ItemPanel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JComboBox;
@@ -19,7 +18,6 @@ import uk.ac.tees.b1086175.ROFCApp.Order;
 import uk.ac.tees.b1086175.ROFCApp.Table;
 import uk.ac.tees.b1086175.ROFCApp.TableBase;
 import uk.ac.tees.b1086175.ROFCApp.WoodType;
-import uk.ac.tees.b1086175.ROFCApp.view.OrderView;
 
 /**
  *
@@ -29,6 +27,9 @@ public class TablePanel extends ItemPanel implements ActionListener {
     private JComboBox jcbBase;
     private JSpinner jspDiameter;
     
+    /**
+     *
+     */
     public TablePanel() {
         super();
 
@@ -69,6 +70,10 @@ public class TablePanel extends ItemPanel implements ActionListener {
         spLayout.putConstraint(SpringLayout.NORTH, jspDiameter, 5, SpringLayout.SOUTH, jcbBase);
     }
     
+    /**
+     *
+     * @param table
+     */
     public TablePanel(Item table) {
         this();
         
