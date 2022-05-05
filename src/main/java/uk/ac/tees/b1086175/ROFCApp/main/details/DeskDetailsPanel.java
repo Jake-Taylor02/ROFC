@@ -8,9 +8,9 @@ import javax.swing.JLabel;
 import uk.ac.tees.b1086175.ROFCApp.Desk;
 import uk.ac.tees.b1086175.ROFCApp.Item;
 
-/**
+/** Panel to display the attributes of a Desk.
  *
- * @author jake
+ * @author b1086175 | Jake Taylor
  */
 public class DeskDetailsPanel extends ItemDetailsPanel {
     protected Desk myDesk;
