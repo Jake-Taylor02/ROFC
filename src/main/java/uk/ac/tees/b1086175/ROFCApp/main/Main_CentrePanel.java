@@ -13,14 +13,14 @@ import uk.ac.tees.b1086175.ROFCApp.Order;
  *
  * @author b1086175 | Jake Taylor
  */
-public class Main_CenterPanel extends JPanel implements ChangeItemListener {
+public class Main_CentrePanel extends JPanel implements ChangeItemListener {
     private final Order myOrder;
     private ItemDisplay[] iPanels;
 
     /**
      *  Constructor.
      */
-    public Main_CenterPanel() {
+    public Main_CentrePanel() {
         this.myOrder = Order.getInstance();
         
         init();

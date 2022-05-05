@@ -13,7 +13,7 @@ import org.jfree.data.general.PieDataset;
 import uk.ac.tees.b1086175.ROFCApp.Item;
 import uk.ac.tees.b1086175.ROFCApp.Order;
 
-/**
+/** Panel displaying a pie chart of the order by each item type.
  *
  * @author b1086175 | Jake Taylor
  */
@@ -22,6 +22,9 @@ public class ItemRatios_SummaryPanel extends JPanel{
     
     private JFreeChart pieChart;
 
+    /**
+     * Constructor.
+     */
     public ItemRatios_SummaryPanel() {
         init();
     }
@@ -46,7 +49,6 @@ public class ItemRatios_SummaryPanel extends JPanel{
         
         return myChart;
     }
-    
     
     private int getItemCount(String simpleName) {
         int result = 0;

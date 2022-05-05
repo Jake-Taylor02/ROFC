@@ -5,8 +5,8 @@
 package uk.ac.tees.b1086175.ROFCApp.newitem;
 
 /**
- *
- * @author jake
+ * Observer for notifying when to item total has changed.
+ * @author b1086175 | Jake Taylor
  */
 public interface TotalUpdate {
     public void newTotal(int total);

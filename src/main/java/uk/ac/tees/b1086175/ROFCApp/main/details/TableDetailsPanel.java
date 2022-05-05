@@ -36,17 +36,19 @@ public class TableDetailsPanel extends ItemDetailsPanel {
     }
     
     private void init() {
+        Table myTable;
         try {
-            Table myTable = (Table) myItem;
-            
-            tableBaseLabel = new JLabel(String.format("Table Base: %s", myTable.getBase().toString()));
-            add(tableBaseLabel);
-            
-            diameterLabel = new JLabel(String.format("Diameter: %d", myTable.getDiameter()));
-            add(diameterLabel);
+            myTable = (Table) myItem;
         } catch (ClassCastException e) {
             JOptionPane.showInternalMessageDialog(this,
                     "Could not display summary. Item counld not be cast to Table.");
+            return;
         }
+        
+        tableBaseLabel = new JLabel(String.format("Table Base: %s", myTable.getBase().toString()));
+        add(tableBaseLabel);
+
+        diameterLabel = new JLabel(String.format("Diameter: %d", myTable.getDiameter()));
+        add(diameterLabel);
     }
 }

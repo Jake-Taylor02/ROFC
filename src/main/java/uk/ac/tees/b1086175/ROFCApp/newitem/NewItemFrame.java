@@ -21,61 +21,92 @@ import uk.ac.tees.b1086175.ROFCApp.main.ChangeItemListener;
 import uk.ac.tees.b1086175.ROFCApp.newitem.NewItemFrame.*;
 
 /**
- * change center panel to
+ * change centre panel to
  * @author b1086175 | Jake Taylor
  */
 public class NewItemFrame extends JFrame {
     
-    //protected ItemPanel jpForm;
+    /**
+     * The bottom panel holding the Save and Cancel buttons.
+     */
     public JPanel jpFooter;
-    protected ItemPanel jpCenter;
+
+    /**
+     * Panel holding the fields for inputting item attributes.
+     */
+    protected ItemPanel jpCentre;
+
+    /**
+     * The item to be saved.
+     */
     protected Item newItem;
+    
     private boolean editMode;
     
-    private List<ChangeItemListener> changeListeners = new ArrayList<>();
+    private final List<ChangeItemListener> changeListeners = new ArrayList<>();
     
-    public NewItemFrame(ItemPanel panel) throws HeadlessException {
+    /**
+     *
+     * @param panel
+     */
+    public NewItemFrame(ItemPanel panel) {
         editMode = false;
+        jpCentre = panel;
+        init();
+    }
+    
+    /**
+     *
+     * @param panel
+     * @param newItem
+     */
+    public NewItemFrame(ItemPanel panel, Item newItem) {
+        editMode = true;
+        jpCentre = panel;
+        this.newItem = newItem;
+        init();
+    }
+    
+    private void init() {
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setLayout(new BorderLayout());
     
         // Center Panel with components
-        jpCenter = panel;
-        this.add(jpCenter, BorderLayout.CENTER);
+        this.add(jpCentre, BorderLayout.CENTER);
         
         // Add Footer buttons
         initFooter();
         
-        this.setTitle("New " + jpCenter.getTitle());
+        
         this.setSize(400, 400);
         this.setVisible(true);// should be in subclass
+        
+        if (!editMode) {
+            this.setTitle("New " + jpCentre.getTitle());
+        } else {
+            this.setTitle("Edit " + jpCentre.getTitle());
+            this.jpCentre.setItem(newItem);
+        }
     }
-
-    public NewItemFrame(ItemPanel jpCenter, Item newItem) {
-        this(jpCenter);
-        
-        editMode = true;
-        this.newItem = newItem;
-        
-        this.setTitle("Edit " + jpCenter.getTitle());
-        
-        this.jpCenter.setItem(newItem);
-    }
-    
-    
     
     private void initFooter() {
-        
         jpFooter = new FooterPanel();
         this.add(jpFooter, BorderLayout.SOUTH);
     }
     
+    /**
+     * Panel to hold Save and Cancel functions.
+     */
     class FooterPanel extends JPanel implements ActionListener, TotalUpdate {
             private JLabel jlTotal;
             private JButton jbCancel;
             private JButton jbSave;
             
             public FooterPanel() {
+                init();
+            }
+            
+            private void init() {
                 jlTotal = new JLabel("Total: ");
                 
                 
@@ -91,7 +122,7 @@ public class NewItemFrame extends JFrame {
                 this.add(jbCancel);
                 this.add(jbSave);
                 
-                jpCenter.addTotalUpdate(this);
+                jpCentre.addTotalUpdate(this);
             }
             
             public void setTotal(int value) {
@@ -100,7 +131,7 @@ public class NewItemFrame extends JFrame {
             
             @Override
             public void actionPerformed(ActionEvent e) {
-                newItem = jpCenter.getNewItem();
+                newItem = jpCentre.getNewItem();
                 
                 if (e.getSource() == jbCancel) {
                     System.out.println("Cancel has been pressed");
@@ -143,6 +174,10 @@ public class NewItemFrame extends JFrame {
             
         }
     
+    /**
+     *
+     * @param e
+     */
     public void addChangeItemListener(ChangeItemListener e) {
         changeListeners.add(e);
     }

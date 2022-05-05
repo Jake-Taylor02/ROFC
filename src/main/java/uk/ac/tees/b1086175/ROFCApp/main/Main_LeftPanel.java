@@ -19,14 +19,14 @@ import uk.ac.tees.b1086175.ROFCApp.newitem.ItemPanel;
  * @author b1086175 | Jake Taylor
  */
 public class Main_LeftPanel extends JPanel {
-    private final Main_CenterPanel grid;
+    private final Main_CentrePanel grid;
     NewItemFrame newIF;
 
     /**
      * Constructor requiring a reference the the grid holding the order.
      * @param grid
      */
-    public Main_LeftPanel(Main_CenterPanel grid) {
+    public Main_LeftPanel(Main_CentrePanel grid) {
         this.grid = grid;
         
         init();

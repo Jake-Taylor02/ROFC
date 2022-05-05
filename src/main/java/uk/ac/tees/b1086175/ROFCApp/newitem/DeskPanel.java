@@ -44,7 +44,7 @@ public class DeskPanel extends ItemPanel implements ActionListener {
                 1// increment
         );
         jsDraws = new JSpinner(drawModel);
-        jsDraws.setPreferredSize(this.txtSize);
+        jsDraws.setPreferredSize(this.fieldSize);
         jsDraws.addChangeListener(this);
         this.add(jsDraws);
         spLayout.putConstraint(SpringLayout.WEST, jsDraws, 5, SpringLayout.EAST, jlDraws);
@@ -65,7 +65,7 @@ public class DeskPanel extends ItemPanel implements ActionListener {
                 1// increment
         );
         jsWidth = new JSpinner(widthModel);
-        jsWidth.setPreferredSize(this.txtSize);
+        jsWidth.setPreferredSize(this.fieldSize);
         jsWidth.addChangeListener(this);
         this.add(jsWidth);
         spLayout.putConstraint(SpringLayout.WEST, jsWidth, 5, SpringLayout.EAST, jlWidth);
@@ -87,7 +87,7 @@ public class DeskPanel extends ItemPanel implements ActionListener {
                 1// increment
         );
         jsDepth = new JSpinner(depthModel);
-        jsDepth.setPreferredSize(this.txtSize);
+        jsDepth.setPreferredSize(this.fieldSize);
         jsDepth.addChangeListener(this);
         this.add(jsDepth);
         spLayout.putConstraint(SpringLayout.WEST, jsDepth, 5, SpringLayout.EAST, jlDepth);

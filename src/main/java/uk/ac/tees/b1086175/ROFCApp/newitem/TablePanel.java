@@ -41,7 +41,7 @@ public class TablePanel extends ItemPanel implements ActionListener {
 
         // Table Base Combo Box
         jcbBase = new JComboBox(TableBase.values());
-        jcbBase.setPreferredSize(this.txtSize);
+        jcbBase.setPreferredSize(this.fieldSize);
         jcbBase.addActionListener(this);
         this.add(jcbBase);
         spLayout.putConstraint(SpringLayout.WEST, jcbBase, 5, SpringLayout.EAST, jlTableBase);
@@ -62,7 +62,7 @@ public class TablePanel extends ItemPanel implements ActionListener {
                 1// increment
         );
         jspDiameter = new JSpinner(dModel);
-        jspDiameter.setPreferredSize(this.txtSize);
+        jspDiameter.setPreferredSize(this.fieldSize);
         jspDiameter.addChangeListener(this);
         this.add(jspDiameter);
         spLayout.putConstraint(SpringLayout.WEST, jspDiameter, 5, SpringLayout.EAST, jlDiameter);

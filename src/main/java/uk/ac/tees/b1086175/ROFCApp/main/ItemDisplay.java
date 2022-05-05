@@ -21,15 +21,15 @@ import uk.ac.tees.b1086175.ROFCApp.Item;
 import uk.ac.tees.b1086175.ROFCApp.Order;
 import uk.ac.tees.b1086175.ROFCApp.newitem.NewItemFrame;
 /**
- *  JPanel that visually represents a single Item in Main_CenterPanel.
+ *  JPanel that visually represents a single Item in Main_CentrePanel.
  *  
- * @see Main_CenterPanel
+ * @see Main_CentrePanel
  * @author b1086175 | Jake Taylor
  */
 public class ItemDisplay extends JPanel implements MouseListener {
     private JLabel jlItem;
     private Item myItem;
-    private final Main_CenterPanel parentCont;
+    private final Main_CentrePanel parentCont;
     private final boolean empty;
 
     private final List<ChangeItemListener> changeListeners = new ArrayList<>();
@@ -39,7 +39,7 @@ public class ItemDisplay extends JPanel implements MouseListener {
      * icon is set to default image
      * @param owner Reference to parent container
      */
-    public ItemDisplay(Main_CenterPanel owner) {
+    public ItemDisplay(Main_CentrePanel owner) {
         this.parentCont = owner;
         empty = true;
         init();
@@ -50,7 +50,7 @@ public class ItemDisplay extends JPanel implements MouseListener {
      * @param owner Reference to parent container
      * @param myItem Reference to the Item which the JPanel represents
      */
-    public ItemDisplay(Main_CenterPanel owner, Item myItem) {
+    public ItemDisplay(Main_CentrePanel owner, Item myItem) {
         this.parentCont = owner;
         this.myItem = myItem;
         empty = false;

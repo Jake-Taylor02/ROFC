@@ -31,17 +31,19 @@ public class ChairDetailsPanel extends ItemDetailsPanel {
     }
     
     private void init() {
+        Chair myChair;
         try {
-            Chair myChair = (Chair) myItem;// Exception?
-            
-            armrestLabel = new JLabel(String.format("Armrests: %s",
-                    myChair.isArmrests() ? "Yes" : "No"
-            ));
-            add(armrestLabel);
+            myChair = (Chair) myItem;
         } catch (ClassCastException e) {
             JOptionPane.showInternalMessageDialog(this,
                     "Could not display summary. Item counld not be cast to Chair.");
+            return;
         }
+        
+        armrestLabel = new JLabel(String.format("Armrests: %s",
+                    myChair.isArmrests() ? "Yes" : "No"
+        ));
+        add(armrestLabel);
     }
     
 }

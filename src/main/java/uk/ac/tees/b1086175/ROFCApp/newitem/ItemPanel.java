@@ -9,72 +9,103 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.JComboBox;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JSpinner;
-import javax.swing.JTextField;
-import javax.swing.SpinnerNumberModel;
-import javax.swing.SpringLayout;
-import javax.swing.SwingConstants;
+import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import uk.ac.tees.b1086175.ROFCApp.Item;
 import uk.ac.tees.b1086175.ROFCApp.WoodType;
-import uk.ac.tees.b1086175.ROFCApp.newitem.TotalUpdate;
 
-/** 
+/** Provides the necessary fields 
  *
  * @author b1086175 | Jake Taylor
  */
 public abstract class ItemPanel extends JPanel implements ActionListener, ChangeListener {
+
+    /**
+     * Layout to arrange the components.
+     */
     protected SpringLayout spLayout;
+
+    /**
+     * Text Field for the user to input the ID Number.
+     */
     protected JTextField txtidNum;
+
+    /**
+     * Drop-down to select the Type of Wood.
+     */
     protected JComboBox jcbWoodType;
+
+    /**
+     * Spinner to select the quantity.
+     */
     protected JSpinner spQuantity;
+
+    /**
+     * 
+     */
     protected JLabel jlQuantity;
     
+    /**
+     *
+     */
     protected final Dimension lblSize;
-    protected final Dimension txtSize;
+
+    /**
+     *
+     */
+    protected final Dimension fieldSize;
     
-    
+    /**
+     *
+     */
     protected Item newItem;
     
+    /**
+     *
+     */
     protected List<TotalUpdate> uListeners = new ArrayList<>();
 
+    /**
+     *
+     */
     public ItemPanel() {
         // Set standard Dimensions of components
         lblSize = new Dimension(100, 20);
-        txtSize = new Dimension(120, 20);
+        fieldSize = new Dimension(120, 20);
         
+        init();
+    }
+    
+    private void init() {
+
         // ID Number
         JLabel jlIdNum = new JLabel("ID Number:", SwingConstants.RIGHT);
         jlIdNum.setPreferredSize(lblSize);
 
         txtidNum = new JTextField();
-        txtidNum.setPreferredSize(txtSize);
+        txtidNum.setPreferredSize(fieldSize);
 
         // Wood type
         JLabel jlWoodType = new JLabel("Type of Wood:", SwingConstants.RIGHT);
         jlWoodType.setPreferredSize(lblSize);
 
         jcbWoodType = new JComboBox(WoodType.values());
-        jcbWoodType.setPreferredSize(txtSize);
+        jcbWoodType.setPreferredSize(fieldSize);
 
         // Quantity
-        
         jlQuantity = new JLabel("Quantity:", SwingConstants.RIGHT);
         jlQuantity.setPreferredSize(lblSize);
 
         SpinnerNumberModel qModel = new SpinnerNumberModel(
                 1,
                 1,
-                20,
+                100,
                 1
         );
         spQuantity = new JSpinner(qModel);
-        spQuantity.setPreferredSize(txtSize);
-        
+        spQuantity.setPreferredSize(fieldSize);
+
         // Apply action listener
         this.txtidNum.addActionListener(this);
         this.jcbWoodType.addActionListener(this);
@@ -112,6 +143,10 @@ public abstract class ItemPanel extends JPanel implements ActionListener, Change
         spLayout.putConstraint(SpringLayout.NORTH, spQuantity, 5, SpringLayout.SOUTH, jcbWoodType);
     }
     
+    /** Returns the title of the panel.
+     * This is based on the item type and if it is a new or existing item.
+     * @return Title
+     */
     public abstract String getTitle();
     
     /** Set a new item and display new field data
@@ -126,12 +161,12 @@ public abstract class ItemPanel extends JPanel implements ActionListener, Change
         spQuantity.setValue(newItem.getQuantity());
     }
     
+    /** Returns if the input fields contain valid data
+     *
+     * @return
+     */
     protected boolean validInputs() {
         if (txtidNum.getText().length() <= 2) return false;
-        
-        // how can i validate wood type?
-        
-        if ((Integer) spQuantity.getValue() < 1 || (Integer) spQuantity.getValue() > 20) return false;// redundant because spinner restricts input?
         
         if (newItem == null) {
             initialiseItem();
@@ -140,6 +175,10 @@ public abstract class ItemPanel extends JPanel implements ActionListener, Change
         return true;
     }
     
+    /** Initialises the item.
+     *
+     * @return
+     */
     protected abstract boolean initialiseItem();
 
     @Override
@@ -165,14 +204,25 @@ public abstract class ItemPanel extends JPanel implements ActionListener, Change
         updateTotal();
     }
     
+    /**
+     *
+     * @return
+     */
     public Item getNewItem() {
         return newItem;
     }
     
+    /**
+     *
+     * @param e
+     */
     public void addTotalUpdate(TotalUpdate e) {
         uListeners.add(e);
     }
     
+    /**
+     *
+     */
     protected void updateTotal() {
         if (newItem == null) return;
         
