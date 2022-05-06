@@ -97,7 +97,7 @@ public class ItemDisplay extends JPanel implements MouseListener {
             
         } else if (e.getButton() == MouseEvent.BUTTON2) {
             // Edit Item
-            System.out.println("button 3 clicked");
+            System.out.println("button 2 clicked");
             System.out.println(myItem.getClass().getSimpleName());
             
             SwingUtilities.invokeLater(new Runnable() {

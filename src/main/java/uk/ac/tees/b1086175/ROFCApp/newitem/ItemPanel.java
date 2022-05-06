@@ -7,6 +7,8 @@ package uk.ac.tees.b1086175.ROFCApp.newitem;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.*;
@@ -108,6 +110,26 @@ public abstract class ItemPanel extends JPanel implements ActionListener, Change
 
         // Apply action listener
         this.txtidNum.addActionListener(this);
+        this.txtidNum.addKeyListener(new KeyListener() {
+            // when the text field is changed, the ITem state changes.
+            @Override
+            public void keyTyped(KeyEvent e) {
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+                System.out.println("keytyped");
+                if (!validInputs()) return;
+                
+                newItem.setID(txtidNum.getText());
+                System.out.println("keytyped 2");
+                System.out.println(txtidNum.getText());
+            }
+        });
         this.jcbWoodType.addActionListener(this);
         this.spQuantity.addChangeListener(this);
 
@@ -209,6 +231,7 @@ public abstract class ItemPanel extends JPanel implements ActionListener, Change
      * @return Item
      */
     public Item getNewItem() {
+        
         return newItem;
     }
     

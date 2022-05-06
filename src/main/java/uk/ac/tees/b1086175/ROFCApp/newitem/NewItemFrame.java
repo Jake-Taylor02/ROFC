@@ -147,8 +147,6 @@ public class NewItemFrame extends JFrame {
                 if (e.getSource() == jbSave) {
                     System.out.println("Save has been pressed");
                     
-                    //Refresh the item
-                    
                     if (editMode) {
                         for (ChangeItemListener l : changeListeners) {
                             l.updateGrid();
