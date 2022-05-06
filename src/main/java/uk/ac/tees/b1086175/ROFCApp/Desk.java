@@ -5,7 +5,6 @@
 package uk.ac.tees.b1086175.ROFCApp;
 
 import java.io.File;
-import javax.swing.ImageIcon;
 
 
 /** Represents a Desk item.
@@ -14,8 +13,8 @@ import javax.swing.ImageIcon;
  */
 public class Desk extends Item implements java.io.Serializable {
 
-    /** Represents the fixed height of the Desk in Centimetres.
-     *
+    /**
+     * Represents the fixed height of the Desk in Centimetres.
      */
     public static final int HEIGHT = 80;
     

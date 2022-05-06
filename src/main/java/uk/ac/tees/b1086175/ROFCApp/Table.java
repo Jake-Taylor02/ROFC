@@ -5,7 +5,6 @@
 package uk.ac.tees.b1086175.ROFCApp;
 
 import java.io.File;
-import javax.swing.ImageIcon;
 
 
 /**
