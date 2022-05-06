@@ -6,7 +6,6 @@ package uk.ac.tees.b1086175.ROFCApp.newitem;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
-import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -41,12 +40,12 @@ public class NewItemFrame extends JFrame {
      */
     protected Item newItem;
     
-    private boolean editMode;
+    private final boolean editMode;
     
     private final List<ChangeItemListener> changeListeners = new ArrayList<>();
     
     /**
-     *
+     * Constructor used when creating a new Item.
      * @param panel
      */
     public NewItemFrame(ItemPanel panel) {
@@ -56,7 +55,7 @@ public class NewItemFrame extends JFrame {
     }
     
     /**
-     *
+     * Constructor used when editing an existing element.
      * @param panel
      * @param newItem
      */

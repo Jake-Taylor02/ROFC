@@ -50,14 +50,12 @@ public class Main_CentrePanel extends JPanel implements ChangeItemListener {
 
     @Override
     public void newItem(Item nItem) {
-        System.out.println("CenterPanel.newItem()");
         myOrder.addItem(nItem);
         updateGrid();
     }
 
     @Override
     public void updateGrid() {
-        System.out.println("CenterPanel.updateGrid()");
         init();
     }
 
