@@ -12,8 +12,8 @@ import uk.ac.tees.b1086175.ROFCApp.newitem.ChairPanel;
 import uk.ac.tees.b1086175.ROFCApp.newitem.ItemPanel;
 
 /**
- *
- * @author b1086175
+ * Provides the components needed to display and edit a Chair.
+ * @author b1086175 | Jake Taylor
  */
 public class ChairView implements ItemView{
 
@@ -27,26 +27,12 @@ public class ChairView implements ItemView{
         return new ChairPanel((Chair) item);
     }
     
+    /**
+     * Returns panel required to create a new chair.
+     * @return ChairPanel
+     */
     public static ItemPanel getNewItemPanel() {
         return new ChairPanel();
     }
-
-//    public ChairView(Item item) {
-//        super(item);
-//    }
-//
-//    @Override
-//    public JPanel getDetailsPanel() {
-//        return new ChairDetailsPanel(this.item);
-//    }
-//
-//    @Override
-//    public ItemPanel getEditPanel() {
-//        return new ChairPanel((Chair) item);
-//    }
-//    
-//    public static ItemPanel getNewItemPanel() {
-//        return new ChairPanel();
-//    }
     
 }

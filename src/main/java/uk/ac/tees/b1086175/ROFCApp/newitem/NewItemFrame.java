@@ -20,7 +20,7 @@ import uk.ac.tees.b1086175.ROFCApp.main.ChangeItemListener;
 import uk.ac.tees.b1086175.ROFCApp.newitem.NewItemFrame.*;
 
 /**
- * change centre panel to
+ * JFrame allowing user to add and edit individual items.
  * @author b1086175 | Jake Taylor
  */
 public class NewItemFrame extends JFrame {
