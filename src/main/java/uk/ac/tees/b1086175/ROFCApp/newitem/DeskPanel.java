@@ -4,10 +4,9 @@
  */
 package uk.ac.tees.b1086175.ROFCApp.newitem;
 
-import uk.ac.tees.b1086175.ROFCApp.newitem.ItemPanel;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.SpringLayout;
@@ -17,18 +16,34 @@ import uk.ac.tees.b1086175.ROFCApp.Desk;
 import uk.ac.tees.b1086175.ROFCApp.Item;
 import uk.ac.tees.b1086175.ROFCApp.Order;
 import uk.ac.tees.b1086175.ROFCApp.WoodType;
-import uk.ac.tees.b1086175.ROFCApp.view.OrderView;
 
 /**
- *
- * @author jake
+ * Provides the necessary input fields and validation for a Desk.
+ * @author b1086175 | Jake Taylor
  */
 public class DeskPanel extends ItemPanel implements ActionListener {
     private JSpinner jsDraws, jsWidth, jsDepth;
     
+    /**
+     * Constructor used when Adding a new Desk.
+     */
     public DeskPanel() {
         super();
 
+        init();
+    }
+    
+    /**
+     * Constructor used when editing an existing Chair.
+     * @param desk The Desk to be edited
+     */
+    public DeskPanel(Item desk) {
+        this();
+        
+        setItem(desk);
+    }
+    
+    private void init() {
         // Draws Label
         JLabel jlDraws = new JLabel("Draws:", SwingConstants.RIGHT);
         jlDraws.setPreferredSize(this.lblSize);
@@ -94,12 +109,6 @@ public class DeskPanel extends ItemPanel implements ActionListener {
         spLayout.putConstraint(SpringLayout.NORTH, jsDepth, 5, SpringLayout.SOUTH, jsWidth);
     }
     
-    public DeskPanel(Item desk) {
-        this();
-        
-        setItem(desk);
-    }
-    
     @Override
     public void setItem(Item existingDesk) {
         super.setItem(existingDesk);
@@ -120,24 +129,21 @@ public class DeskPanel extends ItemPanel implements ActionListener {
 
     @Override
     protected boolean initialiseItem() {
-        newItem = new Desk(
-                this.txtidNum.getText(),// ID Number
-                (WoodType) jcbWoodType.getSelectedItem(),// Type of Wood
-                (Integer) this.spQuantity.getValue(),// Quantity
-                (Integer) jsWidth.getValue(),// Width
-                (Integer) jsDepth.getValue(),// Depth
-                (Integer) jsDraws.getValue()// Draws
-        );
+        try {
+            newItem = new Desk(
+                    this.txtidNum.getText(),// ID Number
+                    (WoodType) jcbWoodType.getSelectedItem(),// Type of Wood
+                    (Integer) this.spQuantity.getValue(),// Quantity
+                    (Integer) jsWidth.getValue(),// Width
+                    (Integer) jsDepth.getValue(),// Depth
+                    (Integer) jsDraws.getValue()// Draws
+            );
+        } catch (ClassCastException e) {
+            JOptionPane.showMessageDialog(this, "Error, could not add new desk - ClassCastException.");
+            return false;
+        }
+        
         Order.getInstance().myViews.add(newItem);
-        return true;
-    }
-
-    @Override
-    protected boolean validInputs() {
-        if (!super.validInputs()) return false;
-        
-        // do i need to validate jspinners?
-        
         return true;
     }
 

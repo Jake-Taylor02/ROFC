@@ -8,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.SpringLayout;
@@ -20,19 +21,33 @@ import uk.ac.tees.b1086175.ROFCApp.TableBase;
 import uk.ac.tees.b1086175.ROFCApp.WoodType;
 
 /**
- *
- * @author jake
+ * Provides the necessary input fields and validation for a Table.
+ * @author b1086175 | Jake Taylor
  */
 public class TablePanel extends ItemPanel implements ActionListener {
     private JComboBox jcbBase;
     private JSpinner jspDiameter;
     
     /**
-     *
+     * Constructor used for creating a new Table.
      */
     public TablePanel() {
         super();
 
+        init();
+    }
+    
+    /**
+     * Constructor used when editing an existing Table.
+     * @param table
+     */
+    public TablePanel(Item table) {
+        this();
+        
+        setItem(table);
+    }
+    
+    private void init() {
         // Table Base Label
         JLabel jlTableBase = new JLabel("Table Base:", SwingConstants.RIGHT);
         jlTableBase.setPreferredSize(this.lblSize);
@@ -70,15 +85,7 @@ public class TablePanel extends ItemPanel implements ActionListener {
         spLayout.putConstraint(SpringLayout.NORTH, jspDiameter, 5, SpringLayout.SOUTH, jcbBase);
     }
     
-    /**
-     *
-     * @param table
-     */
-    public TablePanel(Item table) {
-        this();
-        
-        setItem(table);
-    }
+    
     
     @Override
     public void setItem(Item existingTable) {
@@ -99,29 +106,22 @@ public class TablePanel extends ItemPanel implements ActionListener {
 
     @Override
     protected boolean initialiseItem() {
-        // Do actions related to chair
         // refactor with try-catch.
-        newItem = new Table(
-                this.txtidNum.getText(),// ID Number
-                (WoodType) jcbWoodType.getSelectedItem(),// Type of Wood
-                (Integer) this.spQuantity.getValue(),// Quantity
-                (TableBase) jcbBase.getSelectedItem(),// TableBase
-                (Integer) jspDiameter.getValue()// Diameter
-        );
+        try {
+            newItem = new Table(
+                    this.txtidNum.getText(),// ID Number
+                    (WoodType) jcbWoodType.getSelectedItem(),// Type of Wood
+                    (Integer) this.spQuantity.getValue(),// Quantity
+                    (TableBase) jcbBase.getSelectedItem(),// TableBase
+                    (Integer) jspDiameter.getValue()// Diameter
+            );
+        } catch (ClassCastException e) {
+            JOptionPane.showMessageDialog(this, "Error, could not add new table - ClassCastException.");
+            return false;
+        }
         Order.getInstance().myViews.add(newItem);
         return true;
     }
-
-    @Override
-    protected boolean validInputs() {
-        if (!super.validInputs()) return false;
-
-        // do i need to validate cbox or jspinner values?
-        
-        return true; //To change body of generated methods, choose Tools | Templates.
-    }
-    
-    
     
     @Override
     public void actionPerformed(ActionEvent e) {

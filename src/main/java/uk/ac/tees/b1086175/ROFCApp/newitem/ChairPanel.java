@@ -7,10 +7,11 @@ package uk.ac.tees.b1086175.ROFCApp.newitem;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JCheckBox;
+import javax.swing.JOptionPane;
 import javax.swing.SpringLayout;
 import uk.ac.tees.b1086175.ROFCApp.*;
 
-/** Provides the necessary input fields for an Item.
+/** Provides the necessary input fields and validation for a Chair.
  *
  * @author b1086175 | Jake Taylor
  */
@@ -63,23 +64,19 @@ public class ChairPanel extends ItemPanel implements ActionListener {
 
     @Override
     protected boolean initialiseItem() {
-        // refactor into try-catch
-        newItem = new Chair(
-                this.txtidNum.getText(), // ID Number
-                (WoodType) jcbWoodType.getSelectedItem(), // Type of Wood | 
-                (Integer) this.spQuantity.getValue(),// Quantity
-                jcbArmrest.isSelected() // Armrest
-        );
+        try {
+            newItem = new Chair(
+                    this.txtidNum.getText(), // ID Number
+                    (WoodType) jcbWoodType.getSelectedItem(), // Type of Wood
+                    (Integer) this.spQuantity.getValue(),// Quantity
+                    jcbArmrest.isSelected() // Armrest
+            );
+        } catch (ClassCastException e) {
+            JOptionPane.showMessageDialog(this, "Error, could not add new chair - ClassCastException.");
+            return false;
+        }
         
         Order.getInstance().myViews.add(newItem);
-        return true;
-    }
-
-    @Override
-    protected boolean validInputs() {
-        if (!super.validInputs()) return false;
-        
-        
         return true;
     }
     
