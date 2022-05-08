@@ -89,7 +89,7 @@ public class ItemDisplay extends JPanel implements MouseListener {
                     .getDetailsPanel(myItem);
             
             if (summaryPanel != null) {
-                JOptionPane.showMessageDialog(this, summaryPanel);
+                JOptionPane.showMessageDialog(this, summaryPanel, myItem.getID() + " Details", JOptionPane.INFORMATION_MESSAGE);
             } else {
                 System.out.println("Error - could not open details panel");
                 JOptionPane.showMessageDialog(this, "Error - could not open details panel");

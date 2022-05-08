@@ -11,7 +11,6 @@ import uk.ac.tees.b1086175.ROFCApp.newitem.TablePanel;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.List;
 import javax.swing.*;
 import uk.ac.tees.b1086175.ROFCApp.newitem.ItemPanel;
 

@@ -65,15 +65,6 @@ public class Main_CentrePanel extends JPanel implements ChangeItemListener {
         updateGrid();
     }
     
-    @Override
-    public void replaceItem(Item oItem, Item nItem) {
-        
-        for (int i = 0; i < myOrder.size(); i++) {
-            if (myOrder.get(i) == oItem) {
-                myOrder.replaceItem(i, nItem);
-            }
-        }
-        updateGrid();
-    }
+ 
     
 }

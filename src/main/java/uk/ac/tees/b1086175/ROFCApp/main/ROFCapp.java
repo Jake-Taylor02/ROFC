@@ -77,12 +77,18 @@ public class ROFCapp extends JFrame {
         ));
         testList.add(new Desk("DE002", WoodType.OAK, 1, 150, 75, 0));
         
-        // print stuff....
+        // print toString() of each Item.
         for (Item it : testList) {
             System.out.println(it.toString());
         }
         
-        
+        populateOrder(testList);
+    }
+    
+    private static void populateOrder(List<Item> list) {
+        for (Item i : list) {
+            myOrder.addItem(i);
+        }
     }
 
 }

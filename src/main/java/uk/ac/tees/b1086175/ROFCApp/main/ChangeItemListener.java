@@ -28,11 +28,4 @@ public interface ChangeItemListener {
      * @param dItem the item to be deleted
      */
     public void deleteItem(Item dItem);
-
-    /** Replace the specified item with the new item.
-     *
-     * @param oItem the item to be replaced
-     * @param nItem the new item
-     */
-    public void replaceItem(Item oItem, Item nItem);
 }

@@ -25,7 +25,7 @@ import uk.ac.tees.b1086175.ROFCApp.view.OrderView;
  */
 public class Order {
     private static Order myOrder;
-    public OrderView myViews;
+    public final OrderView myViews;
     
     private File path;
     private List<Item> items;
@@ -44,6 +44,7 @@ public class Order {
     
     public void addItem(Item itemIn) {
         items.add(itemIn);
+        myViews.add(itemIn);
     }
     
     public boolean removeItem(int index) {
@@ -55,10 +56,6 @@ public class Order {
     
     public void removeItem(Item item) {
         items.remove(item);
-    }
-    // this isnt used anymore
-    public void replaceItem(int index, Item newItem) {
-        items.set(index, newItem);
     }
     
     public void clear() {

@@ -44,6 +44,8 @@ public class OrderView {
 
         } else if (newItem instanceof Desk) {
             newItemView = new DeskView();
+        } else {
+            System.out.println("Error - Could not map class to ItemView.");
         }
         
         viewMap.put(newItem.getClass(), newItemView);
