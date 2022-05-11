@@ -128,7 +128,7 @@ public class TablePanel extends ItemPanel implements ActionListener {
         super.actionPerformed(e);
 
         if (e.getSource() == jcbBase) {
-            ((Table) newItem).setBase((TableBase)jcbBase.getSelectedItem());
+            if (newItem != null) ((Table) newItem).setBase((TableBase)jcbBase.getSelectedItem());
         }
         
         updateTotal();
@@ -139,7 +139,7 @@ public class TablePanel extends ItemPanel implements ActionListener {
         super.stateChanged(e);
         
         if (e.getSource() == jspDiameter) {
-            ((Table) newItem).setDiameter((int) jspDiameter.getValue());
+            if (newItem != null) ((Table) newItem).setDiameter((int) jspDiameter.getValue());
         }
         
         updateTotal();

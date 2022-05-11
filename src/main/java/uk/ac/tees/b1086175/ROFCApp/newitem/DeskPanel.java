@@ -152,11 +152,11 @@ public class DeskPanel extends ItemPanel implements ActionListener {
         super.stateChanged(e);
         
         if (e.getSource() == jsDraws) {
-            ((Desk) newItem).setDraws((int) jsDraws.getValue());
+            if (newItem != null) ((Desk) newItem).setDraws((int) jsDraws.getValue());
         } else if (e.getSource() == jsWidth) {
-            ((Desk) newItem).setWidth((int) jsWidth.getValue());
+            if (newItem != null) ((Desk) newItem).setWidth((int) jsWidth.getValue());
         } else if (e.getSource() == jsDepth) {
-            ((Desk) newItem).setDepth((int) jsDepth.getValue());
+            if (newItem != null) ((Desk) newItem).setDepth((int) jsDepth.getValue());
         }
         
         updateTotal();

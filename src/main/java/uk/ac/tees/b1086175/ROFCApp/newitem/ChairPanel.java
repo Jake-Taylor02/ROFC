@@ -85,7 +85,7 @@ public class ChairPanel extends ItemPanel implements ActionListener {
         super.actionPerformed(e);
 
         if (e.getSource() == jcbArmrest) {
-            ((Chair)newItem).setArmrests(jcbArmrest.isSelected());
+            if (newItem != null) ((Chair)newItem).setArmrests(jcbArmrest.isSelected());
         }
         
         updateTotal();
