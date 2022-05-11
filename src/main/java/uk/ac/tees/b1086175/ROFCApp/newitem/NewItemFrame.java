@@ -133,19 +133,16 @@ public class NewItemFrame extends JFrame {
                 newItem = jpCentre.getNewItem();
                 
                 if (e.getSource() == jbCancel) {
-                    System.out.println("Cancel has been pressed");
                     dispose();// Shut the frame
                     return;
                 }
                 
                 if (newItem == null) {
-                    System.out.println("newItem is null");
                     JOptionPane.showMessageDialog(this, "Cannot Save Item - Item Fields are not valid");
                     return;
                 }
                 
                 if (e.getSource() == jbSave) {
-                    System.out.println("Save has been pressed");
                     
                     if (editMode) {
                         for (ChangeItemListener l : changeListeners) {

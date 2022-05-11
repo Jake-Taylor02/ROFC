@@ -7,7 +7,7 @@ package uk.ac.tees.b1086175.ROFCApp;
 import java.io.File;
 
 
-/**
+/** Represents a Table item
  *
  * @author b1086175 | Jake Taylor
  */

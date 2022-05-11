@@ -7,7 +7,7 @@ package uk.ac.tees.b1086175.ROFCApp;
 import java.io.File;
 import javax.swing.ImageIcon;
 
-/**
+/** Represent a generic furniture item.
  *
  * @author b1086175 | Jake Taylor
  */

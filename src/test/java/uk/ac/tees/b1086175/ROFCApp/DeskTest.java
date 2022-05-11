@@ -4,7 +4,6 @@
  */
 package uk.ac.tees.b1086175.ROFCApp;
 
-import java.io.File;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -13,8 +12,8 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
- *
- * @author jake
+ * Unit test of Desk class.
+ * @author b1086175 | Jake Taylor
  */
 public class DeskTest {
     

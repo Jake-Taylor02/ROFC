@@ -71,7 +71,6 @@ public class Main_LeftPanel extends JPanel {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            System.out.println("Add Chair has been pressed!");
             
             SwingUtilities.invokeLater(new Runnable() {
                 @Override
@@ -99,7 +98,6 @@ public class Main_LeftPanel extends JPanel {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            System.out.println("Add Table has been pressed!");
 
             SwingUtilities.invokeLater(new Runnable() {
                 @Override
@@ -126,7 +124,6 @@ public class Main_LeftPanel extends JPanel {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            System.out.println("Add Desk has been pressed!");
             newIF = new NewItemFrame(new DeskPanel());
             newIF.addChangeItemListener(grid);
 

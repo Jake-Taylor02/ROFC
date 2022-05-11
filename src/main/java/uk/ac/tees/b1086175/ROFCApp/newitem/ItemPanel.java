@@ -126,8 +126,6 @@ public abstract class ItemPanel extends JPanel implements ActionListener, Change
                 if (!validInputs()) return;
                 
                 newItem.setID(txtidNum.getText());
-                System.out.println("keytyped 2");
-                System.out.println(txtidNum.getText());
             }
         });
         this.jcbWoodType.addActionListener(this);
