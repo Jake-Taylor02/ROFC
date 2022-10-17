@@ -14,15 +14,19 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 import uk.ac.tees.b1086175.ROFCApp.newitem.ItemPanel;
 
-/** Move to main internal?
+/** Panel holding the buttons for adding new items.
  *
- * @author b1086175
+ * @author b1086175 | Jake Taylor
  */
 public class Main_LeftPanel extends JPanel {
-    private final Main_CenterPanel grid;
+    private final Main_CentrePanel grid;
     NewItemFrame newIF;
 
-    public Main_LeftPanel(Main_CenterPanel grid) {
+    /**
+     * Constructor requiring a reference the the grid holding the order.
+     * @param grid
+     */
+    public Main_LeftPanel(Main_CentrePanel grid) {
         this.grid = grid;
         
         init();
@@ -64,11 +68,9 @@ public class Main_LeftPanel extends JPanel {
 
             this.addActionListener(this);
         }
-        // !!!! change these to one actipon listener, and use Orderview method
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            System.out.println("Add Chair has been pressed!");
             
             SwingUtilities.invokeLater(new Runnable() {
                 @Override
@@ -96,7 +98,6 @@ public class Main_LeftPanel extends JPanel {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            System.out.println("Add Table has been pressed!");
 
             SwingUtilities.invokeLater(new Runnable() {
                 @Override
@@ -123,7 +124,6 @@ public class Main_LeftPanel extends JPanel {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            System.out.println("Add Desk has been pressed!");
             newIF = new NewItemFrame(new DeskPanel());
             newIF.addChangeItemListener(grid);
 

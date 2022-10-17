@@ -16,7 +16,7 @@ import javax.swing.table.TableRowSorter;
 import uk.ac.tees.b1086175.ROFCApp.Item;
 import uk.ac.tees.b1086175.ROFCApp.Order;
 
-/**
+/** Panel displaying a table of the items in the order.
  *
  * @author b1086175 | Jake Taylor
  */
@@ -24,6 +24,9 @@ public class Table_SummaryPanel extends JPanel{
     private final Order items = Order.getInstance();
     private JTable table;
 
+    /**
+     * Constructor.
+     */
     public Table_SummaryPanel() {
         init();
     }
@@ -39,11 +42,7 @@ public class Table_SummaryPanel extends JPanel{
         
         trs.setSortKeys(sortKeys);
         
-        
         table.setRowSorter(trs);
-        
-        
-        
         
         JScrollPane spTable = new JScrollPane(table);
         

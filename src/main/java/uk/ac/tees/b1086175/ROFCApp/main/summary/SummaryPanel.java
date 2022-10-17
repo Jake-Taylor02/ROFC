@@ -4,21 +4,10 @@
  */
 package uk.ac.tees.b1086175.ROFCApp.main.summary;
 
-import java.awt.Dimension;
-import java.util.ArrayList;
-import java.util.List;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
-import javax.swing.JTable;
-import javax.swing.RowSorter;
-import javax.swing.SortOrder;
-import javax.swing.table.AbstractTableModel;
-import javax.swing.table.TableRowSorter;
-import uk.ac.tees.b1086175.ROFCApp.Item;
-import uk.ac.tees.b1086175.ROFCApp.Order;
 
-/**
+/** Panel containing various summaries of the order.
  *
  * @author b1086175 | Jake Taylor
  */
@@ -28,6 +17,9 @@ public class SummaryPanel extends JPanel{
     private Table_SummaryPanel table;
     private JPanel piechart;
 
+    /**
+     * Constructor.
+     */
     public SummaryPanel() {
         init();
     }

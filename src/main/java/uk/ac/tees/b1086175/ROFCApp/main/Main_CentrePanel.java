@@ -4,22 +4,23 @@
  */
 package uk.ac.tees.b1086175.ROFCApp.main;
 
-
-import java.awt.Dimension;
 import java.awt.GridLayout;
 import javax.swing.JPanel;
 import uk.ac.tees.b1086175.ROFCApp.Item;
 import uk.ac.tees.b1086175.ROFCApp.Order;
 
-/** Panel to hold Grid for displaying Order
+/** Panel to hold Grid for displaying the Order.
  *
  * @author b1086175 | Jake Taylor
  */
-public class Main_CenterPanel extends JPanel implements ChangeItemListener {
+public class Main_CentrePanel extends JPanel implements ChangeItemListener {
     private final Order myOrder;
     private ItemDisplay[] iPanels;
 
-    public Main_CenterPanel() {
+    /**
+     *  Constructor.
+     */
+    public Main_CentrePanel() {
         this.myOrder = Order.getInstance();
         
         init();
@@ -49,14 +50,12 @@ public class Main_CenterPanel extends JPanel implements ChangeItemListener {
 
     @Override
     public void newItem(Item nItem) {
-        System.out.println("CenterPanel.newItem()");
         myOrder.addItem(nItem);
         updateGrid();
     }
 
     @Override
     public void updateGrid() {
-        System.out.println("CenterPanel.updateGrid()");
         init();
     }
 
@@ -65,20 +64,7 @@ public class Main_CenterPanel extends JPanel implements ChangeItemListener {
         myOrder.removeItem(dItem);
         updateGrid();
     }
-    /** Find and replaces specific item in Order
-     * 
-     * @param oItem
-     * @param nItem 
-     */
-    @Override
-    public void replaceItem(Item oItem, Item nItem) {
-        
-        for (int i = 0; i < myOrder.size(); i++) {
-            if (myOrder.get(i) == oItem) {
-                myOrder.replaceItem(i, nItem);
-            }
-        }
-        updateGrid();
-    }
+    
+ 
     
 }

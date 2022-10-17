@@ -5,8 +5,6 @@
 package uk.ac.tees.b1086175.ROFCApp.main;
 
 import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
 import uk.ac.tees.b1086175.ROFCApp.newitem.ItemPanel;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -19,22 +17,19 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
-import javax.swing.border.Border;
 import uk.ac.tees.b1086175.ROFCApp.Item;
 import uk.ac.tees.b1086175.ROFCApp.Order;
 import uk.ac.tees.b1086175.ROFCApp.newitem.NewItemFrame;
-import uk.ac.tees.b1086175.ROFCApp.view.OrderView;
-
 /**
- *  JPanel that visually represents a single Item in Main_CenterPanel.
+ *  JPanel that visually represents a single Item in Main_CentrePanel.
  *  
- * @see Main_CenterPanel
- * @author jake
+ * @see Main_CentrePanel
+ * @author b1086175 | Jake Taylor
  */
 public class ItemDisplay extends JPanel implements MouseListener {
     private JLabel jlItem;
     private Item myItem;
-    private final Main_CenterPanel parentCont;
+    private final Main_CentrePanel parentCont;
     private final boolean empty;
 
     private final List<ChangeItemListener> changeListeners = new ArrayList<>();
@@ -44,18 +39,18 @@ public class ItemDisplay extends JPanel implements MouseListener {
      * icon is set to default image
      * @param owner Reference to parent container
      */
-    public ItemDisplay(Main_CenterPanel owner) {
+    public ItemDisplay(Main_CentrePanel owner) {
         this.parentCont = owner;
         empty = true;
         init();
     }
     
     /**
-     * 
+     * Constructor for when the grid cell is occupied with an item.
      * @param owner Reference to parent container
      * @param myItem Reference to the Item which the JPanel represents
      */
-    public ItemDisplay(Main_CenterPanel owner, Item myItem) {
+    public ItemDisplay(Main_CentrePanel owner, Item myItem) {
         this.parentCont = owner;
         this.myItem = myItem;
         empty = false;
@@ -80,7 +75,6 @@ public class ItemDisplay extends JPanel implements MouseListener {
     
     @Override
     public void mouseClicked(MouseEvent e) {
-        System.out.println("Mouse clicked");
         
         if (empty) {
             JOptionPane.showMessageDialog(this, "This Cell Is Empty");
@@ -94,7 +88,7 @@ public class ItemDisplay extends JPanel implements MouseListener {
                     .getDetailsPanel(myItem);
             
             if (summaryPanel != null) {
-                JOptionPane.showMessageDialog(this, summaryPanel);
+                JOptionPane.showMessageDialog(this, summaryPanel, myItem.getID() + " Details", JOptionPane.INFORMATION_MESSAGE);
             } else {
                 System.out.println("Error - could not open details panel");
                 JOptionPane.showMessageDialog(this, "Error - could not open details panel");
@@ -102,8 +96,6 @@ public class ItemDisplay extends JPanel implements MouseListener {
             
         } else if (e.getButton() == MouseEvent.BUTTON2) {
             // Edit Item
-            System.out.println("button 3 clicked");
-            System.out.println(myItem.getClass().getSimpleName());
             
             SwingUtilities.invokeLater(new Runnable() {
                 @Override
@@ -130,24 +122,24 @@ public class ItemDisplay extends JPanel implements MouseListener {
 
     @Override
     public void mousePressed(MouseEvent e) {
-        System.out.println("Mouse pressed");
     }
 
     @Override
     public void mouseReleased(MouseEvent e) {
-        System.out.println("mouse released");
     }
 
     @Override
     public void mouseEntered(MouseEvent e) {
-        System.out.println("mouse entered");
     }
 
     @Override
     public void mouseExited(MouseEvent e) {
-        System.out.println("mouse exited");
     }
     
+    /** Adds a subscriber to be notified when there is a change to this item.
+     *
+     * @param e the subscriber
+     */
     public void addChangeItemListener(ChangeItemListener e) {
         changeListeners.add(e);
     }

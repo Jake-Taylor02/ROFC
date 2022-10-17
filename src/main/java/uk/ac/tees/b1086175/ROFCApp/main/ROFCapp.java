@@ -5,7 +5,7 @@ import java.util.List;
 import uk.ac.tees.b1086175.ROFCApp.*;
 import javax.swing.*;
 
-/**
+/** Main Frame used to manage orders.
  *
  * @author b1086175 | Jake Taylor
  */
@@ -14,7 +14,10 @@ public class ROFCapp extends JFrame {
     private static final Order myOrder = Order.getInstance();
     private static JFrame myGUI;
     
-    
+    /** Initialises JFrame and adds MainPanel component
+     *
+     * @param args
+     */
     public static void main(String[] args) {
         // Test items
         cliFurnitureTest();
@@ -40,6 +43,9 @@ public class ROFCapp extends JFrame {
         myGUI.setVisible(true);
     }
     
+    /**
+     * Demonstrating the Furniture classes and printing their toString() methods to console.
+     */
     private static void cliFurnitureTest() {
         List<Item> testList = new ArrayList<>();
         
@@ -50,6 +56,7 @@ public class ROFCapp extends JFrame {
                 true// Armrest
         ));
         testList.add(new Chair("CH002", WoodType.OAK, 2, false));
+        
         
         testList.add(new Table(
                 "TA001",// Item ID
@@ -70,9 +77,17 @@ public class ROFCapp extends JFrame {
         ));
         testList.add(new Desk("DE002", WoodType.OAK, 1, 150, 75, 0));
         
-        // print stuff....
+        // print toString() of each Item.
         for (Item it : testList) {
             System.out.println(it.toString());
+        }
+        
+        populateOrder(testList);
+    }
+    
+    private static void populateOrder(List<Item> list) {
+        for (Item i : list) {
+            myOrder.addItem(i);
         }
     }
 

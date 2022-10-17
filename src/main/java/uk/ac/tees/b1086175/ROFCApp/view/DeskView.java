@@ -12,10 +12,10 @@ import uk.ac.tees.b1086175.ROFCApp.newitem.DeskPanel;
 import uk.ac.tees.b1086175.ROFCApp.newitem.ItemPanel;
 
 /**
- *
- * @author b1086175
+ * Provides the components needed to display and edit a Desk.
+ * @author b1086175 | Jake Taylor
  */
-public class DeskView implements ItemView{
+public class DeskView implements ItemView {
 
     @Override
     public JPanel getDetailsPanel(Item item) {
@@ -27,6 +27,10 @@ public class DeskView implements ItemView{
         return new DeskPanel((Desk) item);
     }
     
+    /**
+     * Returns panel required to create a new desk.
+     * @return DeskPanel
+     */
     public static ItemPanel getNewItemPanel() {
         return new DeskPanel();
     }

@@ -12,8 +12,8 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
- *
- * @author b1086175
+ * Unit Test of Chair Class.
+ * @author b1086175 | Jake Taylor
  */
 public class ChairTest {
     
@@ -47,9 +47,6 @@ public class ChairTest {
         int result = instance1.itemPrice;
         int expResult = 7500;
         assertEquals(expResult, result);
-        
-        
-        
     }
 
     /**
@@ -58,12 +55,16 @@ public class ChairTest {
     @org.junit.jupiter.api.Test
     public void testGetSummary() {
         System.out.println("getSummary");
-        Chair instance = null;
-        String expResult = "";
+        Chair instance = new Chair("001", WoodType.OAK, 1, true);
+        String expResult = "Type of Item: Chair\n" +
+            "Item ID: 001\n" +
+            "Type of Wood: OAK\n" +
+            "Item Price: £75.00\n" +
+            "Quantity: 1\n" +
+            "Total Price: £75.00\n" +
+            "Armrests: Yes\n";
         String result = instance.toString();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -72,12 +73,15 @@ public class ChairTest {
     @org.junit.jupiter.api.Test
     public void testIsArmrests() {
         System.out.println("isArmrests");
-        Chair instance = null;
-        boolean expResult = false;
+        Chair instance = new Chair("001", WoodType.OAK, 1, true);
+        boolean expResult = true;
         boolean result = instance.isArmrests();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
+        instance = new Chair("001", WoodType.OAK, 1, false);
+        expResult = true;
+        result = instance.isArmrests();
+        assertFalse(expResult == result);
     }
 
     /**
@@ -86,11 +90,10 @@ public class ChairTest {
     @org.junit.jupiter.api.Test
     public void testSetArmrests() {
         System.out.println("setArmrests");
-        boolean armrests = false;
-        Chair instance = null;
+        boolean armrests = true;
+        Chair instance = new Chair("001", WoodType.OAK, 1, false);
         instance.setArmrests(armrests);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(armrests, instance.isArmrests());
     }
     
 }

@@ -16,18 +16,21 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import uk.ac.tees.b1086175.ROFCApp.Order;
 
-/**
+/** The Main Panel to hold all other components within the main JFrame.
  *
  * @author b1086175 | Jake Taylor
  */
 public class MainPanel extends JPanel{
     private final Order itemArr = Order.getInstance();
     
-    private Main_CenterPanel jpCenter;
+    private Main_CentrePanel jpCenter;
     private Main_TopPanel jpTop;
     private JPanel jpLeft;
     private BottomPanel jpBottom;
 
+    /**
+     * Constructor which initialises and adds the components within the panel..
+     */
     public MainPanel() {
         init();
     }
@@ -38,7 +41,7 @@ public class MainPanel extends JPanel{
         jpTop = new Main_TopPanel();
         this.add(jpTop, BorderLayout.NORTH);
         
-        jpCenter = new Main_CenterPanel();
+        jpCenter = new Main_CentrePanel();
         JScrollPane jsp = new JScrollPane(jpCenter);
         jsp.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
         this.add(jsp, BorderLayout.CENTER);

@@ -12,8 +12,8 @@ import uk.ac.tees.b1086175.ROFCApp.newitem.ItemPanel;
 import uk.ac.tees.b1086175.ROFCApp.newitem.TablePanel;
 
 /**
- *
- * @author b1086175
+ * Provides the components needed to display and edit a Table.
+ * @author b1086175 | Jake Taylor
  */
 public class TableView implements ItemView{
 
@@ -27,6 +27,10 @@ public class TableView implements ItemView{
         return new TablePanel((Table) item);
     }
     
+    /**
+     * Returns panel required to create a new table.
+     * @return TablePanel
+     */
     public static ItemPanel getNewItemPanel() {
         return new TablePanel();
     }

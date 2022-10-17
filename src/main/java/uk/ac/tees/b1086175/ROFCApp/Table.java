@@ -5,12 +5,11 @@
 package uk.ac.tees.b1086175.ROFCApp;
 
 import java.io.File;
-import javax.swing.ImageIcon;
 
 
-/**
+/** Represents a Table item
  *
- * @author b1086175
+ * @author b1086175 | Jake Taylor
  */
 public class Table extends Item implements java.io.Serializable {
     private TableBase base;
@@ -18,6 +17,14 @@ public class Table extends Item implements java.io.Serializable {
     
     private static final File myImage = new File("table2.jpg");
 
+    /** Constructor
+     *
+     * @param ID
+     * @param wood
+     * @param quantity
+     * @param base
+     * @param diameter
+     */
     public Table(String ID, WoodType wood, int quantity, TableBase base, int diameter) {
         super(ID, wood, quantity);
         this.base = base;
@@ -43,19 +50,35 @@ public class Table extends Item implements java.io.Serializable {
         return result;
     }
 
+    /** Returns the type of base of the table.
+     *
+     * @return
+     */
     public TableBase getBase() {
         return base;
     }
 
+    /** Sets the type of base of the table.
+     *
+     * @param base
+     */
     public void setBase(TableBase base) {
         this.base = base;
         calculatePrice();
     }
 
+    /** Returns the diameter of the table.
+     *
+     * @return
+     */
     public int getDiameter() {
         return diameter;
     }
 
+    /** Sets the diameter of the table.
+     *
+     * @param diameter
+     */
     public void setDiameter(int diameter) {
         this.diameter = diameter;
         calculatePrice();

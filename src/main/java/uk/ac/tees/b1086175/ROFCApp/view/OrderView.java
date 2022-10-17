@@ -13,16 +13,24 @@ import uk.ac.tees.b1086175.ROFCApp.Order;
 import uk.ac.tees.b1086175.ROFCApp.Table;
 
 /**
- *
+ * Class containing Map to link Item subclasses to the correct ItemView.
  * @author b1086175 | Jake Taylor
  */
 public class OrderView {
     private final Map<Class, ItemView> viewMap = new HashMap<>();
     
+    /**
+     * Constructor
+     */
     public OrderView() {
         
     }
     
+    /** Add new Item instance to the map.
+     * Item subclass is only added if it is not already present in the map.
+     * 
+     * @param newItem
+     */
     public void add(Item newItem) {
         if (viewMap.containsKey(newItem.getClass())) return;
         
@@ -36,46 +44,47 @@ public class OrderView {
 
         } else if (newItem instanceof Desk) {
             newItemView = new DeskView();
+        } else {
+            System.out.println("Error - Could not map class to ItemView.");
         }
         
         viewMap.put(newItem.getClass(), newItemView);
     }
     
+    /**
+     * Removes Class of specified Item from map
+     * @param toRemove
+     */
     public void remove(Item toRemove) {
         if (!viewMap.containsKey(toRemove.getClass())) return;
         
         viewMap.remove(toRemove.getClass());
     }
     
+    /**
+     * Returns the correct ItemView based on the Class of item parameter
+     * @param item
+     * @return
+     */
     public ItemView getView(Item item) {
         return viewMap.get(item.getClass());
     }
     
+    /**
+     * Clears the map.
+     */
     public void clearAll() {
         viewMap.clear();
     }
     
+    /**
+     * Iterates through the order, populating the map.
+     */
     public void populate() {
         Order myOrder = Order.getInstance();
         for (int i = 0; i < myOrder.size(); i++) {
             this.add(myOrder.get(i));
         }
     }
-    
-//    public static ItemView getView(Item myItem) {
-//        ItemView newItemView = null;
-//
-//        if (myItem instanceof Chair) {
-//            newItemView = new ChairView(myItem);
-//
-//        } else if (myItem instanceof Table) {
-//            newItemView = new TableView(myItem);
-//
-//        } else if (myItem instanceof Desk) {
-//            newItemView = new DeskView(myItem);
-//        }
-//        
-//        return newItemView;
-//    }
     
 }

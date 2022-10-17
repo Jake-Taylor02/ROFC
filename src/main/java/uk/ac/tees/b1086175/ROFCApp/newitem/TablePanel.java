@@ -4,11 +4,11 @@
  */
 package uk.ac.tees.b1086175.ROFCApp.newitem;
 
-import uk.ac.tees.b1086175.ROFCApp.newitem.ItemPanel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.SpringLayout;
@@ -19,19 +19,35 @@ import uk.ac.tees.b1086175.ROFCApp.Order;
 import uk.ac.tees.b1086175.ROFCApp.Table;
 import uk.ac.tees.b1086175.ROFCApp.TableBase;
 import uk.ac.tees.b1086175.ROFCApp.WoodType;
-import uk.ac.tees.b1086175.ROFCApp.view.OrderView;
 
 /**
- *
- * @author jake
+ * Provides the necessary input fields and validation for a Table.
+ * @author b1086175 | Jake Taylor
  */
 public class TablePanel extends ItemPanel implements ActionListener {
     private JComboBox jcbBase;
     private JSpinner jspDiameter;
     
+    /**
+     * Constructor used for creating a new Table.
+     */
     public TablePanel() {
         super();
 
+        init();
+    }
+    
+    /**
+     * Constructor used when editing an existing Table.
+     * @param table
+     */
+    public TablePanel(Item table) {
+        this();
+        
+        setItem(table);
+    }
+    
+    private void init() {
         // Table Base Label
         JLabel jlTableBase = new JLabel("Table Base:", SwingConstants.RIGHT);
         jlTableBase.setPreferredSize(this.lblSize);
@@ -41,7 +57,7 @@ public class TablePanel extends ItemPanel implements ActionListener {
 
         // Table Base Combo Box
         jcbBase = new JComboBox(TableBase.values());
-        jcbBase.setPreferredSize(this.txtSize);
+        jcbBase.setPreferredSize(this.fieldSize);
         jcbBase.addActionListener(this);
         this.add(jcbBase);
         spLayout.putConstraint(SpringLayout.WEST, jcbBase, 5, SpringLayout.EAST, jlTableBase);
@@ -62,18 +78,14 @@ public class TablePanel extends ItemPanel implements ActionListener {
                 1// increment
         );
         jspDiameter = new JSpinner(dModel);
-        jspDiameter.setPreferredSize(this.txtSize);
+        jspDiameter.setPreferredSize(this.fieldSize);
         jspDiameter.addChangeListener(this);
         this.add(jspDiameter);
         spLayout.putConstraint(SpringLayout.WEST, jspDiameter, 5, SpringLayout.EAST, jlDiameter);
         spLayout.putConstraint(SpringLayout.NORTH, jspDiameter, 5, SpringLayout.SOUTH, jcbBase);
     }
     
-    public TablePanel(Item table) {
-        this();
-        
-        setItem(table);
-    }
+    
     
     @Override
     public void setItem(Item existingTable) {
@@ -94,36 +106,29 @@ public class TablePanel extends ItemPanel implements ActionListener {
 
     @Override
     protected boolean initialiseItem() {
-        // Do actions related to chair
         // refactor with try-catch.
-        newItem = new Table(
-                this.txtidNum.getText(),// ID Number
-                (WoodType) jcbWoodType.getSelectedItem(),// Type of Wood
-                (Integer) this.spQuantity.getValue(),// Quantity
-                (TableBase) jcbBase.getSelectedItem(),// TableBase
-                (Integer) jspDiameter.getValue()// Diameter
-        );
+        try {
+            newItem = new Table(
+                    this.txtidNum.getText(),// ID Number
+                    (WoodType) jcbWoodType.getSelectedItem(),// Type of Wood
+                    (Integer) this.spQuantity.getValue(),// Quantity
+                    (TableBase) jcbBase.getSelectedItem(),// TableBase
+                    (Integer) jspDiameter.getValue()// Diameter
+            );
+        } catch (ClassCastException e) {
+            JOptionPane.showMessageDialog(this, "Error, could not add new table - ClassCastException.");
+            return false;
+        }
         Order.getInstance().myViews.add(newItem);
         return true;
     }
-
-    @Override
-    protected boolean validInputs() {
-        if (!super.validInputs()) return false;
-
-        // do i need to validate cbox or jspinner values?
-        
-        return true; //To change body of generated methods, choose Tools | Templates.
-    }
-    
-    
     
     @Override
     public void actionPerformed(ActionEvent e) {
         super.actionPerformed(e);
 
         if (e.getSource() == jcbBase) {
-            ((Table) newItem).setBase((TableBase)jcbBase.getSelectedItem());
+            if (newItem != null) ((Table) newItem).setBase((TableBase)jcbBase.getSelectedItem());
         }
         
         updateTotal();
@@ -134,7 +139,7 @@ public class TablePanel extends ItemPanel implements ActionListener {
         super.stateChanged(e);
         
         if (e.getSource() == jspDiameter) {
-            ((Table) newItem).setDiameter((int) jspDiameter.getValue());
+            if (newItem != null) ((Table) newItem).setDiameter((int) jspDiameter.getValue());
         }
         
         updateTotal();

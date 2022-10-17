@@ -15,7 +15,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import uk.ac.tees.b1086175.ROFCApp.Order;
 import uk.ac.tees.b1086175.ROFCApp.view.OrderView;
 
-/**
+/** Panel containing the save, load and clear functions.
  *
  * @author b1086175 | Jake Taylor
  */
@@ -27,6 +27,9 @@ public class Main_TopPanel extends JPanel implements ActionListener {
     JButton jbLoad;
     JLabel jlFile;
 
+    /**
+     * Constructor.
+     */
     public Main_TopPanel() {
         init();
     }
@@ -71,9 +74,10 @@ public class Main_TopPanel extends JPanel implements ActionListener {
             jlFile.setText("File:");
         }
         
+        // Initialise File dialog.
         JFileChooser jfc = new JFileChooser();
         jfc.setFileFilter(new FileNameExtensionFilter("DAT Files", "dat"));
-        jfc.setAcceptAllFileFilterUsed(false);
+        jfc.setAcceptAllFileFilterUsed(true);
         
         if (e.getSource() == jbSave) {
             int result = jfc.showSaveDialog(this);
@@ -105,6 +109,10 @@ public class Main_TopPanel extends JPanel implements ActionListener {
         }
     }
     
+    /** Adds a subscriber to be notified when there is a change to this item.
+     *
+     * @param cil the new subscriber
+     */
     public void addChangeItemListener(ChangeItemListener cil) {
         ciListeners.add(cil);
     }

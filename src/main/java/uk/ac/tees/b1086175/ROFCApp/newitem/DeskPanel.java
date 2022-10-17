@@ -4,10 +4,9 @@
  */
 package uk.ac.tees.b1086175.ROFCApp.newitem;
 
-import uk.ac.tees.b1086175.ROFCApp.newitem.ItemPanel;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.SpringLayout;
@@ -17,18 +16,34 @@ import uk.ac.tees.b1086175.ROFCApp.Desk;
 import uk.ac.tees.b1086175.ROFCApp.Item;
 import uk.ac.tees.b1086175.ROFCApp.Order;
 import uk.ac.tees.b1086175.ROFCApp.WoodType;
-import uk.ac.tees.b1086175.ROFCApp.view.OrderView;
 
 /**
- *
- * @author jake
+ * Provides the necessary input fields and validation for a Desk.
+ * @author b1086175 | Jake Taylor
  */
 public class DeskPanel extends ItemPanel implements ActionListener {
     private JSpinner jsDraws, jsWidth, jsDepth;
     
+    /**
+     * Constructor used when Adding a new Desk.
+     */
     public DeskPanel() {
         super();
 
+        init();
+    }
+    
+    /**
+     * Constructor used when editing an existing Chair.
+     * @param desk The Desk to be edited
+     */
+    public DeskPanel(Item desk) {
+        this();
+        
+        setItem(desk);
+    }
+    
+    private void init() {
         // Draws Label
         JLabel jlDraws = new JLabel("Draws:", SwingConstants.RIGHT);
         jlDraws.setPreferredSize(this.lblSize);
@@ -44,7 +59,7 @@ public class DeskPanel extends ItemPanel implements ActionListener {
                 1// increment
         );
         jsDraws = new JSpinner(drawModel);
-        jsDraws.setPreferredSize(this.txtSize);
+        jsDraws.setPreferredSize(this.fieldSize);
         jsDraws.addChangeListener(this);
         this.add(jsDraws);
         spLayout.putConstraint(SpringLayout.WEST, jsDraws, 5, SpringLayout.EAST, jlDraws);
@@ -65,7 +80,7 @@ public class DeskPanel extends ItemPanel implements ActionListener {
                 1// increment
         );
         jsWidth = new JSpinner(widthModel);
-        jsWidth.setPreferredSize(this.txtSize);
+        jsWidth.setPreferredSize(this.fieldSize);
         jsWidth.addChangeListener(this);
         this.add(jsWidth);
         spLayout.putConstraint(SpringLayout.WEST, jsWidth, 5, SpringLayout.EAST, jlWidth);
@@ -87,17 +102,11 @@ public class DeskPanel extends ItemPanel implements ActionListener {
                 1// increment
         );
         jsDepth = new JSpinner(depthModel);
-        jsDepth.setPreferredSize(this.txtSize);
+        jsDepth.setPreferredSize(this.fieldSize);
         jsDepth.addChangeListener(this);
         this.add(jsDepth);
         spLayout.putConstraint(SpringLayout.WEST, jsDepth, 5, SpringLayout.EAST, jlDepth);
         spLayout.putConstraint(SpringLayout.NORTH, jsDepth, 5, SpringLayout.SOUTH, jsWidth);
-    }
-    
-    public DeskPanel(Item desk) {
-        this();
-        
-        setItem(desk);
     }
     
     @Override
@@ -120,24 +129,21 @@ public class DeskPanel extends ItemPanel implements ActionListener {
 
     @Override
     protected boolean initialiseItem() {
-        newItem = new Desk(
-                this.txtidNum.getText(),// ID Number
-                (WoodType) jcbWoodType.getSelectedItem(),// Type of Wood
-                (Integer) this.spQuantity.getValue(),// Quantity
-                (Integer) jsWidth.getValue(),// Width
-                (Integer) jsDepth.getValue(),// Depth
-                (Integer) jsDraws.getValue()// Draws
-        );
+        try {
+            newItem = new Desk(
+                    this.txtidNum.getText(),// ID Number
+                    (WoodType) jcbWoodType.getSelectedItem(),// Type of Wood
+                    (Integer) this.spQuantity.getValue(),// Quantity
+                    (Integer) jsWidth.getValue(),// Width
+                    (Integer) jsDepth.getValue(),// Depth
+                    (Integer) jsDraws.getValue()// Draws
+            );
+        } catch (ClassCastException e) {
+            JOptionPane.showMessageDialog(this, "Error, could not add new desk - ClassCastException.");
+            return false;
+        }
+        
         Order.getInstance().myViews.add(newItem);
-        return true;
-    }
-
-    @Override
-    protected boolean validInputs() {
-        if (!super.validInputs()) return false;
-        
-        // do i need to validate jspinners?
-        
         return true;
     }
 
@@ -146,11 +152,11 @@ public class DeskPanel extends ItemPanel implements ActionListener {
         super.stateChanged(e);
         
         if (e.getSource() == jsDraws) {
-            ((Desk) newItem).setDraws((int) jsDraws.getValue());
+            if (newItem != null) ((Desk) newItem).setDraws((int) jsDraws.getValue());
         } else if (e.getSource() == jsWidth) {
-            ((Desk) newItem).setWidth((int) jsWidth.getValue());
+            if (newItem != null) ((Desk) newItem).setWidth((int) jsWidth.getValue());
         } else if (e.getSource() == jsDepth) {
-            ((Desk) newItem).setDepth((int) jsDepth.getValue());
+            if (newItem != null) ((Desk) newItem).setDepth((int) jsDepth.getValue());
         }
         
         updateTotal();
